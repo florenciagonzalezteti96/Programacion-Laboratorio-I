@@ -36,6 +36,7 @@ que contenga las funciones para realizar las cinco operaciones.
 
 int main()
 {
+    system("color F0");
     int option;//Menu principal. Le muestra al usuario todas las optiones para ingresar o recibir datos.
     int flag = 0;//Bandera para validar si el usuario ingreso un primer operando o no.
     int flag_two = 0;//Bandera para validar si el usuario ingreso un segundo operando o no.
@@ -51,33 +52,34 @@ int main()
 
     do
     {
-        printf("\nElija una opcion: \n1.Ingresar primer operando.\n2.Ingresar segundo operando.\n3.Informe de las operaciones a realizar.\n4.Informe de los resultados de las operaciones.\n5.Salir de la calculadora.\n");//se puede crear una funcion que cree el menu, o un printf para cada option o que quede asi
+        printf("Elija una opcion: \n1.Ingresar primer operando.\n2.Ingresar segundo operando.\n3.Informe de las operaciones a realizar.\n4.Informe de los resultados de las operaciones.\n5.Salir de la calculadora.\n");//se puede crear una funcion que cree el menu, o un printf para cada option o que quede asi
         fflush(stdin);
         scanf("%d", &option);
         switch(option)//menu de opciones
         {
         case 1:
             //ingreso del primer operando
-            printf("\nIngrese un primer operando:\n");
+            printf("Ingrese un primer operando:\n");
             fflush(stdin);
             scanf("%d", &first_number);
-            printf("\nEl primer operando ingresado es %d\n", first_number);
+            printf("El primer operando ingresado es %d\n", first_number);
             flag = 1;
             break;
 
         case 2:
             //ingreso del segundo operando
-            printf("\nIngrese un segundo operando:\n");
+            printf("Ingrese un segundo operando:\n");
+            fflush(stdin);
             scanf("%d", &second_number);
             //valido que no ocurra una division por cero.
             if(second_number != 0)
             {
-                printf("\nEl segundo operando ingresado es %d\n", second_number);
+                printf("El segundo operando ingresado es %d\n", second_number);
                 flag_two = 1;
             }
             else
             {
-                printf("La division por cero no es posible. Seleccione 2 para ingresar un segundo operando.");
+                printf("La division por cero no es posible. Seleccione 2 para ingresar un segundo operando.\n");
             }
             break;
 
@@ -85,24 +87,24 @@ int main()
             //validacion del ingreso de los operandos
             if(flag == 0)
             {
-                printf("\nUsted no ha ingresado un primer operando. Seleccione 1 para ingresarlo.\n");
+                printf("Usted no ha ingresado un primer operando. Seleccione 1 para ingresarlo.\n");
             }
             else
             {
                 if(flag_two == 0)
                 {
-                    printf("\nUsted no ha ingresado un segundo operando o debe ingresar uno nuevo. Seleccione 2 para ingresarlo.\n");
+                    printf("Usted no ha ingresado un segundo operando o debe ingresar uno nuevo. Seleccione 2 para ingresarlo.\n");
                 }
                 else
                 {
                     //muestro las operaciones a realizar y calculo los resultados.
-                    printf("\nLas operaciones a realizar son:\n");
-                    printf("\nSuma: %d + %d", first_number, second_number);
-                    printf("\nResta: %d - %d", first_number, second_number);
-                    printf("\nDivision: %d / %d", first_number, second_number);
-                    printf("\nMultiplicacion: %d * %d", first_number, second_number);
-                    printf("\nEl factorial del primer operando sera: %d!", first_number);
-                    printf("\nEl factorial del segundo operando sera: %d!", second_number);
+                    printf("Las operaciones a realizar son:\n");
+                    printf("Suma: %d + %d\n", first_number, second_number);
+                    printf("Resta: %d - %d\n", first_number, second_number);
+                    printf("Division: %d / %d\n", first_number, second_number);
+                    printf("Multiplicacion: %d * %d\n", first_number, second_number);
+                    printf("El factorial del primer operando sera: %d!\n", first_number);
+                    printf("El factorial del segundo operando sera: %d!\n", second_number);
 
                     addition = add_numbers(first_number,second_number);
                     subtraction = subtract_numbers(first_number,second_number);
@@ -116,22 +118,20 @@ int main()
 
         case 4:
             //informo los resultados finales.
-            printf("\nInforme de los resultados:\nLa suma es %f\nLa resta es %f\nLa division es %f\nLa multiplicacion es %f\nEl factorial del primer operando es %f\nEl factorial del segundo operando es %f\n", addition, subtraction, division, multiplication, factorial_first_number, factorial_second_number);
-
+            printf("Informe de los resultados:\nLa suma es %.2f\nLa resta es %.2f\nLa division es %.2f\nLa multiplicacion es %.2f\nEl factorial del primer operando es %.2f\nEl factorial del segundo operando es %.2f\n", addition, subtraction, division, multiplication, factorial_first_number, factorial_second_number);
             break;
 
         case 5:
             //salida del programa.
-            printf("\nHa salido de la calculadora.\n");
+            printf("Ha salido de la calculadora.\n");
             option_continue = 'n';
             break;
 
         default:
             //ingreso de una option que no existe en el menu.
-            printf("\nNo ingreso una opcion valida\n");
+            printf("No ingreso una opcion valida\n");
             break;
         }
-
     }
     while(option_continue=='s');
 
