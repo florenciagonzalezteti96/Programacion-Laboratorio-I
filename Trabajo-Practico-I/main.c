@@ -42,14 +42,13 @@ int main()
     int flag_two = 0;//Bandera para validar si el usuario ingreso un segundo operando o no.
     int first_number;//primer numero ingresado.
     int second_number;//segundo numero ingresado.
-    float addition;//variable que guarda el resultado de la funcion llamada add_numbersOperandos.
-    float subtraction;//variable que guarda el resultado de la funcion llamada subtract_numbersOperandos.
-    float division;//variable que guarda el resultado de la funcion llamada divide_numbersOperandos.
-    float multiplication;//variable que guarda el resultado de la funcion llamada multiply_numbersOperandos.
-    float factorial_first_number;//variable que guarda el resultado de la funcion llamada calcularFactorialDeOperando.
-    float factorial_second_number;//variable que guarda el resultado de la funcion llamada calcularFactorialDeOperando.
+    float addition;//variable que guarda el resultado de la funcion llamada add_numbers
+    float subtraction;//variable que guarda el resultado de la funcion llamada subtract_numbers
+    float division;//variable que guarda el resultado de la funcion llamada divide_numbers
+    float multiplication;//variable que guarda el resultado de la funcion llamada multiply_numbers
+    float factorial_first_number;//variable que guarda el resultado de la funcion llamada get_factorial.
+    float factorial_second_number;//variable que guarda el resultado de la funcion llamada get_factorial.
     char option_continue = 's';//cierre de la funcion do while.
-    char confirmation_exit;
 
     do
     {
@@ -116,19 +115,28 @@ int main()
         case 4:
             //informo los resultados finales.
             printf("Informe de los resultados:\n");
-            printf("El resultado de %d + %d es: %.2f\n", first_number, second_number, addition);
-            printf("El resultado de %d - %d es: %.2f\n", first_number, second_number, subtraction);
-            if(flag_two!=1)
-            {
-                printf("La division por cero no es posible. Seleccione 2 para ingresar un segundo operando.\n");
-            }
-            else
-            {
-               printf("El resultado de %d / %d es: %.2f\n", first_number, second_number, division);
-            }
 
-            printf("El resultado de %d * %d es: %.2f\n", first_number, second_number, multiplication);
-            printf("El factorial de %d es: %.2f y el factorial de %d es: %.2\n", first_number, second_number, factorial_first_number, factorial_second_number);
+            if(validate(addition)!= 1)
+            {
+                printf("El resultado de %d + %d es: %.2f\n", first_number, second_number, addition);
+            }
+            if(validate(subtraction)!= 1)
+            {
+                printf("El resultado de %d - %d es: %.2f\n", first_number, second_number, subtraction);
+            }
+            if(validate(multiplication)!= 1)
+            {
+                printf("El resultado de %d * %d es: %.2f\n", first_number, second_number, multiplication);
+            }
+            if(validate(division)!= 1)
+            {
+                printf("El resultado de %d / %d es: %.2f\n", first_number, second_number, division);
+            }
+            if(validate(getFactorial(second_number))!=1 &&(validate(getFactorial(first_number))!= 1))
+            {
+                printf("El factorial de %d es: %.2f y el factorial de %d es: %.2\n", first_number, second_number, factorial_first_number, factorial_second_number);
+
+            }
             break;
 
         case 5:

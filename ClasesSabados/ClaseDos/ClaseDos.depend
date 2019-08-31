@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1567255805 source:d:\gonzalez teti\programacion-laboratorio-i\clasessabados\clasedos\apuntes.c
+
+1567255225 source:d:\gonzalez teti\programacion-laboratorio-i\clasessabados\clasedos\main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -28,6 +28,15 @@
 
             break;
 
+
+funciones:
+
+mensaje error
+menu
+mostrar resultado
+
+
+
 */
 
 
