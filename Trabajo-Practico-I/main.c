@@ -142,6 +142,7 @@ int main()
         case 5:
             //salida del programa.
             printf("Usted ha salido de la computadora.");
+            option_continue='n';
             break;
 
         default:
