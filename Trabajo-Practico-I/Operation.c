@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Operation.h"
-//A = first_number
-//B = Y
+
 float add_numbers (float, float);
 float subtract_numbers(float, float);
 float divide_numbers (float, float);

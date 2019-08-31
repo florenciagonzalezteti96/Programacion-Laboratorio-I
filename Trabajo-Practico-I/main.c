@@ -1,12 +1,12 @@
 /*
 Hacer una calculadora. Para ello el programa iniciará y contará con un menú de optiones:
 
-1. Ingresar 1er operando (A=first_number)//crear funcion para ingresar operandos
+1. Ingresar 1er operando (A=x)
 
-2. Ingresar 2do operando (B=y)//crear funcion para ingresar operandos
+2. Ingresar 2do operando (B=y)
 
 
-3. Calcular todas las operaciones//se puede tomar como que hay que crear un menu aparte para las optiones a elegir.
+3. Calcular todas las operaciones
 a) Calcular la suma (A+B)
 b) Calcular la resta (A-B)
 c) Calcular la division (A/B)
@@ -16,7 +16,7 @@ e) Calcular el factorial (A!)
 4. Informar resultados //print f
 a) “El resultado de A+B es: r”
 b) “El resultado de A-B es: r”
-c) “El resultado de A/B es: r” o “No es posible divide_numbers por cero”
+c) “El resultado de A/B es: r” o “No es posible dividir por cero”
 d) “El resultado de A*B es: r”
 e) “El factorial de A es: r1 y El factorial de B es: r2”
 
@@ -25,7 +25,7 @@ e) “El factorial de A es: r1 y El factorial de B es: r2”
 • Todas las funciones matemáticas del menú se deberán realizar en una biblioteca aparte,
 que contenga las funciones para realizar las cinco operaciones.
 • En el menú deberán aparecer los valores actuales cargados en los operandos A y B
-(donde dice “first_number” e “y” en el ejemplo, se debe mostrar el número cargado)
+(donde dice “x” e “y” en el ejemplo, se debe mostrar el número cargado)
 • Deberán contemplarse los casos de error (división por cero, etc)
 • Documentar todas las funciones
 */
@@ -49,6 +49,7 @@ int main()
     float factorial_first_number;//variable que guarda el resultado de la funcion llamada calcularFactorialDeOperando.
     float factorial_second_number;//variable que guarda el resultado de la funcion llamada calcularFactorialDeOperando.
     char option_continue = 's';//cierre de la funcion do while.
+    char confirmation_exit;
 
     do
     {
@@ -76,10 +77,6 @@ int main()
             {
                 printf("El segundo operando ingresado es %d\n", second_number);
                 flag_two = 1;
-            }
-            else
-            {
-                printf("La division por cero no es posible. Seleccione 2 para ingresar un segundo operando.\n");
             }
             break;
 
@@ -118,13 +115,25 @@ int main()
 
         case 4:
             //informo los resultados finales.
-            printf("Informe de los resultados:\nLa suma es %.2f\nLa resta es %.2f\nLa division es %.2f\nLa multiplicacion es %.2f\nEl factorial del primer operando es %.2f\nEl factorial del segundo operando es %.2f\n", addition, subtraction, division, multiplication, factorial_first_number, factorial_second_number);
+            printf("Informe de los resultados:\n");
+            printf("El resultado de %d + %d es: %.2f\n", first_number, second_number, addition);
+            printf("El resultado de %d - %d es: %.2f\n", first_number, second_number, subtraction);
+            if(flag_two!=1)
+            {
+                printf("La division por cero no es posible. Seleccione 2 para ingresar un segundo operando.\n");
+            }
+            else
+            {
+               printf("El resultado de %d / %d es: %.2f\n", first_number, second_number, division);
+            }
+
+            printf("El resultado de %d * %d es: %.2f\n", first_number, second_number, multiplication);
+            printf("El factorial de %d es: %.2f y el factorial de %d es: %.2\n", first_number, second_number, factorial_first_number, factorial_second_number);
             break;
 
         case 5:
             //salida del programa.
-            printf("Ha salido de la calculadora.\n");
-            option_continue = 'n';
+            printf("Usted ha salido de la computadora.");
             break;
 
         default:
