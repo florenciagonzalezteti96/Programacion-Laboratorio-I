@@ -31,9 +31,27 @@
 
 funciones:
 
-mensaje error
-menu
-mostrar resultado
+int calculadora (primer num, segundo num, option)
+{
+    switch (option)
+    case 4:
+
+    divide number;
+    break;
+}
+
+mostrar_resultados (respuesta);
+
+int sumar (num 1, num 2, )
+{return num 1 + num 2;}
+
+hacer calculo()
+
+int num 1 = pedirnum
+int num 2 = pedirnum
+int operacion;
+if(calculadora!=0)
+{se ha producido un error);
 
 
 

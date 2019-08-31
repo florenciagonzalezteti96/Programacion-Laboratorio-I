@@ -36,7 +36,7 @@ que contenga las funciones para realizar las cinco operaciones.
 
 int main()
 {
-    system("color F0");
+    //system("color F0");
     int option;//Menu principal. Le muestra al usuario todas las optiones para ingresar o recibir datos.
     int flag = 0;//Bandera para validar si el usuario ingreso un primer operando o no.
     int flag_two = 0;//Bandera para validar si el usuario ingreso un segundo operando o no.
