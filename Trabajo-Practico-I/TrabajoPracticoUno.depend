@@ -79,3 +79,32 @@
 	<stdlib.h>
 	"Operation.h"
 
+1567541038 source:c:\users\gonzalez\desktop\programacion-laboratorio-i\trabajo-practico-i\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Funciones.h"
+	"Operaciones.h"
+
+1567530856 c:\users\gonzalez\desktop\programacion-laboratorio-i\trabajo-practico-i\operation.h
+
+1567530856 source:c:\users\gonzalez\desktop\programacion-laboratorio-i\trabajo-practico-i\operation.c
+	<stdio.h>
+	<stdlib.h>
+	"Operation.h"
+
+1567542743 c:\users\gonzalez\desktop\programacion-laboratorio-i\trabajo-practico-i\funciones.h
+
+1567543440 source:c:\users\gonzalez\desktop\programacion-laboratorio-i\trabajo-practico-i\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	"Funciones.h"
+	"Operaciones.h"
+
+1567544039 source:c:\users\gonzalez\desktop\programacion-laboratorio-i\trabajo-practico-i\operaciones.c
+	"Operaciones.h"
+	"Funciones.h"
+	<stdio.h>
+	<stdlib.h>
+
+1567542820 c:\users\gonzalez\desktop\programacion-laboratorio-i\trabajo-practico-i\operaciones.h
+
