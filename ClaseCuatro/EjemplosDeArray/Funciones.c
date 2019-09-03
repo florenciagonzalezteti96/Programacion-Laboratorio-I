@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "Funciones.h"
 
+void ordenarVector(int vectorDeEnteros[], int tam);
 void cargarVector(int vectorDeEnteros[], int tam);
 void mostrarVector(int vectorDeEnteros[], int tam);
 void mostrarNumerosNegativos(int vectorDeEnteros[], int tam);
@@ -152,7 +153,7 @@ int show_option_menu(int vector[], int tam)
     int option_continue = 's';
     do
     {
-        printf("Elija una opcion: \n1.Cargar numeros.\n2.Mostrar todo.\n3.Mostrar negativos.\n4.Mostrar promedio de numeros positivos.\n5.Mostrar maximo numero y su posicion o minimo numero y su posicion.\n6.Salir.\n");//se puede crear una funcion que cree el menu, o un printf para cada option o que quede asi
+        printf("Elija una opcion: \n1.Cargar numeros.\n2.Mostrar todo.\n3.Mostrar negativos.\n4.Mostrar promedio de numeros positivos.\n5.Mostrar maximo numero y su posicion o minimo numero y su posicion.\n6. Ordenar vector.\n7.Salir.\n");//se puede crear una funcion que cree el menu, o un printf para cada option o que quede asi
         fflush(stdin);
         scanf("%d", &option);
         switch(option)
@@ -173,6 +174,10 @@ int show_option_menu(int vector[], int tam)
             mostrar_Minimo_O_Maximo(vector, tam);
             break;
         case 6:
+            ordenarDeMenorAMayor(vector, tam);
+            ordenarDeMayorAMenor(vector, tam);
+            break;
+        case 7:
             printf("Usted ha salido de la computadora.");
             option_continue ='n';
             break;
@@ -188,4 +193,50 @@ int show_option_menu(int vector[], int tam)
 
     return 0;
 }
+
+void ordenarDeMenorAMayor(int vectorDeEnteros[], int tam){
+    //quick sort
+    //burbujeo ->
+    int i;
+    int j;
+    int aux;
+
+    for(i=0;i<tam-1;i++){
+        for(j=i+1;j<tam;j++){
+            if(vectorDeEnteros[i]>vectorDeEnteros[j]){
+                /*C = A
+                A = B criterio de ordenamiento
+                B = C */
+                aux = vectorDeEnteros[i];
+                vectorDeEnteros[i] = vectorDeEnteros[j];
+                vectorDeEnteros[j] = aux;
+            }
+        }
+    }
+    mostrarVector(vectorDeEnteros, tam);
+}
+
+void ordenarDeMayorAMenor(int vectorDeEnteros[], int tam){
+    //quick sort
+    //burbujeo ->
+    int i;
+    int j;
+    int aux;
+
+    for(i=0;i<tam-1;i++){
+        for(j=i+1;j<tam;j++){
+            if(vectorDeEnteros[i]<vectorDeEnteros[j]){
+                /*C = A
+                A = B criterio de ordenamiento
+                B = C */
+                aux = vectorDeEnteros[i];
+                vectorDeEnteros[i] = vectorDeEnteros[j];
+                vectorDeEnteros[j] = aux;
+            }
+        }
+    }
+    mostrarVector(vectorDeEnteros, tam);
+}
+
+
 

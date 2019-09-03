@@ -21,15 +21,30 @@ int main()
 
 int getInt_Validate(int* number, char* message, char* errorMessage, int lowLimit, int highLimit){
     int return_value;
+    int contadorIntentos;
+
+    return_value = 0;
+
     printf(message);
-    if(*number<lowLimit || *number>highLimit){
-        printf(errorMessage);
-        return_value = -1;
+    fflush(stdin);
+    scanf("%d", number);
+
+    while(contadorIntentos<5){
+        if(*number<lowLimit){
+            printf(errorMessage);
+
+        }
+
+
     }else{
-        fflush(stdin);
-        scanf("%d", number);
-        return_value = 0;
+        if(*number>highLimit){
+            printf(errorMessage);
+
+        }
     }
+
+    }
+
 
     return return_value;
 }

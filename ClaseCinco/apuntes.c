@@ -40,6 +40,8 @@ si no, puede desbordar el programa, porque las funciones se empiezan a apilar po
 --La funcion recursiva tambien tiene un limite (12), de rango del entero. por eso la variable de resultado
 se tiene que guardan en un dato de tipo long long int.
 
+con cada iteracion, duplico las variables y ocupo mas memoria en LA PILA (stack)
+
 
 
 */

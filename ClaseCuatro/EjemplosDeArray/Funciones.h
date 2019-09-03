@@ -7,3 +7,5 @@ void mostrarPosicionMaximo (int vectorDeEnteros[], int tam);
 void mostrarMinimo(int vectorDeEnteros[], int tam);
 void mostrarPosicionMinimo(int vectorDeEnteros[], int tam);
 int show_option_menu(int vector[], int tam);
+void ordenarDeMenorAMayor(int vectorDeEnteros[], int tam);
+void ordenarDeMayorAMenor(int vectorDeEnteros[], int tam);
