@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void show_message(char message[]);
+
 int getInt_Validate(int* number, char* message, char* errorMessage, int lowLimit, int highLimit);
 
 int main()
@@ -17,18 +17,16 @@ int main()
     return 0;
 }
 
-void show_message(char message[]){
-    printf(message);
-}
+
 
 int getInt_Validate(int* number, char* message, char* errorMessage, int lowLimit, int highLimit){
     int return_value;
-    show_message(message);
-    scanf()
+    printf(message);
     if(*number<lowLimit || *number>highLimit){
-        show_message(errorMessage);
+        printf(errorMessage);
         return_value = -1;
     }else{
+        fflush(stdin);
         scanf("%d", number);
         return_value = 0;
     }
