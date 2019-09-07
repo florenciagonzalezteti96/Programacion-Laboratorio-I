@@ -75,17 +75,14 @@ void mostrarPromedioDePositivos(int vectorDeEnteros[], int tam){
     printf("Promedio de positivos: %.2f\n", promedioPositivos);
     printf("\n\n");
 }
-//calcularMaximo, mostrarMaximo, calcularPosicionMaximo, mostrarPosicionMaximo.
 
 int calcularMaximo (int vectorDeEnteros[], int tam){
     int i;
-    int flagMax = 0;
     int max;
     for(i=0; i<tam; i++){
-        if(vectorDeEnteros[i]>max || flagMax == 0){
+        if(vectorDeEnteros[i]>max || i == 0){
             max=vectorDeEnteros[i];
         }
-        flagMax = 1;
     }
     return max;
 }
@@ -98,9 +95,9 @@ void mostrarMaximo(int vectorDeEnteros[], int tam){
 void mostrarPosicionMaximo (int vectorDeEnteros[], int tam){
     int i;
     int max = calcularMaximo(vectorDeEnteros, tam);
+    printf("\nLa/s posicion/es del maximo es/son:");
     for(i=0; i<tam; i++){
         if(vectorDeEnteros[i]==max){
-            printf("\nLa/s posicion/es del maximo es/son:");
             printf("%d\n", i);
         }
     }
@@ -111,12 +108,10 @@ void mostrarPosicionMaximo (int vectorDeEnteros[], int tam){
 int calcularMinimo(int vectorDeEnteros[], int tam){
     int i;
     int min;
-    int flagMin = 0;
     for(i=0; i<tam; i++){
-        if(vectorDeEnteros[i]<min || flagMin == 0){
+        if(vectorDeEnteros[i]<min || i == 0){
             min=vectorDeEnteros[i];
         }
-        flagMin=1;
     }
  return min;
 }
@@ -156,9 +151,9 @@ void mostrarMinimo(int vectorDeEnteros[], int tam){
 void mostrarPosicionMinimo(int vectorDeEnteros[], int tam){
     int i;
     int min = calcularMinimo(vectorDeEnteros, tam);
+    printf("\nLa/s posicion/es del minimo es/son:");
     for(i=0; i<tam; i++){
         if(vectorDeEnteros[i]==min){
-            printf("\nLa/s posicion/es del minimo es/son:");
             printf("%d\n", i);
         }
     }
@@ -233,8 +228,6 @@ void ordenarDeMenorAMayor(int vectorDeEnteros[], int tam){
 }
 
 void ordenarDeMayorAMenor(int vectorDeEnteros[], int tam){
-    //quick sort
-    //burbujeo ->
     int i;
     int j;
     int aux;
@@ -242,9 +235,6 @@ void ordenarDeMayorAMenor(int vectorDeEnteros[], int tam){
     for(i=0;i<tam-1;i++){
         for(j=i+1;j<tam;j++){
             if(vectorDeEnteros[i]<vectorDeEnteros[j]){
-                /*C = A
-                A = B criterio de ordenamiento
-                B = C */
                 aux = vectorDeEnteros[i];
                 vectorDeEnteros[i] = vectorDeEnteros[j];
                 vectorDeEnteros[j] = aux;
