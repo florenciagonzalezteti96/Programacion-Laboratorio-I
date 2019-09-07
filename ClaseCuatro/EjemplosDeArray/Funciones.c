@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "Funciones.h"
 
-void inicializarVector(int vectorDeEnteros[], int tam);
-void cargarVector(int vectorDeEnteros[], int tam);
+void inicializarVector(int vectorDeEnteros[], int tam, int valorDeInicializacion);
+void cargarVector(int vectorDeEnteros[], int tam, char mensajeDeIngreso[]);
 void mostrarVector(int vectorDeEnteros[], int tam);
 void mostrarNumerosNegativos(int vectorDeEnteros[], int tam);
 void mostrarPromedioDePositivos(int vectorDeEnteros[], int tam);
@@ -19,29 +19,28 @@ void ordenarDeMayorAMenor(int vectorDeEnteros[], int tam);
 void ordenarDeMenorAMayor(int vectorDeEnteros[], int tam);
 void menu_Ordenar_Vector(int vectorDeEnteros[], int tam);
 
-void inicializarVector(int vectorDeEnteros[], int tam){
+void inicializarVector(int vectorDeEnteros[], int tam, int valorDeInicializacion){
     int i;
     for(i=0;i<tam;i++){
-        vectorDeEnteros[i]=0;
+        vectorDeEnteros[i]=valorDeInicializacion;
     }
 }
 
-void cargarVector(int vectorDeEnteros[], int tam){
+void cargarVector(int vectorDeEnteros[], int tam, char mensajeDeIngreso[]){
     int i;
-    printf("Ingrese un numero: \n");
+    printf("%s", mensajeDeIngreso);
     for(i=0; i<tam; i++){
         scanf("%d", &vectorDeEnteros[i]);
     }
-    printf("\n\n");
+    printf("\n");
 }
 
 void mostrarVector(int vectorDeEnteros[], int tam){
-    printf("Estos son los numeros:\n");
     int i;
     for(i=0; i<tam; i++){
         printf("%d\n", vectorDeEnteros[i]);
     }
-    printf("\n\n");
+    printf("\n");
 }
 
 void mostrarNumerosNegativos(int vectorDeEnteros[], int tam){
@@ -57,7 +56,7 @@ void mostrarNumerosNegativos(int vectorDeEnteros[], int tam){
     if(flagNo_Negatives == 0){
         printf("No hay numeros negativos\n\a\a");
     }
-    printf("\n\n");
+    printf("\n");
 }
 
 void mostrarPromedioDePositivos(int vectorDeEnteros[], int tam){
@@ -73,7 +72,7 @@ void mostrarPromedioDePositivos(int vectorDeEnteros[], int tam){
     }
     promedioPositivos = (float) acumuladorPositivos / contadorPositivos;
     printf("Promedio de positivos: %.2f\n", promedioPositivos);
-    printf("\n\n");
+    printf("\n");
 }
 
 int calcularMaximo (int vectorDeEnteros[], int tam){
@@ -101,7 +100,7 @@ void mostrarPosicionMaximo (int vectorDeEnteros[], int tam){
             printf("%d\n", i);
         }
     }
-    printf("\n\n");
+    printf("\n");
 }
 
 
@@ -131,7 +130,7 @@ void mostrar_Minimo_O_Maximo(int vectorDeEnteros[], int tam){
             mostrarPosicionMinimo(vectorDeEnteros, tam);
             break;
         case 2:
-            printf("El maximo es: %d.\nPresione 3 para volver al menu principal.", max);
+            printf("El maximo es: %d.\n", max);
             mostrarPosicionMaximo(vectorDeEnteros, tam);
             break;
         default:
@@ -140,7 +139,7 @@ void mostrar_Minimo_O_Maximo(int vectorDeEnteros[], int tam){
         }
     }
     while(option_continue=='s');
-    printf("\n\n");
+    printf("\n");
 }
 
 void mostrarMinimo(int vectorDeEnteros[], int tam){
@@ -163,15 +162,16 @@ int show_option_menu(int vector[], int tam)
 {
     int option;
     int option_continue = 's';
-    do
-    {
-        printf("Elija una opcion: \n1.Cargar numeros.\n2.Mostrar todo.\n3.Mostrar negativos.\n4.Mostrar promedio de numeros positivos.\n5.Mostrar maximo numero y su posicion o minimo numero y su posicion.\n6. Ordenar vector.\n7.Salir.\n");//se puede crear una funcion que cree el menu, o un printf para cada option o que quede asi
+    inicializarVector(vector, tam, 0);
+    printf("Los elementos del vector se han inicializado en 0 automaticamente. Presione 1 para cambiar su valor.\n\n");
+    do{
+        printf("Elija una opcion:\n1.Cargar numeros.\n2.Mostrar todo.\n3.Mostrar negativos.\n4.Mostrar promedio de numeros positivos.\n5.Mostrar maximo numero y su posicion o minimo numero y su posicion.\n6.Ordenar vector.\n7.Salir.\n");//se puede crear una funcion que cree el menu, o un printf para cada option o que quede asi
         fflush(stdin);
         scanf("%d", &option);
         switch(option)
         {
         case 1:
-            cargarVector(vector, tam);
+            cargarVector(vector, tam, "Ingrese los numeros: \n");
             break;
         case 2:
             mostrarVector(vector, tam);
@@ -189,7 +189,7 @@ int show_option_menu(int vector[], int tam)
             menu_Ordenar_Vector(vector, tam);
             break;
         case 7:
-            printf("Usted ha salido de la computadora.");
+            printf("Usted ha salido de la computadora.\n");
             option_continue ='n';
             break;
         default:
@@ -253,11 +253,11 @@ void menu_Ordenar_Vector(int vectorDeEnteros[], int tam){
         scanf("%d", &option);
         switch(option){
         case 1:
-            printf("El vector ordenado de menor a mayor es: ");
+            printf("El vector ordenado de menor a mayor es: \n");
             ordenarDeMenorAMayor(vectorDeEnteros, tam);
             break;
         case 2:
-            printf("El vector ordenado de mayor a menor es: ");
+            printf("El vector ordenado de mayor a menor es: \n");
             ordenarDeMayorAMenor(vectorDeEnteros, tam);
             break;
         default:
@@ -266,7 +266,7 @@ void menu_Ordenar_Vector(int vectorDeEnteros[], int tam){
         }
     }
     while(option_continue=='s');
-    printf("\n\n");
+    printf("\n");
 }
 
 

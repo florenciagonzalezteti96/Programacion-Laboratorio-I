@@ -1,5 +1,5 @@
-void inicializarVector(int vectorDeEnteros[], int tam);
-void cargarVector(int vectorDeEnteros[], int tam);
+void inicializarVector(int vectorDeEnteros[], int tam, int valorDeInicializacion);
+void cargarVector(int vectorDeEnteros[], int tam, char mensajeDeIngreso[]);
 void mostrarVector(int vectorDeEnteros[], int tam);
 void mostrarNumerosNegativos(int vectorDeEnteros[], int tam);
 void mostrarPromedioDePositivos(int vectorDeEnteros[], int tam);
