@@ -156,8 +156,7 @@ void mostrarPosicionMinimo(int vectorDeEnteros[], int tam){
     }
 }
 
-int show_option_menu(int vector[], int tam)
-{
+int show_option_menu(int vector[], int tam){
     int option;
     int option_continue = 's';
     inicializarVector(vector, tam, 0);
@@ -261,4 +260,17 @@ void menu_Ordenar_Vector(int vectorDeEnteros[], int tam){
         }
     }while(option_continue=='s');
     printf("\n");
+}
+
+int partition(int vectorDeEnteros[], int inicio, int fin){
+    int i = inicio + 1;
+    int piv = vectorDeEnteros[inicio];
+    //el primer elemento es el pivote
+    for(int j = inicio + 1; j<= fin; j++){
+        //reordeno el array, poniendo los elementos que sean menores que el pivote de un lado y los que sean mayores del otro.
+        if(vectorDeEnteros[j]<piv){
+            vectorDeEnteros[i]=vectorDeEnteros[j];
+            i += 1;
+        }
+    }
 }
