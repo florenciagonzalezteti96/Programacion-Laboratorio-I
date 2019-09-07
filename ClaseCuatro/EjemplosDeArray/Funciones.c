@@ -54,7 +54,7 @@ void mostrarNumerosNegativos(int vectorDeEnteros[], int tam){
         }
     }
     if(flagNo_Negatives == 0){
-        printf("No hay numeros negativos\n\a\a");
+        printf("No hay numeros negativos.\n");
     }
     printf("\n");
 }
@@ -103,7 +103,6 @@ void mostrarPosicionMaximo (int vectorDeEnteros[], int tam){
     printf("\n");
 }
 
-
 int calcularMinimo(int vectorDeEnteros[], int tam){
     int i;
     int min;
@@ -137,14 +136,13 @@ void mostrar_Minimo_O_Maximo(int vectorDeEnteros[], int tam){
             option_continue='n';
             break;
         }
-    }
-    while(option_continue=='s');
+    }while(option_continue=='s');
     printf("\n");
 }
 
 void mostrarMinimo(int vectorDeEnteros[], int tam){
     int min = calcularMinimo(vectorDeEnteros, tam);
-    printf("El max es: %d\n", min);
+    printf("El min es: %d\n", min);
 }
 
 void mostrarPosicionMinimo(int vectorDeEnteros[], int tam){
@@ -168,8 +166,7 @@ int show_option_menu(int vector[], int tam)
         printf("Elija una opcion:\n1.Cargar numeros.\n2.Mostrar todo.\n3.Mostrar negativos.\n4.Mostrar promedio de numeros positivos.\n5.Mostrar maximo numero y su posicion o minimo numero y su posicion.\n6.Ordenar vector.\n7.Salir.\n");//se puede crear una funcion que cree el menu, o un printf para cada option o que quede asi
         fflush(stdin);
         scanf("%d", &option);
-        switch(option)
-        {
+        switch(option){
         case 1:
             cargarVector(vector, tam, "Ingrese los numeros: \n");
             break;
@@ -196,31 +193,27 @@ int show_option_menu(int vector[], int tam)
             printf("Dato invalido.\n");
             break;
         }
-    }
-    while(option_continue=='s');
-
+    }while(option_continue=='s');
     system("pause");
     system("cls");
-
     return 0;
 }
 
 void ordenarDeMenorAMayor(int vectorDeEnteros[], int tam){
     //quick sort
     //burbujeo ->
-    int i;
-    int j;
+    int indicePrimerVector;
+    int indiceSegundoVector;
     int aux;
-
-    for(i=0;i<tam-1;i++){
-        for(j=i+1;j<tam;j++){
-            if(vectorDeEnteros[i]>vectorDeEnteros[j]){
+    for(indicePrimerVector=0;indicePrimerVector<tam-1;indicePrimerVector++){
+        for(indiceSegundoVector=indicePrimerVector+1;indiceSegundoVector<tam;indiceSegundoVector++){
+            if(vectorDeEnteros[indicePrimerVector]>vectorDeEnteros[indiceSegundoVector]){
                 /*C = A
                 A = B criterio de ordenamiento
                 B = C */
-                aux = vectorDeEnteros[i];
-                vectorDeEnteros[i] = vectorDeEnteros[j];
-                vectorDeEnteros[j] = aux;
+                aux = vectorDeEnteros[indicePrimerVector];
+                vectorDeEnteros[indicePrimerVector] = vectorDeEnteros[indiceSegundoVector];
+                vectorDeEnteros[indiceSegundoVector] = aux;
             }
         }
     }
@@ -228,16 +221,18 @@ void ordenarDeMenorAMayor(int vectorDeEnteros[], int tam){
 }
 
 void ordenarDeMayorAMenor(int vectorDeEnteros[], int tam){
-    int i;
-    int j;
+    int indicePrimerVector;
+    int indiceSegundoVector;
     int aux;
-
-    for(i=0;i<tam-1;i++){
-        for(j=i+1;j<tam;j++){
-            if(vectorDeEnteros[i]<vectorDeEnteros[j]){
-                aux = vectorDeEnteros[i];
-                vectorDeEnteros[i] = vectorDeEnteros[j];
-                vectorDeEnteros[j] = aux;
+    for(indicePrimerVector=0;indicePrimerVector<tam-1;indicePrimerVector++){
+        for(indiceSegundoVector=indicePrimerVector+1;indiceSegundoVector<tam;indiceSegundoVector++){
+            if(vectorDeEnteros[indicePrimerVector]<vectorDeEnteros[indiceSegundoVector]){
+                /*C = A
+                A = B criterio de ordenamiento
+                B = C */
+                aux = vectorDeEnteros[indicePrimerVector];
+                vectorDeEnteros[indicePrimerVector] = vectorDeEnteros[indiceSegundoVector];
+                vectorDeEnteros[indiceSegundoVector] = aux;
             }
         }
     }
@@ -264,11 +259,6 @@ void menu_Ordenar_Vector(int vectorDeEnteros[], int tam){
             option_continue='n';
             break;
         }
-    }
-    while(option_continue=='s');
+    }while(option_continue=='s');
     printf("\n");
 }
-
-
-
-
