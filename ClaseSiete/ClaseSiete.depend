@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1568122540 source:/home/alumno/Documentos/GonzalezTeti/Programacion-Laboratorio-I/ClaseSiete/Apuntes.c
+
+1568122480 source:/home/alumno/Documentos/GonzalezTeti/Programacion-Laboratorio-I/ClaseSiete/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
