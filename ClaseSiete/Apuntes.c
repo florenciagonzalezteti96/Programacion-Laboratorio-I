@@ -108,7 +108,7 @@ DISCRIMINA ENTRE MAYUSCULAS Y MINUSCULAS. para que no haga eso tengo que usar st
     strlwr(palabra);
     printf("%s", palabra);
 
-    tambien puedo usar la biblioteca ctype.h, con la funcion tolower(un char);
+    tambien puedo usar la biblioteca ctype.h, con la funcion tolower(un char); me retorna un caracter que lo tengo que guardar en una cadena o una variable
 
 5.para concatenar: strcat
 
@@ -126,5 +126,31 @@ DISCRIMINA ENTRE MAYUSCULAS Y MINUSCULAS. para que no haga eso tengo que usar st
 si la cadena de destino no tiene nada, lo que hace el strcat es poner un valor basura en la variable de destino.
 para que no me tire basura lo que puedo hacer es iniciar a la cadena destino asi: palabra[10]=" ";
 
+** isspace() -> me dice si el caracter que le paso es un espacio.
+** isdigit
+** isalpha
+
+
+strlwr (apellidoNOmbre)
+
+apellido nombre [0]=toupper
+
+len =
+
+for
+if(isspace(apellidoNombre[i]))
+                    {
+                        nombre[i+1]=toupper(nombre[i+1]);
+                    })
+
+    //funcion get string:
+    while(strlen(auxString)>15){
+        printf("Error. Reingrese su nombre: ");
+        fflush(stdin);
+        fgets(nombre, 15, stdin);
+    }
+
+    strcpy(nombre, auxString);
 
 */
+
