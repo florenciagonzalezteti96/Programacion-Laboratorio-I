@@ -1,0 +1,20 @@
+void inicializarArray(int arrayDeEnteros[], int tam, int valorInicial);
+void cargarArray(int arrayDeEnteros[], int tam, char mensajeDeIngreso[]);
+void mostrarArray(int arrayDeEnteros[], int tam);
+int buscarValorInt(int arrayDeEnteros[], int tam, int num);
+void mostrarPosicionNumero(int arrayDeEnteros[], int tam, int num);
+void ordenarDeMayorAMenor(int arrayDeEnteros[], int tam);
+void ordenarDeMenorAMayor(int arrayDeEnteros[], int tam);
+void menu_Ordenar_Vector(int vectorDeEnteros[], int tam);
+void mostrarNumerosNegativos(int vectorDeEnteros[], int tam);
+void mostrarNumerosPositivos(int vectorDeEnteros[], int tam);
+void mostrarPromedioDeNegativos(int vectorDeEnteros[], int tam);
+void mostrarPromedioDePositivos(int vectorDeEnteros[], int tam);
+int calcularMaximo (int vectorDeEnteros[], int tam);
+void mostrarMaximo(int vectorDeEnteros[], int tam);
+void mostrarPosicionMaximo (int vectorDeEnteros[], int tam);
+int calcularMinimo(int vectorDeEnteros[], int tam);
+void mostrarMinimo(int vectorDeEnteros[], int tam);
+void mostrarPosicionMinimo(int vectorDeEnteros[], int tam);
+void menu_Mostrar_Minimo_O_Maximo(int vectorDeEnteros[], int tam);
+
