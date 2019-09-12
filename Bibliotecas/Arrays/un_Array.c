@@ -1,11 +1,21 @@
 /** FUNCIONES BASICAS */
-void inicializarArray(int arrayDeEnteros[], int tam, int valorInicial){
+void inicializarArray(int array[], int tam, int valorInicial){
     int i;
     for(i=0;i<tam;i++){
         arrayDeEnteros[i]=valorInicial;
     }
 }
-void cargarArray(int arrayDeEnteros[], int tam, char mensajeDeIngreso[]){
+void cargarArrayInicializado(int array[], int tam, char mensajeDeIngreso[], int valorInicial){
+    int i;
+    printf("%s", mensajeDeIngreso);
+    for(i=0; i<tam; i++){
+        if(estaLibre(array, tam, i, valorInicial)==1){
+            scanf("%d", &array[i]); //si esta libre se guarda un valor.
+        }
+    }
+    printf("\n");
+}
+void cargarArray(int array[], int tam, char mensajeDeIngreso[]){
     int i;
     printf("%s", mensajeDeIngreso);
     for(i=0; i<tam; i++){
@@ -13,15 +23,70 @@ void cargarArray(int arrayDeEnteros[], int tam, char mensajeDeIngreso[]){
     }
     printf("\n");
 }
-void mostrarArray(int arrayDeEnteros[], int tam){
+void mostrarArray(int array[], int tam){
     int i;
     for(i=0; i<tam; i++){
         printf("%d\n", arrayDeEnteros[i]);
     }
     printf("\n");
 }
+void hardcodearArray(int array[], int tam){
+    int arrayAux[]={0,0,0,0,0};
+    int i;
+    for(i=0; i<tam; i++){
+        array[i] = arrayAux[i];
+    }
+}
+int estaOcupado(int array[], int tam, int posicion, int nuevoValor, int valorInicial){
+    int retorno = -1;
+    if(posicion<tam){
+        if(estaLibre(array, tam, posicion,valorInicial)==1){
+            array[posicion]=nuevoValor;
+            retorno = 0;
+        }
+    }
+    return retorno;
+}
+int estaLibre(int array[], int tam, int posicion, int valorInicial){
+    int retorno = 0;
+    if(array[posicion] == valorInicial){
+        retorno = 1;
+    }
+    return retorno;
+}
+int encontrarPrimeraPosicionLibre(int array[], int tam, int valorInicial){
+    int i;
+    int retorno = -1;
+    for(i=0;i<tam;i++){
+        if(array[i]==valorInicial){
+            retorno = i;
+            break;
+        }
+    }
+    return retorno;
+}
+int cantidadPosicionesOcupados(int array[], int tam, int valorInicial){
+    int i;
+    int contador = 0;
+    for(i=0; i<tam; i++){
+        if(array[i]!=valorInicial){
+            contador++;
+        }
+    }
+    return contador;
+}
+int cantidadPosicionesLibres(int array[], int tam, int valorInicial){
+    int i;
+    int contador = 0;
+    for(i=0; i<tam; i++){
+        if(array[i]==valorInicial){
+            contador++;
+        }
+    }
+    return contador;
+}
 /** FUNCIONES DE ENTEROS */
-int buscarValorInt(int arrayDeEnteros[], int tam, int num){
+int buscarValorInt(int array[], int tam, int num){
     int i;
     int retorno = 0;
     for(i=0; i<tam; i++){
@@ -31,10 +96,10 @@ int buscarValorInt(int arrayDeEnteros[], int tam, int num){
     }
     return retorno;
 }
-void mostrarPosicionNumero(int arrayDeEnteros[], int tam, int num){
+void mostrarPosicionNumero(int array[], int tam, int num){
     int i;
-    int numero = buscarValorInt(arrayDeEnteros, tam, num);
-    if(numero!=0){
+    int si_Existe = buscarValorInt(arrayDeEnteros, tam, num);
+    if(si_Existe!=0){
         printf("\nLa posicion del numero es:");
         for(i=0; i<tam; i++){
             if(arrayDeEnteros[i]==num){
@@ -47,7 +112,7 @@ void mostrarPosicionNumero(int arrayDeEnteros[], int tam, int num){
 
 }
 /** CRITERIOS DE ORDENAMIENTO */
-void ordenarDeMayorAMenor(int arrayDeEnteros[], int tam){
+void ordenarDeMayorAMenor(int array[], int tam){
     int indicePrimerArray;
     int indiceSegundoArray;
     int aux;
@@ -65,7 +130,7 @@ void ordenarDeMayorAMenor(int arrayDeEnteros[], int tam){
     }
     mostrarArray(arrayDeEnteros, tam);
 }
-void ordenarDeMenorAMayor(int arrayDeEnteros[], int tam){
+void ordenarDeMenorAMayor(int array[], int tam){
     int indicePrimerArray;
     int indiceSegundoArray;
     int aux;
@@ -83,7 +148,7 @@ void ordenarDeMenorAMayor(int arrayDeEnteros[], int tam){
     }
     mostrarArray(arrayDeEnteros, tam);
 }
-void menu_Ordenar_Vector(int vectorDeEnteros[], int tam){
+void menu_Ordenar_Vector(int array[], int tam){
     int option;
     char option_continue='s';
     do{
@@ -107,7 +172,7 @@ void menu_Ordenar_Vector(int vectorDeEnteros[], int tam){
     printf("\n");
 }
 /** NUMEROS POSITIVOS Y NEGATIVOS */
-void mostrarNumerosNegativos(int vectorDeEnteros[], int tam){
+void mostrarNumerosNegativos(int array[], int tam){
     printf("Estos son los numeros negativos:\n");
     int i;
     int flagNo_Negatives = 0;
@@ -122,7 +187,7 @@ void mostrarNumerosNegativos(int vectorDeEnteros[], int tam){
     }
     printf("\n");
 }
-void mostrarNumerosPositivos(int vectorDeEnteros[], int tam){
+void mostrarNumerosPositivos(int array[], int tam){
     printf("Estos son los numeros positivos:\n");
     int i;
     int flagNo_Positivos = 0;
@@ -137,7 +202,7 @@ void mostrarNumerosPositivos(int vectorDeEnteros[], int tam){
     }
     printf("\n");
 }
-void mostrarPromedioDeNegativos(int vectorDeEnteros[], int tam){
+void mostrarPromedioDeNegativos(int array[], int tam){
     int i;
     int acumuladorNegativos = 0;
     int contadorNegativos = 0;
@@ -152,7 +217,7 @@ void mostrarPromedioDeNegativos(int vectorDeEnteros[], int tam){
     printf("Promedio de positivos: %.2f\n", promedioNegativos);
     printf("\n");
 }
-void mostrarPromedioDePositivos(int vectorDeEnteros[], int tam){
+void mostrarPromedioDePositivos(int array[], int tam){
     int i;
     int acumuladorPositivos = 0;
     int contadorPositivos = 0;
@@ -167,23 +232,44 @@ void mostrarPromedioDePositivos(int vectorDeEnteros[], int tam){
     printf("Promedio de positivos: %.2f\n", promedioPositivos);
     printf("\n");
 }
+int mostrarCantidadPositivos(int array[], int tam){
+    int contadorPositivos = 0;
+    int i;
+    for(i=0;i<tam;i++){
+        if(array[i]>0){
+            contadorPositivos++;
+        }
+    }
+    return contadorPositivos;
+}
+int mostrarCantidadNegativos(int array[], int tam){
+    int contadorNegativos = 0;
+    int i;
+    for(i=0;i<tam;i++){
+        if(array[i]<0){
+            contadorNegativos++;
+        }
+    }
+    return contadorNegativos;
+}
 /** MINIMOS Y MAXIMOS */
-int calcularMaximo (int vectorDeEnteros[], int tam){
+int calcularMaximo (int array[], int tam){
     int i;
     int max;
     int flag;
     for(i=0; i<tam; i++){
         if(vectorDeEnteros[i]>max || flag == 0){
             max=vectorDeEnteros[i];
+            flag = 1;
         }
     }
     return max;
 }
-void mostrarMaximo(int vectorDeEnteros[], int tam){
+void mostrarMaximo(int array[], int tam){
     int max = calcularMaximo(vectorDeEnteros, tam);
     printf("El max es: %d\n", max);
 }
-void mostrarPosicionMaximo (int vectorDeEnteros[], int tam){
+void mostrarPosicionMaximo (int array[], int tam){
     int i;
     int max = calcularMaximo(vectorDeEnteros, tam);
     printf("\nLa/s posicion/es del maximo es/son:");
@@ -194,22 +280,23 @@ void mostrarPosicionMaximo (int vectorDeEnteros[], int tam){
     }
     printf("\n");
 }
-int calcularMinimo(int vectorDeEnteros[], int tam){
+int calcularMinimo(int array[], int tam){
     int i;
     int min;
     int flag;
     for(i=0; i<tam; i++){
         if(vectorDeEnteros[i]<min || flag == 0){
             min=vectorDeEnteros[i];
+            flag = 1;
         }
     }
  return min;
 }
-void mostrarMinimo(int vectorDeEnteros[], int tam){
+void mostrarMinimo(int array[], int tam){
     int min = calcularMinimo(vectorDeEnteros, tam);
     printf("El min es: %d\n", min);
 }
-void mostrarPosicionMinimo(int vectorDeEnteros[], int tam){
+void mostrarPosicionMinimo(int array[], int tam){
     int i;
     int min = calcularMinimo(vectorDeEnteros, tam);
     printf("\nLa/s posicion/es del minimo es/son:");
@@ -219,7 +306,7 @@ void mostrarPosicionMinimo(int vectorDeEnteros[], int tam){
         }
     }
 }
-void menu_Mostrar_Minimo_O_Maximo(int vectorDeEnteros[], int tam){
+void menu_Mostrar_Minimo_O_Maximo(int array[], int tam){
     int min = calcularMinimo(vectorDeEnteros, tam);
     int max = calcularMaximo(vectorDeEnteros, tam);
     int option;
