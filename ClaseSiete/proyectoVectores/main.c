@@ -16,7 +16,8 @@ y muestra:
 #include <stdlib.h>
 #include "string.h"
 #include "ctype.h"
-void cargarVectorNombresYApellidos(char cadena[],char mensajeDeIngresoNombre[], char mensajeDeIngresoApellido[]);
+
+//void cargarVectorNombresYApellidos(char cadena[],char mensajeDeIngresoNombre[], char mensajeDeIngresoApellido[]);
 void mostrarVector(int vectorDeEnteros[], int tam);
 void mostrarVectorCaracteres(char vectorDeEnteros[], int tam);
 void inicializarVector(int vectorDeEnteros[], int tam, int valorDeInicializacion);
@@ -32,18 +33,24 @@ int main()
     int legajos[5];
     int edades[5];
     char nombres[5][30];
+    char apellidos[5][30];
     int i;
 
     inicializarVector(legajos,5,0);
     inicializarVector(edades,5,0);
-    //cargarVectorInicializado(legajos, 5, "Ingrese legajos: \n",0);
-    //cargarVectorInicializado(edades,5,"Ingrese edades: \n",0);
+
     for(i=0;i<5;i++){
-        cargarVectorNombresYApellidos(nombres[i], "Ingrese un nombre: ", "Ingrese un apellido: ");
+        pedirCadena("Ingrese un nombre: \n", nombres[i], 5);
+        firstToUpper(nombres[i]);
     }
 
     for(i=0;i<5;i++){
-        mostrarVectorCaracteres(nombres,5);
+        pedirCadena("Ingrese un apellido: \n", apellidos[i], 5);
+        firstToUpper(apellidos[i]);
+    }
+
+    for(i=0;i<5;i++){
+        printf("%s, %s", apellidos[i], nombres[i]);
     }
 
 
@@ -78,7 +85,7 @@ void mostrarVector(int vectorDeEnteros[], int tam){
 void mostrarVectorCaracteres(char vectorDeEnteros[], int tam){
     int i;
     for(i=0; i<tam; i++){
-        printf("%s\n", vectorDeEnteros[i]);
+        printf("%s\n", &vectorDeEnteros[i]);
     }
     printf("\n");
 }
@@ -98,7 +105,7 @@ void firstToUpper(char cadena[])
     }
 }
 
-void cargarVectorNombresYApellidos(char cadena[],char mensajeDeIngresoNombre[], char mensajeDeIngresoApellido[])
+/*void cargarVectorNombresYApellidos(char cadena[],char mensajeDeIngresoNombre[], char mensajeDeIngresoApellido[])
 {
 
     char auxNombre[15];
@@ -109,7 +116,7 @@ void cargarVectorNombresYApellidos(char cadena[],char mensajeDeIngresoNombre[], 
     strcpy(auxApellido, auxNombre);
     cadena = auxApellido;
 
-}
+}*/
 
 void pedirCadena (char mensaje[], char cadena[], int tam)
 {
