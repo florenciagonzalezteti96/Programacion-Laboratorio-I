@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1568593021 source:c:\users\gonzalez\desktop\programacion-laboratorio-i\clasesiete\finalejerciciosillas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"array.h"
+	"input.h"
+	"string.h"
+	"ctype.h"
+
+1568592470 source:c:\users\gonzalez\desktop\programacion-laboratorio-i\clasesiete\finalejerciciosillas\array.c
+	<stdio.h>
+	<stdlib.h>
+	"array.h"
+	"input.h"
+	"string.h"
+	"ctype.h"
+
+1568590902 c:\users\gonzalez\desktop\programacion-laboratorio-i\clasesiete\finalejerciciosillas\array.h
+
+1568592959 c:\users\gonzalez\desktop\programacion-laboratorio-i\clasesiete\finalejerciciosillas\input.h
+
+1568593580 source:c:\users\gonzalez\desktop\programacion-laboratorio-i\clasesiete\finalejerciciosillas\input.c
+	<stdio.h>
+	<stdlib.h>
+	"input.h"
+	"string.h"
+	"ctype.h"
+

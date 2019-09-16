@@ -1,4 +1,8 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "funciones.h"
+#include "string.h"
+#include "ctype.h"
 //recibe le array
 int mostrarMaximaEdadYLegajo(int edades[], int legajo[], int tam){
     int max = calcularMaximo(edades, tam);
@@ -6,7 +10,6 @@ int mostrarMaximaEdadYLegajo(int edades[], int legajo[], int tam){
     printf("Mayores edades:\n");
     for(i=0;i<tam;i++){
         if(edades[i]==max){
-
             printf("%d\t%d\t%d\t\n", edades[i], legajo[i], i+1);
         }
     }
@@ -59,6 +62,42 @@ void cargarVector(int vectorDeEnteros[], int tam, char mensajeDeIngreso[]){
     for(i=0; i<tam; i++){
         scanf("%d", &vectorDeEnteros[i]);
     }
+    printf("\n");
+}
+
+void firstToUpper(char cadena[])
+{
+    int tam = strlen(cadena);
+    int i;
+    strlwr(cadena);
+    cadena[0] = toupper(cadena[0]);
+    for(i=0;i<tam;i++){
+        if(cadena[i]!='\0'){
+            if(isspace(cadena[i])){
+                cadena[i+1] = toupper(cadena[i+1]);
+            }
+        }
+    }
+}
+
+void cargarVectorNombresYApellidos(char cadena[], char mensajeDeIngresoNombre[], char mensajeDeIngresoApellido[]){
+    int i;
+    char auxNombre[30];
+    char auxApellido[30];
+    int tam = strlen(cadena);
+    for(i=0;i<tam;i++){
+        printf("%s", mensajeDeIngresoNombre);
+        scanf("%s", auxNombre);
+        firstToUpper(auxNombre);
+        printf("%s", mensajeDeIngresoApellido);
+        scanf("%s", auxApellido);
+        firstToUpper(auxApellido);
+    }
+    strcat(auxApellido, ", ");
+    strcpy(auxApellido, auxNombre);
+    strcpy(cadena, auxApellido);
+
+
     printf("\n");
 }
 
@@ -155,4 +194,11 @@ int calcularMinimo(int vectorDeEnteros[], int tam){
         }
     }
  return min;
+}
+void getString(char mensaje[], char cadena[]){
+    char auxCadena[200];
+    printf("%s", mensaje);
+    fflush(stdin);
+    scanf("%[^\n]", auxCadena);
+    strcpy(cadena, auxCadena);
 }

@@ -18,7 +18,7 @@ int main()
     /**pido nombre y apellido*/
     printf("Ingrese su nombre: ");
     fflush(stdin);
-    fgets(nombre, 15, stdin);
+    scanf("%[^\n]", palabra);
 
     printf("\nIngrese su apellido: ");
     fflush(stdin);

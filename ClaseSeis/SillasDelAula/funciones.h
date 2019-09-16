@@ -18,3 +18,6 @@ void mostrar_Minimo_O_Maximo(int vectorDeEnteros[], int tam);
 int estaOcupadoConEdad(int vectorDeEnteros[], int tam, int posicion, int legajo, int edad, int edades[], int valorInicial);
 void hardcodearVectorEdades(int vectorDeEnteros[], int tam);
 int mostrarMaximaEdadYLegajo(int edades[], int legajo[], int tam);
+void cargarVectorNombresYApellidos(char cadena[], char mensajeDeIngresoNombre[], char mensajeDeIngresoApellido[]);
+void firstToUpper(char cadena[]);
+void getString(char mensaje[], char cadena[]);

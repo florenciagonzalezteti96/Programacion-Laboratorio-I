@@ -21,7 +21,6 @@ void getString(char mensaje[], char cadena[]){
     fflush(stdin);
     scanf("%[^\n]", auxCadena);
     strcpy(cadena, auxCadena);
-
 }
 int getFloat(char mensaje[]){
     float numero;
