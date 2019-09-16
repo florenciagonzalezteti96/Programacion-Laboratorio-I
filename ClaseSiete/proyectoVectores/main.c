@@ -40,17 +40,18 @@ int main()
     inicializarVector(edades,5,0);
 
     for(i=0;i<5;i++){
-        pedirCadena("Ingrese un nombre: \n", nombres[i], 5);
+        pedirCadena("Ingrese un nombre: ", nombres[i], 30);
         firstToUpper(nombres[i]);
-    }
-
-    for(i=0;i<5;i++){
-        pedirCadena("Ingrese un apellido: \n", apellidos[i], 5);
+        pedirCadena("Ingrese un apellido: ", apellidos[i], 30);
         firstToUpper(apellidos[i]);
     }
 
+    /*for(i=0;i<5;i++){
+
+    }*/
+
     for(i=0;i<5;i++){
-        printf("%s, %s", apellidos[i], nombres[i]);
+        printf("1.%s, %s.\n", apellidos[i], nombres[i]);
     }
 
 
@@ -105,33 +106,19 @@ void firstToUpper(char cadena[])
     }
 }
 
-/*void cargarVectorNombresYApellidos(char cadena[],char mensajeDeIngresoNombre[], char mensajeDeIngresoApellido[])
-{
-
-    char auxNombre[15];
-    char auxApellido[15];
-    pedirCadena(mensajeDeIngresoNombre, auxNombre, 15);
-    pedirCadena(mensajeDeIngresoApellido, auxApellido, 15);
-    strcat(auxApellido, ", ");
-    strcpy(auxApellido, auxNombre);
-    cadena = auxApellido;
-
-}*/
-
 void pedirCadena (char mensaje[], char cadena[], int tam)
 {
     printf("%s", mensaje);
     fflush(stdin);
     scanf("%[^\n]", cadena);
     validarTamCadena(mensaje, cadena, tam);
-    firstToUpper(cadena);
 }
 
 void validarTamCadena (char mensajeError[], char cadena[], int tam)
 {
     while (strlen(cadena)>tam)
     {
-        printf("%s", mensajeError);
+        printf(" ERROR .%s", mensajeError);
         fflush(stdin);
         scanf ("%[^\n]", cadena);
     }
