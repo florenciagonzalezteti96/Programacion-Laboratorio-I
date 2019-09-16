@@ -1,12 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "string.h"
-typedef struct{
-    char nombre[50];
-    int nota;
-    int legajo;
-    int isEmpty;//0 para ocupado, 1 para libre -> bandera
-}eAlumno;
+#include "funcionesEstructuras.h"
+
 
 void mostrar_menu(eAlumno listadoDeAlumnos[], int tam, int valorInicial){
     int option;
@@ -91,7 +87,7 @@ void borrarLegajo(eAlumno listaDeAlumnos[], int cantidadDeAlumnos, int legajo, i
     int i;
     int existeLegajo = 1;
     for(i=0;i<cantidadDeAlumnos;i++){
-        if(listaDeAlumnos[].legajo == legajo){
+        if(listaDeAlumnos[i].legajo == legajo){
             listaDeAlumnos[i].isEmpty = valorInicial;
             existeLegajo = 0;
         }
