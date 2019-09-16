@@ -23,9 +23,21 @@ int main()
     int legajos[5];
     int edades[5];
     char nombres[5][30];
+    int i;
 
-    cargarVectorNombresYApellidos()
+    inicializarVector(legajos,5,0);
+    inicializarVector(edades,5,0);
+    cargarVectorInicializado(legajos, 5, "Ingrese legajos: \n",0);
+    cargarVectorInicializado(edades,5,"Ingrese edades: \n",0);
+    for(i=0;i<5;i++){
+        cargarVectorNombresYApellidos(nombres[i], "Ingrese un nombre: ", "Ingrese un apellido: ");
+    }
 
+    for(i=0;i<5;i++){
+        mostrarVector(legajos,5);
+        mostrarVector(edades,5);
+        mostrarVector(nombres,5);
+    }
 
 
     return 0;

@@ -80,25 +80,36 @@ void firstToUpper(char cadena[])
     }
 }
 
-void cargarVectorNombresYApellidos(char cadena[], char mensajeDeIngresoNombre[], char mensajeDeIngresoApellido[]){
-    int i;
+void cargarVectorNombresYApellidos(char cadena[],char mensajeDeIngresoNombre[], char mensajeDeIngresoApellido[])
+{
+
     char auxNombre[30];
     char auxApellido[30];
-    int tam = strlen(cadena);
-    for(i=0;i<tam;i++){
-        printf("%s", mensajeDeIngresoNombre);
-        scanf("%s", auxNombre);
-        firstToUpper(auxNombre);
-        printf("%s", mensajeDeIngresoApellido);
-        scanf("%s", auxApellido);
-        firstToUpper(auxApellido);
-    }
+    pedirCadena(mensajeDeIngresoNombre, auxNombre, 30);
+    pedirCadena(mensajeDeIngresoApellido, auxApellido, 30);
     strcat(auxApellido, ", ");
     strcpy(auxApellido, auxNombre);
-    strcpy(cadena, auxApellido);
+    cadena = auxApellido;
 
+}
 
-    printf("\n");
+void pedirCadena (char mensaje[], char cadena[], int tam)
+{
+    printf("%s", mensaje);
+    fflush(stdin);
+    scanf("%[^\n]", cadena);
+    validarTamCadena(mensaje, cadena, tam);
+    firstToUpper(cadena);
+}
+
+void validarTamCadena (char mensajeError[], char cadena[], int tam)
+{
+    while (strlen(cadena)>tam)
+    {
+        printf("%s", mensajeError);
+        fflush(stdin);
+        scanf ("%[^\n]", cadena);
+    }
 }
 
 int estaLibre(int vectorDeEnteros[], int tam, int posicionAValidar, int valorInicializado){
