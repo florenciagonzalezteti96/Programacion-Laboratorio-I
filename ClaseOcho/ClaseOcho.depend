@@ -1,17 +1,17 @@
 # depslib dependency file v1.0
-1568637564 source:d:\programacion-laboratorio-i\claseocho\apuntes.c
+1568724825 source:d:\programacion-laboratorio-i\claseocho\apuntes.c
 
-1568646831 source:d:\programacion-laboratorio-i\claseocho\main.c
+1568727653 source:d:\programacion-laboratorio-i\claseocho\main.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"funcionesEstructuras.h"
 
-1568646886 source:d:\programacion-laboratorio-i\claseocho\funcionesestructuras.c
+1568728275 source:d:\programacion-laboratorio-i\claseocho\funcionesestructuras.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"funcionesEstructuras.h"
 
-1568646365 d:\programacion-laboratorio-i\claseocho\funcionesestructuras.h
+1568728311 d:\programacion-laboratorio-i\claseocho\funcionesestructuras.h
 

@@ -1,3 +1,4 @@
+
 typedef struct{
     char nombre[50];
     int nota;
@@ -11,3 +12,8 @@ void listarAlumnos(eAlumno listadoDeAlumnos[], int cantidadDeAlumnos, int valorI
 void mostrarUnAlumno(eAlumno listadoDeAlumnos);
 void inicializarAlumnos(eAlumno listadoDeAlumnos[], int cantidadDeAlumnos, int valorInicial);
 int dameElPrimerLugarLibre(eAlumno listaDeAlumnos[], int cantidadDeAlumnos, int valorInicial);
+void borrarLegajo(eAlumno listaDeAlumnos[], int cantidadDeAlumnos, int valorInicial);
+eAlumno crearUnAlumno ();
+int cargarUnAlumno(eAlumno listadoDeAlumnos[], int tam, int valorInicial);
+void borrarPorNombre(eAlumno listadoDeAlumno[], int tam);
+void buscarPorNombre(eAlumno listadoDeAlumno[], int tam);

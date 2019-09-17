@@ -5,12 +5,11 @@
 
 int main()
 {
-    eAlumno listadoDeAlumnos[5]; //no significa que hay 5 alumnos, sino que hay cinco lugares.
+    eAlumno listadoDeAlumnos[5];
 
-    inicializarAlumnos(listadoDeAlumnos,5,1);
-    hardcodearEstructura(listadoDeAlumnos, 5);
-    borrarLegajo(listadoDeAlumnos, 5, 9, 1);
-    listarAlumnos(listadoDeAlumnos, 5, 1);
+    mostrar_menu(listadoDeAlumnos, 5, 1);
+
+
 
     return 0;
 }

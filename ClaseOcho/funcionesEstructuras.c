@@ -3,27 +3,30 @@
 #include "string.h"
 #include "funcionesEstructuras.h"
 
-
 void mostrar_menu(eAlumno listadoDeAlumnos[], int tam, int valorInicial){
     int option;
     char option_continue='s';
+    inicializarAlumnos(listadoDeAlumnos, tam, valorInicial);
+    hardcodearEstructura(listadoDeAlumnos, 3);
     do{
-        printf("\nIngrese 1 para mostrar los alumnos.\nIngrese 2 para cargar alumnos.\nIngrese 3 para buscar nombre.\nIngrese 4 para borrar a un alumno.\nIngrese 5 para salir.\n");
+        printf("\nOpciones:\n1. Mostrar los alumnos.\n2. Cargar alumnos.\n3. Buscar por nombre.\n4.Borrar a un alumno por legajo.\n.5.Borrar a un alumno por nombre.\n6.Salir.\n");
         fflush(stdin);
         scanf("%d", &option);
         switch(option){
         case 1:
-            inicializarAlumnos(listadoDeAlumnos, tam,valorInicial);
             listarAlumnos(listadoDeAlumnos, tam, valorInicial);
             break;
         case 2:
-            hardcodearEstructura(listadoDeAlumnos, tam);
+            cargarUnAlumno(listadoDeAlumnos, tam, valorInicial);
             break;
         case 3:
-            //buscar por nombre
+            buscarPorNombre(listadoDeAlumnos, tam);
             break;
         case 4:
-            //borrar por legajo
+            borrarLegajo(listadoDeAlumnos, tam, valorInicial);
+            break;
+        case 5:
+            borrarPorNombre(listadoDeAlumnos, tam);
             break;
         default:
             option_continue='n';
@@ -34,16 +37,40 @@ void mostrar_menu(eAlumno listadoDeAlumnos[], int tam, int valorInicial){
 }
 void hardcodearEstructura(eAlumno listaDeAlumnos[], int cantidadDeAlumnos){
     int i;
-    int auxLegajos[] = {1,3,5,9,88};
-    int auxNotas[] = {10,2,9,4,6};
-    char nombresAux[][50] = {"Juan","Pedro","Maria","Julieta","Pepe"};
-
+    int auxLegajos[] = {1,3,5};
+    int auxNotas[] = {10,2,9};
+    char nombresAux[][50] = {"Juan","Pedro","Maria"};
     for(i=0;i<cantidadDeAlumnos;i++){
         listaDeAlumnos[i].legajo = auxLegajos[i];
         listaDeAlumnos[i].nota = auxNotas[i];
         strcpy(listaDeAlumnos[i].nombre, nombresAux[i]);
         listaDeAlumnos[i].isEmpty = 0;
     }
+}
+int cargarUnAlumno(eAlumno listadoDeAlumnos[], int tam, int valorInicial){
+    int indice;
+    int retorno = -1;
+    indice = dameElPrimerLugarLibre(listadoDeAlumnos, tam, valorInicial);
+    if(indice != -1){
+        listadoDeAlumnos[indice] = crearUnAlumno();
+        retorno = 0;
+    }
+    return retorno;
+}
+eAlumno crearUnAlumno (){
+    eAlumno auxAlumno;
+    printf("Ingrese una nota:\n");
+    fflush(stdin);
+    scanf("%d", &auxAlumno.nota);
+    printf("Ingrese un legajo:\n");
+    fflush(stdin);
+    scanf("%d", &auxAlumno.legajo);
+    printf("Ingrese un nombre:\n");
+    fflush(stdin);
+    gets(auxAlumno.nombre);
+    auxAlumno.isEmpty = 0;
+
+    return auxAlumno;
 
 }
 void listarAlumnos(eAlumno listadoDeAlumnos[], int cantidadDeAlumnos, int valorInicial){
@@ -83,9 +110,12 @@ int dameElPrimerLugarLibre(eAlumno listaDeAlumnos[], int cantidadDeAlumnos, int 
     }
     return retorno;
 }
-void borrarLegajo(eAlumno listaDeAlumnos[], int cantidadDeAlumnos, int legajo, int valorInicial){
+void borrarLegajo(eAlumno listaDeAlumnos[], int cantidadDeAlumnos, int valorInicial){
     int i;
+    int legajo;
     int existeLegajo = 1;
+    printf("Ingrese un legajo:\n");
+    scanf("%d", &legajo);
     for(i=0;i<cantidadDeAlumnos;i++){
         if(listaDeAlumnos[i].legajo == legajo){
             listaDeAlumnos[i].isEmpty = valorInicial;
@@ -95,6 +125,28 @@ void borrarLegajo(eAlumno listaDeAlumnos[], int cantidadDeAlumnos, int legajo, i
     if(existeLegajo == 1){
         printf("El legajo no existe!");
     }
-
 }
-
+void buscarPorNombre(eAlumno listadoDeAlumno[], int tam){
+    char nombre [20];
+    printf("Ingrese un nombre:\n");
+    fflush(stdin);
+    gets(nombre);
+    int i;
+    for(i=0;i<tam;i++){
+        if(strcmp(listadoDeAlumno[i].nombre, nombre)== 0){
+            mostrarUnAlumno(listadoDeAlumno[i]);
+        }
+    }
+}
+void borrarPorNombre(eAlumno listadoDeAlumno[], int tam){
+    char nombre [20];
+    printf("Ingrese un nombre:\n");
+    fflush(stdin);
+    gets(nombre);
+    int i;
+    for(i=0;i<tam;i++){
+        if(strcmp(listadoDeAlumno[i].nombre, nombre)== 0){
+            listadoDeAlumno[i].isEmpty = 1;
+        }
+    }
+}

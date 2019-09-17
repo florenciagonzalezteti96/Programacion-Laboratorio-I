@@ -36,4 +36,16 @@ para guardar y mostrar:
  ------------------------------------------------------------------------------------
     //guardo struc en un aux, hago el swap y asigno el aux a una estructura de alumno -> ordenamiento
 
+    las bajas pueden ser fisicas o logicas (memoria dinamica o usando un flag como isEmpty)
+
+    CARGAR ALUMNO LLAMA A BUSCAR LIBRE Y UTILIZO ESE INDICE PARA VER DONDE GUARDO AL NUEVO ALUMNO
+
+    CARGAR ALUMNO ME DEVUELVE UN ALUMNO Y EN LA FUNCION TENGO QUE UTILIZAR UN FOR
+
+
+
+
+
 */
+
+
