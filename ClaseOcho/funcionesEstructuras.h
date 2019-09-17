@@ -17,3 +17,7 @@ eAlumno crearUnAlumno ();
 int cargarUnAlumno(eAlumno listadoDeAlumnos[], int tam, int valorInicial);
 void borrarPorNombre(eAlumno listadoDeAlumno[], int tam);
 void buscarPorNombre(eAlumno listadoDeAlumno[], int tam);
+void ordenarPorNombreDescente(eAlumno listadoDeAlumnos[], int tam);
+void ordenarPorNombreAscendente(eAlumno listadoDeAlumnos[], int tam);
+void ordenarPorNombreLegajoDescendente(eAlumno listadoDeAlumnos[], int tam);
+void ordenarPorNombreLegajoAscendente(eAlumno listadoDeAlumnos[], int tam);

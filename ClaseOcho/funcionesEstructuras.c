@@ -7,9 +7,9 @@ void mostrar_menu(eAlumno listadoDeAlumnos[], int tam, int valorInicial){
     int option;
     char option_continue='s';
     inicializarAlumnos(listadoDeAlumnos, tam, valorInicial);
-    hardcodearEstructura(listadoDeAlumnos, 3);
+    hardcodearEstructura(listadoDeAlumnos, 5);
     do{
-        printf("\nOpciones:\n1. Mostrar los alumnos.\n2. Cargar alumnos.\n3. Buscar por nombre.\n4.Borrar a un alumno por legajo.\n.5.Borrar a un alumno por nombre.\n6.Salir.\n");
+        printf("\nOpciones:\n1. Mostrar los alumnos.\n2. Cargar alumnos.\n3. Buscar por nombre.\n4.Borrar a un alumno por legajo.\n5.Borrar a un alumno por nombre.\n6.Salir.\n");
         fflush(stdin);
         scanf("%d", &option);
         switch(option){
@@ -17,7 +17,9 @@ void mostrar_menu(eAlumno listadoDeAlumnos[], int tam, int valorInicial){
             listarAlumnos(listadoDeAlumnos, tam, valorInicial);
             break;
         case 2:
-            cargarUnAlumno(listadoDeAlumnos, tam, valorInicial);
+            if((cargarUnAlumno(listadoDeAlumnos, tam, valorInicial) == -1)){
+               printf("No hay espacio disponible!");
+            }
             break;
         case 3:
             buscarPorNombre(listadoDeAlumnos, tam);
@@ -37,9 +39,9 @@ void mostrar_menu(eAlumno listadoDeAlumnos[], int tam, int valorInicial){
 }
 void hardcodearEstructura(eAlumno listaDeAlumnos[], int cantidadDeAlumnos){
     int i;
-    int auxLegajos[] = {1,3,5};
-    int auxNotas[] = {10,2,9};
-    char nombresAux[][50] = {"Juan","Pedro","Maria"};
+    int auxLegajos[] = {1,3,5,4,7};
+    int auxNotas[] = {10,2,9,6,8};
+    char nombresAux[][50] = {"Juan","Pedro","Maria", "Maria", "Pablo"};
     for(i=0;i<cantidadDeAlumnos;i++){
         listaDeAlumnos[i].legajo = auxLegajos[i];
         listaDeAlumnos[i].nota = auxNotas[i];
@@ -147,6 +149,63 @@ void borrarPorNombre(eAlumno listadoDeAlumno[], int tam){
     for(i=0;i<tam;i++){
         if(strcmp(listadoDeAlumno[i].nombre, nombre)== 0){
             listadoDeAlumno[i].isEmpty = 1;
+        }
+    }
+}
+void ordenarPorNombreDescente(eAlumno listadoDeAlumnos[], int tam){
+    int i;
+    int j;
+    eAlumno auxAlumno;
+    for(i=0;i<tam-1;i++){
+        for(j=i+1;j<tam;j++){
+            if(stricmp(listadoDeAlumnos[i].nombre,listadoDeAlumnos[j].nombre)<0){
+                auxAlumno = listadoDeAlumnos[i];
+                listadoDeAlumnos[i] = listadoDeAlumnos[j];
+                listadoDeAlumnos[j] = auxAlumno;
+            }
+        }
+    }
+}
+void ordenarPorNombreAscendente(eAlumno listadoDeAlumnos[], int tam){
+    int i;
+    int j;
+    eAlumno auxAlumno;
+    for(i=0;i<tam-1;i++){
+        for(j=i+1;j<tam;j++){
+            if(stricmp(listadoDeAlumnos[i].nombre,listadoDeAlumnos[j].nombre)>0){
+                auxAlumno = listadoDeAlumnos[i];
+                listadoDeAlumnos[i] = listadoDeAlumnos[j];
+                listadoDeAlumnos[j] = auxAlumno;
+            }
+        }
+    }
+}
+void ordenarPorNombreLegajoDescendente(eAlumno listadoDeAlumnos[], int tam){
+    int i;
+    int j;
+    eAlumno auxAlumno;
+    for(i=0;i<tam-1;i++){
+        for(j=i+1;j<tam;j++){
+            if(listadoDeAlumnos[i].legajo<listadoDeAlumnos[j].legajo){
+                auxAlumno = listadoDeAlumnos[i];
+                listadoDeAlumnos[i] = listadoDeAlumnos[j];
+                listadoDeAlumnos[j] = auxAlumno;
+            }
+        }
+    }
+}
+
+void ordenarPorNombreLegajoAscendente(eAlumno listadoDeAlumnos[], int tam){
+    int i;
+    int j;
+    eAlumno auxAlumno;
+    for(i=0;i<tam-1;i++){
+        for(j=i+1;j<tam;j++){
+            if(listadoDeAlumnos[i].legajo>listadoDeAlumnos[j].legajo){
+                auxAlumno = listadoDeAlumnos[i];
+                listadoDeAlumnos[i] = listadoDeAlumnos[j];
+                listadoDeAlumnos[j] = auxAlumno;
+            }
         }
     }
 }
