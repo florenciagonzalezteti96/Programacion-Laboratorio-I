@@ -7,7 +7,7 @@ int main()
 {
     eAlumno listadoDeAlumnos[10];
 
-    mostrar_menu(listadoDeAlumnos, 5, 1);
+    mostrar_menu(listadoDeAlumnos, 10, LIBRE);
 
     return 0;
 }

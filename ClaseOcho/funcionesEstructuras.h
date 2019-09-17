@@ -1,4 +1,5 @@
-
+#define LIBRE 1
+#define OCUPADO 0
 typedef struct{
     char nombre[50];
     int nota;
@@ -21,3 +22,6 @@ void ordenarPorNombreDescente(eAlumno listadoDeAlumnos[], int tam);
 void ordenarPorNombreAscendente(eAlumno listadoDeAlumnos[], int tam);
 void ordenarPorNombreLegajoDescendente(eAlumno listadoDeAlumnos[], int tam);
 void ordenarPorNombreLegajoAscendente(eAlumno listadoDeAlumnos[], int tam);
+void firstToUpper(char cadena[]);
+void pedirCadena (char mensaje[], char cadena[]);
+int getInt(char mensaje[]);

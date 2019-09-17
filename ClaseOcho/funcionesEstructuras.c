@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "string.h"
 #include "funcionesEstructuras.h"
+#include "ctype.h"
 
 void mostrar_menu(eAlumno listadoDeAlumnos[], int tam, int valorInicial){
     int option;
@@ -61,19 +62,13 @@ int cargarUnAlumno(eAlumno listadoDeAlumnos[], int tam, int valorInicial){
 }
 eAlumno crearUnAlumno (){
     eAlumno auxAlumno;
-    printf("Ingrese una nota:\n");
-    fflush(stdin);
-    scanf("%d", &auxAlumno.nota);
-    printf("Ingrese un legajo:\n");
-    fflush(stdin);
-    scanf("%d", &auxAlumno.legajo);
-    printf("Ingrese un nombre:\n");
-    fflush(stdin);
-    gets(auxAlumno.nombre);
+
+    pedirCadena("Ingrese un nombre: ", auxAlumno.nombre);
+    auxAlumno.nota = getInt("Ingrese una nota: ");
+    auxAlumno.legajo = getInt("Ingrese un legajo: ");
     auxAlumno.isEmpty = 0;
 
     return auxAlumno;
-
 }
 void listarAlumnos(eAlumno listadoDeAlumnos[], int cantidadDeAlumnos, int valorInicial){
     int i;
@@ -120,8 +115,10 @@ void borrarLegajo(eAlumno listaDeAlumnos[], int cantidadDeAlumnos, int valorInic
     scanf("%d", &legajo);
     for(i=0;i<cantidadDeAlumnos;i++){
         if(listaDeAlumnos[i].legajo == legajo){
-            listaDeAlumnos[i].isEmpty = valorInicial;
-            existeLegajo = 0;
+                if(listaDeAlumnos[i].isEmpty != valorInicial){
+                    listaDeAlumnos[i].isEmpty = valorInicial;
+                    existeLegajo = 0;
+                }
         }
     }
     if(existeLegajo == 1){
@@ -208,4 +205,31 @@ void ordenarPorNombreLegajoAscendente(eAlumno listadoDeAlumnos[], int tam){
             }
         }
     }
+}
+void firstToUpper(char cadena[])
+{
+    int tam = strlen(cadena);
+    int i;
+    strlwr(cadena);
+    cadena[0] = toupper(cadena[0]);
+    for(i=0;i<tam;i++){
+        if(cadena[i]!='\0'){
+            if(isspace(cadena[i])){
+                cadena[i+1] = toupper(cadena[i+1]);
+            }
+        }
+    }
+}
+void pedirCadena (char mensaje[], char cadena[])
+{
+    printf("%s", mensaje);
+    fflush(stdin);
+    scanf("%[^\n]", cadena);
+    firstToUpper(cadena);
+}
+int getInt(char mensaje[]){
+    int numero;
+    printf("%s: ", mensaje);
+    scanf("%d", &numero);
+    return numero;
 }
