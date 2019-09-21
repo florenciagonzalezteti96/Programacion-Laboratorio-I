@@ -1,8 +1,14 @@
 # depslib dependency file v1.0
-1568255857 source:c:\users\gonzalez\desktop\programacion-laboratorio-i\bibliotecas\get_dato\main.c
+1569084586 source:c:\users\gonzalez\desktop\programacion-laboratorio-i\bibliotecas\get_dato\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Get_Dato.h"
 
-1568255958 c:\users\gonzalez\desktop\programacion-laboratorio-i\bibliotecas\get_dato\get_dato.h
+1569084586 c:\users\gonzalez\desktop\programacion-laboratorio-i\bibliotecas\get_dato\get_dato.h
+
+1569084586 source:c:\users\gonzalez\desktop\programacion-laboratorio-i\bibliotecas\get_dato\get_dato.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"Get_Dato.h"
 
