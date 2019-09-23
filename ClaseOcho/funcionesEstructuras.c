@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "string.h"
 #include "funcionesEstructuras.h"
+#include "localidad.h"
 #include "ctype.h"
 
 void mostrar_menu(eAlumno listadoDeAlumnos[], int tam){

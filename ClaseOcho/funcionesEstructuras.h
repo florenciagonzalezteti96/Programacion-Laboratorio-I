@@ -7,6 +7,8 @@ typedef struct{
     int isEmpty;//0 para ocupado, 1 para libre -> bandera
 }eAlumno;
 
+
+
 void mostrar_menu(eAlumno listadoDeAlumnos[], int cantidadDeAlumno);
 void hardcodearEstructura(eAlumno listaDeAlumnos[], int cantidadDeAlumnos);
 void listarAlumnos(eAlumno listadoDeAlumnos[], int cantidadDeAlumnos);
