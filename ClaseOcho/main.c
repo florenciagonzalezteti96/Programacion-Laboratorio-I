@@ -6,15 +6,7 @@
 int main()
 {
     eAlumno listadoDeAlumnos[10];
-
-    mostrar_menu(listadoDeAlumnos, 10, LIBRE);
+    mostrar_menu(listadoDeAlumnos, 10);
 
     return 0;
 }
-
-
-
-
-
-
-

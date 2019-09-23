@@ -33,3 +33,20 @@
 	"string.h"
 	"funcionesEstructuras.h"
 
+1569239199 source:d:\florencia\programacion-laboratorio-i\claseocho\apuntes.c
+
+1569247649 source:d:\florencia\programacion-laboratorio-i\claseocho\main.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"funcionesEstructuras.h"
+
+1569246867 d:\florencia\programacion-laboratorio-i\claseocho\funcionesestructuras.h
+
+1569247713 source:d:\florencia\programacion-laboratorio-i\claseocho\funcionesestructuras.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"funcionesEstructuras.h"
+	"ctype.h"
+

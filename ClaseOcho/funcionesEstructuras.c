@@ -4,40 +4,59 @@
 #include "funcionesEstructuras.h"
 #include "ctype.h"
 
-void mostrar_menu(eAlumno listadoDeAlumnos[], int tam, int valorInicial){
+void mostrar_menu(eAlumno listadoDeAlumnos[], int tam){
     int option;
     char option_continue='s';
-    inicializarAlumnos(listadoDeAlumnos, tam, valorInicial);
+    inicializarAlumnos(listadoDeAlumnos, tam);
     hardcodearEstructura(listadoDeAlumnos, 5);
     do{
-        printf("\nOpciones:\n1. Mostrar los alumnos.\n2. Cargar alumnos.\n3. Buscar por nombre.\n4.Borrar a un alumno por legajo.\n5.Borrar a un alumno por nombre.\n6.Salir.\n");
+        system("cls");
+        printf("\nOpciones:\n1. Mostrar los alumnos.\n2. Cargar alumnos.\n3. Buscar por nombre.\n4.Borrar a un alumno por legajo.\n5.Borrar a un alumno por nombre.\n6.Modificar un alumno\n7.Salir.\n");
         fflush(stdin);
         scanf("%d", &option);
         switch(option){
         case 1:
-            listarAlumnos(listadoDeAlumnos, tam, valorInicial);
+            listarAlumnos(listadoDeAlumnos, tam);
+            printf("\n");
+            system("pause");
             break;
         case 2:
-            if((cargarUnAlumno(listadoDeAlumnos, tam, valorInicial) == -1)){
+            if((cargarUnAlumno(listadoDeAlumnos, tam) == -1)){
                printf("No hay espacio disponible!");
             }
+            printf("\n");
+            system("pause");
             break;
         case 3:
-            buscarPorNombre(listadoDeAlumnos, tam);
+            buscarPorLegajo(listadoDeAlumnos, tam);
+            printf("\n");
+            system("pause");
             break;
         case 4:
-            borrarLegajo(listadoDeAlumnos, tam, valorInicial);
+            borrarLegajo(listadoDeAlumnos, tam);
+            printf("\n");
+            system("pause");
             break;
         case 5:
             borrarPorNombre(listadoDeAlumnos, tam);
+            printf("\n");
+            system("pause");
+            break;
+        case 6:
+            modificarAlumno(listadoDeAlumnos, tam);
+            printf("\n");
+            system("pause");
             break;
         default:
             option_continue='n';
+            printf("\n");
+            system("pause");
             break;
         }
     }while(option_continue=='s');
     printf("\n");
 }
+
 void hardcodearEstructura(eAlumno listaDeAlumnos[], int cantidadDeAlumnos){
     int i;
     int auxLegajos[] = {1,3,5,4,7};
@@ -47,13 +66,13 @@ void hardcodearEstructura(eAlumno listaDeAlumnos[], int cantidadDeAlumnos){
         listaDeAlumnos[i].legajo = auxLegajos[i];
         listaDeAlumnos[i].nota = auxNotas[i];
         strcpy(listaDeAlumnos[i].nombre, nombresAux[i]);
-        listaDeAlumnos[i].isEmpty = 0;
+        listaDeAlumnos[i].isEmpty = OCUPADO;
     }
 }
-int cargarUnAlumno(eAlumno listadoDeAlumnos[], int tam, int valorInicial){
+int cargarUnAlumno(eAlumno listadoDeAlumnos[], int tam){
     int indice;
     int retorno = -1;
-    indice = dameElPrimerLugarLibre(listadoDeAlumnos, tam, valorInicial);
+    indice = dameElPrimerLugarLibre(listadoDeAlumnos, tam);
     if(indice != -1){
         listadoDeAlumnos[indice] = crearUnAlumno();
         retorno = 0;
@@ -66,16 +85,16 @@ eAlumno crearUnAlumno (){
     pedirCadena("Ingrese un nombre: ", auxAlumno.nombre);
     auxAlumno.nota = getInt("Ingrese una nota: ");
     auxAlumno.legajo = getInt("Ingrese un legajo: ");
-    auxAlumno.isEmpty = 0;
+    auxAlumno.isEmpty = OCUPADO;
 
     return auxAlumno;
 }
-void listarAlumnos(eAlumno listadoDeAlumnos[], int cantidadDeAlumnos, int valorInicial){
+void listarAlumnos(eAlumno listadoDeAlumnos[], int cantidadDeAlumnos){
     int i;
     int hayAlumnos = 0;
     printf("NOMBRE:\t\tLEGAJO:\t\tNOTA:\t\t\n");
     for(i=0;i<cantidadDeAlumnos;i++){
-        if(listadoDeAlumnos[i].isEmpty != valorInicial){
+        if(listadoDeAlumnos[i].isEmpty != LIBRE){
                 hayAlumnos = 1;
                 mostrarUnAlumno(listadoDeAlumnos[i]);
         }
@@ -86,56 +105,101 @@ void listarAlumnos(eAlumno listadoDeAlumnos[], int cantidadDeAlumnos, int valorI
 }
 void mostrarUnAlumno(eAlumno listadoDeAlumnos){
     printf("\n");
-    printf("%s\t\t",listadoDeAlumnos.nombre);
+    printf("%s\t\t", listadoDeAlumnos.nombre);
     printf("%d\t\t", listadoDeAlumnos.legajo);
     printf("%d\t\t", listadoDeAlumnos.nota);
 }
-void inicializarAlumnos(eAlumno listadoDeAlumnos[], int cantidadDeAlumnos, int valorInicial){
+void inicializarAlumnos(eAlumno listadoDeAlumnos[], int cantidadDeAlumnos){
     int i;
     for(i=0;i<cantidadDeAlumnos;i++){
-        listadoDeAlumnos[i].isEmpty = valorInicial;
+        listadoDeAlumnos[i].isEmpty = LIBRE;
     }
 }
-int dameElPrimerLugarLibre(eAlumno listaDeAlumnos[], int cantidadDeAlumnos, int valorInicial){
+int dameElPrimerLugarLibre(eAlumno listaDeAlumnos[], int cantidadDeAlumnos){
     int i;
     int retorno = -1;
     for(i=0;i<cantidadDeAlumnos;i++){
-        if(listaDeAlumnos[i].isEmpty == valorInicial){
+        if(listaDeAlumnos[i].isEmpty == OCUPADO){
             retorno = i;
             break;
         }
     }
     return retorno;
 }
-void borrarLegajo(eAlumno listaDeAlumnos[], int cantidadDeAlumnos, int valorInicial){
+void borrarLegajo(eAlumno listaDeAlumnos[], int cantidadDeAlumnos){
     int i;
     int legajo;
     int existeLegajo = 1;
     printf("Ingrese un legajo:\n");
     scanf("%d", &legajo);
     for(i=0;i<cantidadDeAlumnos;i++){
-        if(listaDeAlumnos[i].legajo == legajo){
-                if(listaDeAlumnos[i].isEmpty != valorInicial){
-                    listaDeAlumnos[i].isEmpty = valorInicial;
+        if(listaDeAlumnos[i].legajo == legajo && listaDeAlumnos[i].isEmpty != OCUPADO){
+                    listaDeAlumnos[i].isEmpty = LIBRE;
                     existeLegajo = 0;
+                    break;
                 }
         }
-    }
-    if(existeLegajo == 1){
-        printf("El legajo no existe!");
+    if(existeLegajo != 0){
+        printf("El dato no existe!");
     }
 }
-void buscarPorNombre(eAlumno listadoDeAlumno[], int tam){
-    char nombre [20];
-    printf("Ingrese un nombre:\n");
-    fflush(stdin);
-    gets(nombre);
+int buscarPorLegajo(eAlumno listadoDeAlumno[], int tam){
+    int legajo;
+    int retorno = -1;
+    legajo = getInt("Ingrese un legajo: ");
     int i;
     for(i=0;i<tam;i++){
-        if(strcmp(listadoDeAlumno[i].nombre, nombre)== 0){
-            mostrarUnAlumno(listadoDeAlumno[i]);
+        if(listadoDeAlumno[i].legajo == legajo && listadoDeAlumno[i].isEmpty == OCUPADO){
+            retorno = i;
         }
     }
+    return retorno;
+}
+int modificarAlumno(eAlumno listadoDeAlumno[], int tam){
+    int retorno = -1;
+    int indice;
+    eAlumno aux;
+    int opcion;
+    char confirmacion = 's';
+    char confirmacion2 = 'n';
+
+    indice = buscarPorLegajo(listadoDeAlumno, tam);
+    aux = listadoDeAlumno[indice];
+    if(indice != -1){
+        do{
+            opcion = getInt("Ingrese una opcion:\n1.Cambiar nombre\n2.Cambiar nota\nIngrese 3 para salir.\n");
+            switch(opcion){
+            case 1:
+                pedirCadena("Ingrese un nombre: ", aux.nombre);
+                printf("Desea seguir ingresando datos? Ingrese s para SI o n para NO\n");
+                fflush(stdin);
+                scanf("%c", &confirmacion);
+                break;
+            case 2:
+                aux.nota = getInt("Ingrese una nota: ");
+                printf("Desea seguir ingresando datos? Ingrese s para SI o n para NO\n");
+                fflush(stdin);
+                scanf("%c", &confirmacion);
+                break;
+            }
+        }while(confirmacion == 's');
+
+        printf("Este es el alumno:\n");
+        mostrarUnAlumno(aux);
+        printf("Desea cargar los datos?\n");
+        fflush(stdin);
+        scanf("%c", &confirmacion2);
+        if(confirmacion2 == 's'){
+            listadoDeAlumno[indice]=aux;
+            retorno = 1;
+        }else{
+            retorno = 0;
+        }
+    }
+    //retorno = 1 cargo los dtos
+    //retorno = 0 cancelo la accion
+    //retorno = -1 no se encontro el dato
+    return retorno;
 }
 void borrarPorNombre(eAlumno listadoDeAlumno[], int tam){
     char nombre [20];
@@ -145,7 +209,7 @@ void borrarPorNombre(eAlumno listadoDeAlumno[], int tam){
     int i;
     for(i=0;i<tam;i++){
         if(strcmp(listadoDeAlumno[i].nombre, nombre)== 0){
-            listadoDeAlumno[i].isEmpty = 1;
+            listadoDeAlumno[i].isEmpty = LIBRE;
         }
     }
 }
@@ -191,7 +255,6 @@ void ordenarPorNombreLegajoDescendente(eAlumno listadoDeAlumnos[], int tam){
         }
     }
 }
-
 void ordenarPorNombreLegajoAscendente(eAlumno listadoDeAlumnos[], int tam){
     int i;
     int j;
