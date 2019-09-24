@@ -5,3 +5,4 @@ typedef struct{
 }eLocalidad;
 void hardcodearLocalidades(eLocalidad listaDeLocalidades[], int cantidadDeLocalidades);
 int buscarLocalidadPorId(eLocalidad[], int, int);
+void mostrarLocalidad(eLocalidad listaDeLocalidades[], int cantidadDeLocalidades);

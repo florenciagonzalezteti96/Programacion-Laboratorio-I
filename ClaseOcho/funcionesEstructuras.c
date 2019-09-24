@@ -22,7 +22,7 @@ void mostrar_menu(eAlumno listadoDeAlumnos[], int tam, eLocalidad listaDeLocalid
             system("pause");
             break;
         case 2:
-            if((cargarUnAlumno(listadoDeAlumnos, tam) == -1)){
+            if((cargarUnAlumno(listadoDeAlumnos, tam, listaDeLocalidades, tl) == -1)){
                printf("No hay espacio disponible!");
             }
             printf("\n");
@@ -70,23 +70,23 @@ void hardcodearEstructura(eAlumno listaDeAlumnos[], int cantidadDeAlumnos){
         listaDeAlumnos[i].isEmpty = OCUPADO;
     }
 }
-int cargarUnAlumno(eAlumno listadoDeAlumnos[], int tam){
+int cargarUnAlumno(eAlumno listadoDeAlumnos[], int tam, eLocalidad listaDeLocalidades, int tl){
     int indice;
     int retorno = -1;
     indice = dameElPrimerLugarLibre(listadoDeAlumnos, tam);
     if(indice != -1){
-        listadoDeAlumnos[indice] = crearUnAlumno();
+        listadoDeAlumnos[indice] = crearUnAlumno(listaDeLocalidades, tl);
         retorno = 0;
     }
     return retorno;
 }
-eAlumno crearUnAlumno (){
+eAlumno crearUnAlumno (eLocalidad listadoDeLocalidades[], int tl){
     eAlumno auxAlumno;
 
     pedirCadena("Ingrese un nombre: ", auxAlumno.nombre);
     auxAlumno.nota = getInt("Ingrese una nota: ");
     auxAlumno.legajo = getInt("Ingrese un legajo: ");
-    //FUNCION PARA MOSTRAR LOCALIDAD
+    mostrarLocalidad(listadoDeLocalidades, tl);
     auxAlumno.idLocalidad = getInt("Ingrese un id de la localidad: ");
     auxAlumno.isEmpty = OCUPADO;
 

@@ -26,3 +26,14 @@ int buscarLocalidadPorId(eLocalidad listaDeLocalidades[], int tam, int id)
     }
     return indice;
 }
+void mostrarLocalidad(eLocalidad listaDeLocalidades[], int cantidadDeLocalidades){
+    int i;
+    printf("Nombre de la localidad:\t\tID de la localidad:\t\t")
+    for(i=0;i<cantidadDeLocalidades;i++){
+        printf("%s", listaDeLocalidades[i].nombreLocalidad);
+        printf("10%d", listaDeLocalidades[i].idLocalidad);
+    }
+
+
+
+}
