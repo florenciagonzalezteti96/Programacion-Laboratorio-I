@@ -14,3 +14,15 @@ void hardcodearLocalidades(eLocalidad listaDeLocalidades[], int cantidadDeLocali
         strcpy(listaDeLocalidades[i].nombreLocalidad, auxNombre[i]);
     }
 }
+int buscarLocalidadPorId(eLocalidad listaDeLocalidades[], int tam, int id)
+{
+    int indice = -1;
+    int i;
+    for(i=0; i<tam; i++){
+        if(listaDeLocalidades[i].idLocalidad == id){
+            indice = i;
+            break;
+        }
+    }
+    return indice;
+}

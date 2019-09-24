@@ -33,27 +33,27 @@
 	"string.h"
 	"funcionesEstructuras.h"
 
-1569239199 source:d:\florencia\programacion-laboratorio-i\claseocho\apuntes.c
+1569325851 source:d:\florencia\programacion-laboratorio-i\claseocho\apuntes.c
 
-1569247649 source:d:\florencia\programacion-laboratorio-i\claseocho\main.c
+1569336232 source:d:\florencia\programacion-laboratorio-i\claseocho\main.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"funcionesEstructuras.h"
 
-1569251504 d:\florencia\programacion-laboratorio-i\claseocho\funcionesestructuras.h
-
-1569251504 source:d:\florencia\programacion-laboratorio-i\claseocho\funcionesestructuras.c
-	<stdio.h>
-	<stdlib.h>
-	"string.h"
-	"funcionesEstructuras.h"
+1569336380 d:\florencia\programacion-laboratorio-i\claseocho\funcionesestructuras.h
 	"localidad.h"
+
+1569337109 source:d:\florencia\programacion-laboratorio-i\claseocho\funcionesestructuras.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"funcionesEstructuras.h"
 	"ctype.h"
 
-1569251795 d:\florencia\programacion-laboratorio-i\claseocho\localidad.h
+1569333849 d:\florencia\programacion-laboratorio-i\claseocho\localidad.h
 
-1569251764 source:d:\florencia\programacion-laboratorio-i\claseocho\localidad.c
+1569333834 source:d:\florencia\programacion-laboratorio-i\claseocho\localidad.c
 	"localidad.h"
 	<stdio.h>
 	<stdlib.h>
