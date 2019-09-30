@@ -200,7 +200,7 @@ int eliminarAlumno(eAlumno listadoDeAlumnos[], int tam, eLocalidad listaLocalida
         {
             mostrarUnAlumno(listadoDeAlumnos[i], listaLocalidades[i]);
             printf("Esta seguro que desea eliminar este alumno? :");
-            respuesta = getche();
+            respuesta = getchar();
             if(respuesta=='s')
             {
                 listadoDeAlumnos[i].estado = LIBRE;
@@ -216,4 +216,69 @@ int eliminarAlumno(eAlumno listadoDeAlumnos[], int tam, eLocalidad listaLocalida
     return quePaso;
 }
 
+int calcularCantidadAlumnos (eAlumno listaAlumno[], eLocalidad lista[], int tLocalidad, int tAlumnos){
+    int retorno = -1;
+    int i;
+    int j;
+    int cantidadAlumnos = 0;
+    for(i=0;i<tLocalidad;i++){
+            for(j=0;j<tAlumnos;j++){
+            if(listaAlumno[j].idLocalidad == lista[i].idLocalidad){
+                cantidadAlumnos ++;
+                retorno = cantidadAlumnos;
+            }
+        }
+    }
+    return retorno;
+}
+int buscarLocalidadConMenosAlumnos(eLocalidad lista[], int tLocalidad, eAlumno listaAlumno[], int tAlumnos){
+    int retorno = -1;
+    eAux listaAux[3] = {{1,0},{2,0},{3,0}};
+    int i;
+    for(i=0;i<tLocalidad;i++){
+        if(listaAux[i].idLocalidad == lista[i].idLocalidad){
+            if(listaAlumno[i].idLocalidad == lista[i].idLocalidad){
+                listaAux[i].cantidadAlumnos = listaAux[i].cantidadAlumnos + 1;
+            }
+        }
+    }
+        for(i=0;i<tLocalidad;i++){
+        printf("localidad: %d -- alumnos: %d\n", listaAux[i].idLocalidad, listaAux[i].cantidadAlumnos);
+    }
+
+
+
+
+
+
+    return retorno;
+}
+int buscarMinimo (eAux lista[], int tAux){
+    int retorno = -1;
+    int flag = -1;
+    int minimo;
+    int i;
+    for(i=0;i<tAux;i++){
+        if(flag == -1 || minimo>lista[i].cantidadAlumnos){
+            minimo = lista[i].cantidadAlumnos;
+            flag = -1;
+            retorno = minimo;
+        }
+    }
+    return retorno;
+}
+int buscarIndiceMinimo (eAux lista[], int tAux){
+    int retorno = -1;
+    int minimo = buscarMinimo(lista, tAux);
+    int i;
+    for(i=0;i<tAux;i++){
+        if(minimo == lista[i].cantidadAlumnos){
+            minimo = lista[i].cantidadAlumnos;
+            retorno = i;
+            break;
+        }
+    }
+
+    return retorno;
+}
 

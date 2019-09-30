@@ -7,11 +7,32 @@ int main()
 {
     eAlumno listaDeAlumnos[A];
     eLocalidad listaLocalidades[3]={{1,"Avellaneda",1870},{2,"Wilde",1872},{3,"Lomas de Zamora",1700}};
+    buscarLocalidadConMenosAlumnos(listaLocalidades, 3, listaDeAlumnos, A);
     int i;
     /*for(i=0;i<3;i++)
     {
         printf("%d - %s - %d\n", listaLocalidades[i].idLocalidad,listaLocalidades[i].localidad,listaLocalidades[i].codigoPostal);
     }*/
+
+    /**
+    menos alumnos por localidad
+
+inicialiozo el auxiliar, --
+carggo los id --
+dentro de cada id, busco la cantidad de alumnos y la cargo en cantidad de alumnos
+busco el minimo en ese vector
+uso ese minimo para buscar el id del minimo
+comparo con el id de localidad
+muestro esa localidad
+
+    AGREGAR ESTRUCTURA MATERIA
+    INT CODIGO
+    CHAR NOMBRE
+    INT CARGA HORARIA
+
+
+
+    */
 
 
     int respuesta;
@@ -23,6 +44,7 @@ int main()
 
     hardCodearAlumnos(listaDeAlumnos,A);
 
+
     do
     {
         printf("1.Cargar\n2.Mostrar\n3.Ordenar\n4.Eliminar\n5.Modificar\n7.Salir");
@@ -33,7 +55,6 @@ int main()
         {
         case 1:
             cargarListadoAlumnos(listaDeAlumnos,A);
-
             break;
         case 2:
             mostrarListadoAlumnos(listaDeAlumnos, A, listaLocalidades, 3);
