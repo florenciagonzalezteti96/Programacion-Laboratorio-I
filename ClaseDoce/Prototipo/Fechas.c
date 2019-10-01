@@ -1,5 +1,5 @@
 #include "Fechas.h"
-#include "inputs.h"
+
 eFechas dameUnaFecha (){
 
     eFechas unaFecha;

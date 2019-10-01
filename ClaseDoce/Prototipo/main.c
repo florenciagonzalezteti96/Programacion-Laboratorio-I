@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "inputs.h"
-#include "Local.h"
-#include "alumno.h"
+
 #include "Inscripcion.h"
-#include "Materia.h"
+
 //settings-Enviroment-GeneralSetings-TerminaltoLunchConsolePrograms
 //settings-Editor-GeneralSettings-EditorSettings-Fonts-Manjari
 #define LL 3

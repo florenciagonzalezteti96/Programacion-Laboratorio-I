@@ -1,11 +1,5 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-
-
-#include "inputs.h"
-#include "Local.h"
 #include "alumno.h"
+
 
 void inicializar_Alumnos(eAlumno listadoDeAlumnos[],int lengAlumnos)
 {
@@ -157,7 +151,7 @@ void mostrarListadoAlumnos(eAlumno listadoDeAlumnos[], int tam,eLocalidad listaL
 void mostrarListadoSoloAlumnos(eAlumno listadoDeAlumnos[], int tam)
 {
     int i;
-    int index;
+    //int index;
 
     printf("\n%4s %20s %20s %15s\n","Id","Nombre","Apellido","Promedio");
     for(i=0; i<tam; i++)
@@ -393,18 +387,18 @@ void pausa()
 {
     //if(sysOp==1)
     //
-    system("read -p 'Press Enter to continue...' var");
+    //system("read -p 'Press Enter to continue...' var");
     //}
     //if (sysOp==2)
     //{
-    //    system("pause");
+        system("pause");
     //}
 }
 void borrar()
 {
     //if(sysOp==1)
     //{
-    system("clear");
+    system("cls");
     //}
     //if (sysOp==2)
     //{

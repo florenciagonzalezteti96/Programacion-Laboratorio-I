@@ -1,64 +1,62 @@
 # depslib dependency file v1.0
-1569937832 source:d:\clase_11\prototipo\alumno.c
-	<stdlib.h>
-	<stdio.h>
-	<string.h>
-	"inputs.h"
-	"Local.h"
+1569942483 source:d:\clase_11\prototipo\alumno.c
 	"alumno.h"
 
-1569930786 d:\clase_11\prototipo\inputs.h
-
-1569930786 d:\clase_11\prototipo\local.h
-
-1569938107 d:\clase_11\prototipo\alumno.h
-
-1569938107 d:\clase_11\prototipo\materia.h
-
-1569937210 source:d:\clase_11\prototipo\fechas.c
-	"Fechas.h"
-	"inputs.h"
-
-1569936870 d:\clase_11\prototipo\fechas.h
-
-1569930786 source:d:\clase_11\prototipo\inputs.c
+1569941863 d:\clase_11\prototipo\inputs.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	<time.h>
-	"inputs.h"
 
-1569939423 source:d:\clase_11\prototipo\inscripcion.c
-	<stdio.h>
-	<stdlib.h>
-	"inputs.h"
-	"Local.h"
-	"alumno.h"
-	"Inscripcion.h"
-
-1569940131 d:\clase_11\prototipo\inscripcion.h
-	"Fechas.h"
-
-1569930786 source:d:\clase_11\prototipo\local.c
+1569942483 d:\clase_11\prototipo\local.h
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
-	"inputs.h"
-	"Local.h"
 
-1569938107 source:d:\clase_11\prototipo\materia.c
+1569942483 d:\clase_11\prototipo\alumno.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"Local.h"
+	"inputs.h"
 	"Materia.h"
+
+1569942542 d:\clase_11\prototipo\materia.h
 	"string.h"
 	<stdio.h>
 	<stdlib.h>
 
-1569938121 source:d:\clase_11\prototipo\main.c
+1569941863 source:d:\clase_11\prototipo\fechas.c
+	"Fechas.h"
+
+1569942497 d:\clase_11\prototipo\fechas.h
+	"inputs.h"
+	<stdio.h>
+	<stdlib.h>
+
+1569941863 source:d:\clase_11\prototipo\inputs.c
+	"inputs.h"
+
+1569941863 source:d:\clase_11\prototipo\inscripcion.c
+	"Inscripcion.h"
+
+1569942542 d:\clase_11\prototipo\inscripcion.h
 	<stdio.h>
 	<stdlib.h>
 	"inputs.h"
-	"Local.h"
+	"Fechas.h"
 	"alumno.h"
-	"Inscripcion.h"
+
+1569942573 source:d:\clase_11\prototipo\local.c
+	"inputs.h"
+	"Local.h"
+
+1569941863 source:d:\clase_11\prototipo\materia.c
 	"Materia.h"
+
+1569942542 source:d:\clase_11\prototipo\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Inscripcion.h"
 

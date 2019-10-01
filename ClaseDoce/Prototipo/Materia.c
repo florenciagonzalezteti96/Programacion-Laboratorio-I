@@ -1,7 +1,5 @@
 #include "Materia.h"
-#include "string.h"
-#include <stdio.h>
-#include <stdlib.h>
+
 void hardCodearMaterias(eMateria listadoDeMaterias[], int tam){
     int i;
     int idMateria[]= {100,101,102,103};

@@ -1,6 +1,8 @@
-//#include "Materia.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "inputs.h"
 #include "Fechas.h"
-
+#include "alumno.h"
 typedef struct{
     int legajo;
     int idMateria;

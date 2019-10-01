@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "inputs.h"
-#include "Local.h"
-#include "alumno.h"
+
 #include "Inscripcion.h"
 
 

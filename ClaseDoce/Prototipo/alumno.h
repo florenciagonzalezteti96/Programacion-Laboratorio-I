@@ -1,3 +1,11 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#include "Local.h"
+#include "inputs.h"
+#include "Materia.h"
+
 #define OCUPADO 1
 #define LIBRE 0
 
