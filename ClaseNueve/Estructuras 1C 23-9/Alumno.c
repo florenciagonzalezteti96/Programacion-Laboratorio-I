@@ -235,10 +235,14 @@ int buscarLocalidadConMenosAlumnos(eLocalidad lista[], int tLocalidad, eAlumno l
     int retorno = -1;
     eAux listaAux[3] = {{1,0},{2,0},{3,0}};
     int i;
+    int j;
     for(i=0;i<tLocalidad;i++){
         if(listaAux[i].idLocalidad == lista[i].idLocalidad){
-            if(listaAlumno[i].idLocalidad == lista[i].idLocalidad){
-                listaAux[i].cantidadAlumnos = listaAux[i].cantidadAlumnos + 1;
+                for(j=0;j<tAlumnos;j++){
+                    if(listaAlumno[j].idLocalidad == lista[i].idLocalidad){
+                   listaAux[i].cantidadAlumnos ++;
+                }
+
             }
         }
     }
