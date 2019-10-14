@@ -24,10 +24,10 @@ int initCodigoPelicula(ePelicula listadoDePeliculas[], int tamPeliculas){
 }
 void hardcodearPeliculas(ePelicula listadoDePeliculas[], int tam){
     int i;
-    int codigo[] = {101,102,105,106};
-    char descripcion[][25] = {"Hulk","Los Vengadores","Spiderman","Siempre a tu lado"};
-    int duracion[] = {100,120,160,100};
-    int idGenero[] = {1,1,3,2};
+    int codigo[] = {101,102,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122};
+    char descripcion[][25] = {"Hulk","Los Vengadores","Spiderman","Siempre a tu lado","Cube","Ultimo Baile","Alien","Mona Lisa","Samurai Vendetta","711","Grease","Mayo","El hijo de Godzilla","Fanny","Canon","El templo","Callejon de los milagros","Shangai","Enemigo del estado","Helen"};
+    int duracion[] = {100,120,160,100,150,124,160,180,190,200,210,185,129,175,145,165,135,125,152,125,125};
+    int idGenero[] = {1,1,3,2,4,4,4,1,1,2,3,4,1,2,1,2,3,4,1,2};
     for(i=0; i<tam; i++){
         listadoDePeliculas[i].codigo = codigo[i];
         strcpy(listadoDePeliculas[i].descripcion, descripcion[i]);

@@ -110,14 +110,14 @@ int initCodigoActor(eActor listaDeActores[], int tamActor){
     return retorno;
 }
 void mostrarUnActor(eActor unActor){
-    printf("%d", unActor.codigo);
-    printf("%10s", unActor.nombre);
-    printf("%15s", unActor.apellido);
-    printf("%12c\n", unActor.sexo);
+    printf("%2d", unActor.codigo);
+    printf("%29s", unActor.nombre);
+    printf("%25s", unActor.apellido);
+    printf("%13c\n", unActor.sexo);
 }
 void mostrarListaDeActores(eActor listaDeActores[], int tamActores){
     int i;
-    printf("ID:\tNombre:\tApellido:\tSexo:\t\n");
+    printf("ID:\t\t\tNombre:\t\t\tApellido:\tSexo:\t\n");
     for(i=0;i<tamActores;i++){
         if(listaDeActores[i].isEmpty==FALSE){
             mostrarUnActor(listaDeActores[i]);
@@ -359,10 +359,10 @@ void sortActores(eActor listadoDeActores[], int tamActores){
 }
 void hardCodearActores(eActor listadoDeActores[], int tamActores){
     int i;
-    int codigo[]= {1,2,3,4,5,8,6,4,8};
-    char nombre[][52]= {"Karlen","Pay","Morrie","Carla","Mario","Rolando","Lucia","Gabriel","Orlando"};
-    char apellido[][52]={"Cotton","Hayward","Zarfai","Gomez","Garcia","Gomez","Espinoza","Morales","Furioso"};
-    char sexo[]={'f','f','m','m','f','f','f','m'};
+    int codigo[]= {1,2,3,4,5,8,6,4,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
+    char nombre[][52]= {"Karlen","Pay","Morrie","Lorette","Andre","Daryn","Linnie","Jewis","Herman","Sibylle","Ado","Jessica","Sherline","Laura","Arel","Veronika","Orrin","Costa","Brinna","Mitchael","Glenda","Bernice","Louisette","Henka","Danella","Oliver","Roselin","Karly","Marcelle","Violeta"};
+    char apellido[][52]={"Cotton","Hayward","Zarfai","Lowerson","Humes","Swains","Lomas","Patten","Guidelli","Lumbly","Deboy","Wraggs","Marley","Dunbain","Teal","Mikalski","Atwel","Gable","Applewhite","Conway","Chaster","Rosentholer","Coneron","Hacket","Ollarenshaw","Packman","Brinson","Massie","Edney","Barends"};
+    char sexo[]={'f','f','m','m','f','f','f','m','f','f','f','m','f','m','f','m','f','f','f','f','m','m','m','m','f','m','f','f','f','f'};
     for(i=0; i<tamActores; i++){
         listadoDeActores[i].codigo = codigo[i];
         strcpy(listadoDeActores[i].nombre, nombre[i]);

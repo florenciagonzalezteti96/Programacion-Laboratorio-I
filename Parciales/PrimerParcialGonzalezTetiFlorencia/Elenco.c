@@ -4,17 +4,17 @@ void showMenuElencos(eElenco listadoDeElencos[], int tamElencos, ePelicula lista
     int option;
     int retorno;
     char option_continue = 'n';
-    initElencos(listaDeElencos, tamElencos);
-    initCodigoReparto(listaDeElencos, tamElencos);
+    initElencos(listadoDeElencos, tamElencos);
     do{
         system("cls");
         printf("\t\t\t******* MENU PARA GESTION DE ELENCOS *******\n");
         option = getInt("Opciones:\n1. Altas.\n2. Listado\n3. Salir del menu.\n");
         switch(option){
         case 1:
-            retorno = agregarUnElenco(eElenco listadoDeElencos[], int tamElencos, ePelicula listadoDePeliculas[], int tamPeliculas, eGenero listadoDeGeneros[], int tamGeneros, eActor listadoDeActores[], int tamActores);
+            retorno = agregarUnElenco(listadoDeElencos,tamElencos, listadoDePeliculas, tamPeliculas, listadoDeGeneros, tamGeneros, listadoDeActores, tamActores);
             switch(retorno){
-                case
+                case 1:
+                break;
 
             }
             printf("\n");
@@ -50,54 +50,26 @@ int initElencos(eElenco listaDeElencos[], int tamElencos){
     }
     return retorno;
 }
-int initCodigoReparto(eElenco listaDeElencos[], int tamElencos){
-    int i;
-    int retorno = -1;
-    if(tamElencos>0){
-        for(i=0; i<tamElencos; i++){
-            listaDeElencos[i].codigoDeReparto = 0;
-            retorno = 0;
-        }
-    }
-    return retorno;
-}
-int getNuevoCodigoReparto(eElenco listaDeElencos[], int tamElencos){
-    int retorno = -1;
-    int flag = 0;
-    int newId;
-    if(tamElencos>0){
-        int i;
-        for(i=0;i<tamElencos;i++){
-            if(flag == 0 || listaDeElencos[i].codigoDeReparto>newId){
-                newId = listaDeElencos[i].codigoDeReparto;
-                flag = 1;
-            }
-        }
-        newId ++;
-        retorno = newId;
-    }
-    return retorno;
-}
 int agregarUnElenco(eElenco listadoDeElencos[], int tamElencos, ePelicula listadoDePeliculas[], int tamPeliculas, eGenero listadoDeGeneros[], int tamGeneros, eActor listadoDeActores[], int tamActores){
     int retorno = -1;
     eElenco auxElenco;
     int codigoPelicula;
-    int codigoReparto;
     int valorContrato;
     int lugarDisponible;
     char confirmacion;
     char opcion_continuar;
 
     if(tamElencos>0){
-        codigoReparto = getNuevoCodigoReparto(listadoDeElencos, tamElencos);
         codigoPelicula = obtenerUnaPelicula(listadoDePeliculas, tamPeliculas, listadoDeGeneros, tamGeneros);
         do{
             system("pause");
             system("cls");
             lugarDisponible = getIsEmptyElenco(listadoDeElencos, tamElencos);
             if(lugarDisponible!= -1){
-                auxElenco = agregarActoresAElenco(listadoDeElencos, tamElencos, listadoDeActores, tamActores, codigoPelicula, valorContrato, codigoReparto);
+                valorContrato = getFloat("Ingrese el valor del contrato: ");
+                auxElenco = agregarActoresAElenco(listadoDeElencos, tamElencos, listadoDeActores, tamActores, codigoPelicula, valorContrato);
                 printf("\n");
+                if(buscarYaExistente(listadoDeElencos, tamElencos));
                 printf("Estos son los datos ingresados:\n");
                 mostrarUnElenco(auxElenco, listadoDePeliculas, tamPeliculas, listadoDeActores, tamActores);
                 printf("\n");
@@ -128,18 +100,32 @@ int getIsEmptyElenco(eElenco listadoDeElencos[], int tamElencos){
     }
     return retorno;
 }
-eElenco agregarActoresAElenco(eElenco listadoDeElencos[], int tamElencos, eActor listadoDeActores[], int tamActores, int idPelicula, int valorContrato, int codigoReparto){
+int buscarYaExistente(eElenco listadoDeElencos[],int tamElencos,eActor unActor,ePelicula unaPelicula)
+{
+    int retorno = 0;
+    int i;
+    for(i=0; i<tamElencos; i++)
+    {
+        if(listadoDeElencos[i].isEmpty==FALSE)
+        {
+            if(listadoDeElencos[i].codigoActor==unActor.codigo && listadoDeElencos[i].codigoPelicula==unaPelicula.codigo)
+            {
+                retorno = -1;
+            }
+        }
+    }
+    return retorno;
+}
+eElenco agregarActoresAElenco(eElenco listadoDeElencos[], int tamElencos, eActor listadoDeActores[], int tamActores, int idPelicula, int valorContrato){
     eElenco nuevoElenco;
     nuevoElenco.codigoActor = obtenerUnActor(listadoDeActores, tamActores);
     nuevoElenco.codigoPelicula = idPelicula;
-    nuevoElenco.valorContrato = getFloat("Ingrese el valor del contrato: ");
-    nuevoElenco.codigoDeReparto = codigoReparto;
+    nuevoElenco.valorContrato = valorContrato;
     nuevoElenco.isEmpty = FALSE;
 
     return nuevoElenco;
 }
 void mostrarUnElenco(eElenco unElenco, ePelicula listadoDePeliculas[], int tamPelicula, eActor listadoDeActores[], int tamActores){
-    printf("%d", unElenco.codigoDeReparto);
     mostrarActorPorId(listadoDeActores, tamActores, unElenco.codigoActor);
     mostrarPeliculaPorId(listadoDePeliculas, tamPelicula, unElenco.codigoPelicula);
     printf("%15.2f\n", unElenco.valorContrato);
