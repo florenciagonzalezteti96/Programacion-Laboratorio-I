@@ -1,0 +1,87 @@
+# depslib dependency file v1.0
+1570544138 source:d:\primerparcialgonzaleztetiflorencia\elenco.c
+	"Elenco.h"
+
+1570541029 source:d:\primerparcialgonzaleztetiflorencia\genero.c
+	"Genero.h"
+
+1570544386 source:d:\primerparcialgonzaleztetiflorencia\inputs.c
+	"Inputs.h"
+
+1570537817 d:\primerparcialgonzaleztetiflorencia\inputs.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"ctype.h"
+
+1570542555 source:d:\primerparcialgonzaleztetiflorencia\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Actor.h"
+
+1570544389 source:d:\primerparcialgonzaleztetiflorencia\actor.c
+	"Actor.h"
+
+1570543470 d:\primerparcialgonzaleztetiflorencia\actor.h
+	"Inputs.h"
+	"Pelicula.h"
+
+1570540774 d:\primerparcialgonzaleztetiflorencia\pelicula.h
+	<stdio.h>
+	<stdlib.h>
+	"Inputs.h"
+
+1570541149 source:d:\primerparcialgonzaleztetiflorencia\pelicula.c
+	"Pelicula.h"
+
+1570541014 d:\primerparcialgonzaleztetiflorencia\genero.h
+
+1570543967 d:\primerparcialgonzaleztetiflorencia\elenco.h
+	"Inputs.h"
+	"Pelicula.h"
+
+1571002126 source:e:\primerparcialgonzaleztetiflorencia\genero.c
+	"Genero.h"
+
+1570997880 e:\primerparcialgonzaleztetiflorencia\genero.h
+	<stdio.h>
+	<stdlib.h>
+	"Inputs.h"
+
+1571001202 source:e:\primerparcialgonzaleztetiflorencia\inputs.c
+	"Inputs.h"
+
+1570537818 e:\primerparcialgonzaleztetiflorencia\inputs.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"ctype.h"
+
+1571022052 source:e:\primerparcialgonzaleztetiflorencia\pelicula.c
+	"Pelicula.h"
+
+1571020454 e:\primerparcialgonzaleztetiflorencia\pelicula.h
+	<stdio.h>
+	<stdlib.h>
+	"Inputs.h"
+	"Genero.h"
+
+1571022060 source:e:\primerparcialgonzaleztetiflorencia\actor.c
+	"Actor.h"
+
+1571020488 e:\primerparcialgonzaleztetiflorencia\actor.h
+	"Inputs.h"
+	"Pelicula.h"
+
+1571023772 source:e:\primerparcialgonzaleztetiflorencia\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Elenco.h"
+
+1571023728 source:e:\primerparcialgonzaleztetiflorencia\elenco.c
+	"Elenco.h"
+
+1571023714 e:\primerparcialgonzaleztetiflorencia\elenco.h
+	"Inputs.h"
+	"Actor.h"
+
