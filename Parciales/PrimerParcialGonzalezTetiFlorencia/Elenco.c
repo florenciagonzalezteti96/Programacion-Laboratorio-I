@@ -48,7 +48,7 @@ void mostrarMenuElencos(eElenco listadoDeElencos[], int tamElencos, ePelicula li
             system("pause");
             break;
         case 3:
-            option_continue = getChar("Esta seguro que desea salir? Ingrese s para SI o n para NO: ");
+            option_continue = getConfirmacion("Esta seguro que desea salir? Ingrese s para SI o n para NO: ");
             printf("\n");
             system("pause");
             break;
@@ -65,17 +65,17 @@ void mostrarMenuElencos(eElenco listadoDeElencos[], int tamElencos, ePelicula li
 void mostrarMenus(eElenco listadoDeElencos[], int tamElencos, ePelicula listadoDePeliculas[], int tamPeliculas, eGenero listadoDeGeneros[], int tamGeneros, eActor listadoDeActores[], int tamActores)
 {
     int option;
-    int retorno;
     char option_continue = 'n';
 
     initPeliculas(listadoDePeliculas, tamPeliculas);
-    initActor(listadoDeActores, tamActores);
-    inicializarElencos(listadoDeElenco, tamElencos);
+    inicializarActores(listadoDeActores, tamActores);
+    inicializarCodigosActores(listadoDeActores, tamActores);
+    inicializarElencos(listadoDeElencos, tamElencos);
 
     hardcodearPeliculas(listadoDePeliculas, 20);
     hardcodearGeneros(listadoDeGeneros, tamGeneros);
     hardcodearActores(listadoDeActores, 30);
-    hardcodearElencos(listadoDeElenco, 20);
+    hardcodearElencos(listadoDeElencos, 20);
 
     do
     {
@@ -95,7 +95,7 @@ void mostrarMenus(eElenco listadoDeElencos[], int tamElencos, ePelicula listadoD
             system("pause");
             break;
         case 3:
-            option_continue = getChar("Esta seguro que desea salir? Ingrese s para SI o n para NO: ");
+            option_continue = getConfirmacion("Esta seguro que desea salir? Ingrese s para SI o n para NO: ");
             printf("\n");
             system("pause");
             break;
@@ -117,7 +117,7 @@ int inicializarElencos(eElenco listaDeElencos[], int tamElencos)
     {
         for(i=0; i<tamElencos; i++)
         {
-            listaDeElencos[i].isEmpty = TRUE;
+            listaDeElencos[i].isEmpty = VACIO;
             retorno = 0;
         }
     }
@@ -134,7 +134,7 @@ void hardcodearElencos(eElenco listadoDeElencos[], int tamElencos)
         listadoDeElencos[i].codigoPelicula = codigoPelicula[i];
         listadoDeElencos[i].codigoActor = codigoActor[i];
         listadoDeElencos[i].valorContrato = valorContrato[i];
-        listadoDeElencos[i].isEmpty = FALSE;
+        listadoDeElencos[i].isEmpty = OCUPADO;
     }
 }
 int obtenerLugarDisponibleElenco(eElenco listadoDeElencos[], int tamElencos)
@@ -145,7 +145,7 @@ int obtenerLugarDisponibleElenco(eElenco listadoDeElencos[], int tamElencos)
     {
         for(i=0; i<tamElencos; i++)
         {
-            if(listadoDeElencos[i].isEmpty == TRUE)
+            if(listadoDeElencos[i].isEmpty == VACIO)
             {
                 retorno = i;
                 break;
@@ -213,7 +213,7 @@ eElenco agregarUnActorAElenco(eElenco listadoDeElencos[], int tamElencos, eActor
     nuevoElenco.codigoActor = obtenerUnActor(listadoDeActores, tamActores);
     nuevoElenco.codigoPelicula = idPelicula;
     nuevoElenco.valorContrato = valorContrato;
-    nuevoElenco.isEmpty = FALSE;
+    nuevoElenco.isEmpty = OCUPADO;
 
     return nuevoElenco;
 }
@@ -229,7 +229,7 @@ void mostrarListaElencos(eElenco listadoDeElencos[], int tamElencos, ePelicula l
     printf("%20s %30s %25s\n","Pelicula:","Apellido y nombre:","Valor Contrato:");
     for(i=0; i<tamElencos; i++)
     {
-        if(listadoDeElencos[i].isEmpty == FALSE)
+        if(listadoDeElencos[i].isEmpty == OCUPADO)
         {
             mostrarUnElenco(listadoDeElencos[i], listadoDePeliculas, tamPeliculas, listadoDeActores, tamActores);
         }
@@ -241,7 +241,7 @@ int validarSiExiste(eElenco listadoDeElencos[], int tamElencos, eElenco unElenco
     int i;
     for(i=0; i<tamElencos; i++)
     {
-        if(listadoDeElencos[i].isEmpty == FALSE)
+        if(listadoDeElencos[i].isEmpty == OCUPADO)
         {
             if(listadoDeElencos[i].codigoPelicula == unElenco.codigoPelicula && listadoDeElencos[i].codigoActor == unElenco.codigoActor)
             {
@@ -274,22 +274,22 @@ int ordenarElencos(eElenco listadoDeElencos[], int tamElencos, ePelicula listado
             {
                 for(a=0; a<tamPeliculas; a++)
                 {
-                    if(listadoDeElencos[i].codigoPelicula == listadoDePeliculas[a].codigo && listadoDePeliculas[a].isEmpty == FALSE)
+                    if(listadoDeElencos[i].codigoPelicula == listadoDePeliculas[a].codigo && listadoDePeliculas[a].isEmpty == OCUPADO)
                     {
                         auxPeliculaUno = listadoDePeliculas[a];
                     }
-                    else if(listadoDeElencos[j].codigoPelicula == listadoDePeliculas[a].codigo && listadoDePeliculas[a].isEmpty == FALSE)
+                    else if(listadoDeElencos[j].codigoPelicula == listadoDePeliculas[a].codigo && listadoDePeliculas[a].isEmpty == OCUPADO)
                     {
                         auxPeliculaDos = listadoDePeliculas[a];
                     }
                 }
                 for(a=0; a<tamActores; a++)
                 {
-                    if(listadoDeElencos[i].codigoActor == listadoDeActores[a].codigo && listadoDeActores[a].isEmpty == FALSE)
+                    if(listadoDeElencos[i].codigoActor == listadoDeActores[a].codigo && listadoDeActores[a].isEmpty == OCUPADO)
                     {
                         auxActorUno = listadoDeActores[a];
                     }
-                    else if(listadoDeElencos[j].codigoActor == listadoDeActores[a].codigo && listadoDeActores[a].isEmpty == FALSE)
+                    else if(listadoDeElencos[j].codigoActor == listadoDeActores[a].codigo && listadoDeActores[a].isEmpty == OCUPADO)
                     {
                         auxActorDos = listadoDeActores[a];
                     }

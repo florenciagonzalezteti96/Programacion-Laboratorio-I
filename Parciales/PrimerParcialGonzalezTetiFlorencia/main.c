@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include "Elenco.h"
 
-#define TA 50
-#define TP 20
-#define TG 4
-#define TE 1000
+#define TA 50//tamaño de la lista de actores
+#define TP 20//tamaño de la lista de peliculas
+#define TG 4//tamaño de la lista de generos
+#define TE 1000//tamaño de la lista de elencos
 
 int main()
 {
@@ -14,15 +14,7 @@ int main()
     eGenero listadoDeGeneros[TG];
     eElenco listadoDeElenco[TE];
 
-
-
-    ordenarElencos(listadoDeElenco, TE, listadoDePeliculas, TP, listadoDeActores, TA);
-
-
-    //mostrarListaDeActores(listadoDeActores, TA);
-    //mostrarListaPeliculas(listadoDePeliculas, TP, listadoDeGeneros, TG);
-    mostrarListaElencos(listadoDeElenco, TE, listadoDePeliculas, TP, listadoDeGeneros, TG, listadoDeActores, TA);
-    //showMenuElencos(listadoDeElenco, TE, listadoDePeliculas, TP, listadoDeGeneros, TG, listadoDeActores, TA);
+    mostrarMenus(listadoDeElenco, TE, listadoDePeliculas, TP, listadoDeGeneros, TG, listadoDeActores, TA);
 
     return 0;
 }

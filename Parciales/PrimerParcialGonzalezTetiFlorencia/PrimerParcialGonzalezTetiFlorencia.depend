@@ -85,3 +85,48 @@
 	"Inputs.h"
 	"Actor.h"
 
+1571002126 source:e:\programacion-laboratorio-i\parciales\primerparcialgonzaleztetiflorencia\genero.c
+	"Genero.h"
+
+1570997880 e:\programacion-laboratorio-i\parciales\primerparcialgonzaleztetiflorencia\genero.h
+	<stdio.h>
+	<stdlib.h>
+	"Inputs.h"
+
+1570537818 e:\programacion-laboratorio-i\parciales\primerparcialgonzaleztetiflorencia\inputs.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"ctype.h"
+
+1571093126 source:e:\programacion-laboratorio-i\parciales\primerparcialgonzaleztetiflorencia\inputs.c
+	"Inputs.h"
+
+1571120478 source:e:\programacion-laboratorio-i\parciales\primerparcialgonzaleztetiflorencia\pelicula.c
+	"Pelicula.h"
+
+1571120490 e:\programacion-laboratorio-i\parciales\primerparcialgonzaleztetiflorencia\pelicula.h
+	<stdio.h>
+	<stdlib.h>
+	"Inputs.h"
+	"Genero.h"
+
+1571120188 source:e:\programacion-laboratorio-i\parciales\primerparcialgonzaleztetiflorencia\actor.c
+	"Actor.h"
+
+1571120226 e:\programacion-laboratorio-i\parciales\primerparcialgonzaleztetiflorencia\actor.h
+	"Inputs.h"
+	"Pelicula.h"
+
+1571119634 source:e:\programacion-laboratorio-i\parciales\primerparcialgonzaleztetiflorencia\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Elenco.h"
+
+1571118112 e:\programacion-laboratorio-i\parciales\primerparcialgonzaleztetiflorencia\elenco.h
+	"Inputs.h"
+	"Actor.h"
+
+1571120288 source:e:\programacion-laboratorio-i\parciales\primerparcialgonzaleztetiflorencia\elenco.c
+	"Elenco.h"
+

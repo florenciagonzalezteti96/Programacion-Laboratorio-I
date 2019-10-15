@@ -1,13 +1,10 @@
 #include "Actor.h"
 
-void mostrarMenuActores(eActor listaDeActores[], int tamActores, ePelicula listaDePeliculas[], int tamPeliculas)
+void mostrarMenuActores(eActor listadoDeActores[], int tamActores, ePelicula listaDePeliculas[], int tamPeliculas)
 {
     int option;
     int retorno;
     char option_continue = 'n';
-    initActor(listaDeActores, tamActores);
-    initCodigoActor(listaDeActores, tamActores);
-    hardcodearActores(listaDeActores, 30);
     do
     {
         system("cls");
@@ -16,7 +13,7 @@ void mostrarMenuActores(eActor listaDeActores[], int tamActores, ePelicula lista
         switch(option)
         {
         case 1:
-            retorno = cargarUnActor(listaDeActores, tamActores);
+            retorno = cargarUnActor(listadoDeActores, tamActores);
             switch(retorno)
             {
             case -1:
@@ -36,7 +33,7 @@ void mostrarMenuActores(eActor listaDeActores[], int tamActores, ePelicula lista
             system("pause");
             break;
         case 2:
-            retorno = modificarUnActor(listaDeActores, tamActores, listaDePeliculas, tamPeliculas);
+            retorno = modificarUnActor(listadoDeActores, tamActores, listaDePeliculas, tamPeliculas);
             switch(retorno)
             {
             case -1:
@@ -53,7 +50,7 @@ void mostrarMenuActores(eActor listaDeActores[], int tamActores, ePelicula lista
             system("pause");
             break;
         case 3:
-            eliminarActor(listaDeActores, tamActores, listaDePeliculas, tamPeliculas);
+            eliminarActor(listadoDeActores, tamActores, listaDePeliculas, tamPeliculas);
             switch(retorno)
             {
             case -1:
@@ -74,13 +71,13 @@ void mostrarMenuActores(eActor listaDeActores[], int tamActores, ePelicula lista
             break;
         case 4:
             printf("Se han ordenado los actores.\n");
-            sortActores(listaDeActores, tamActores);
-            mostrarListaDeActores(listaDeActores, tamActores);
+            ordenarActores(listadoDeActores, tamActores);
+            mostrarListaDeActores(listadoDeActores, tamActores);
             printf("\n");
             system("pause");
             break;
         case 5:
-            option_continue = getChar("Esta seguro que desea salir? Ingrese s para SI o n para NO: ");
+            option_continue = getConfirmacion("Esta seguro que desea salir? Ingrese s para SI o n para NO: ");
             printf("\n");
             system("pause");
             break;
@@ -94,7 +91,7 @@ void mostrarMenuActores(eActor listaDeActores[], int tamActores, ePelicula lista
     while(option_continue=='n');
     printf("\n");
 }
-int initActor(eActor listaDeActores[], int tamActor)
+int inicializarActores(eActor listadoDeActores[], int tamActor)
 {
     int i;
     int retorno = -1;
@@ -102,13 +99,13 @@ int initActor(eActor listaDeActores[], int tamActor)
     {
         for(i=0; i<tamActor; i++)
         {
-            listaDeActores[i].isEmpty = TRUE;
+            listadoDeActores[i].isEmpty = VACIO;
             retorno = 0;
         }
     }
     return retorno;
 }
-int initCodigoActor(eActor listaDeActores[], int tamActor)
+int inicializarCodigosActores(eActor listadoDeActores[], int tamActor)
 {
     int i;
     int retorno = -1;
@@ -116,11 +113,27 @@ int initCodigoActor(eActor listaDeActores[], int tamActor)
     {
         for(i=0; i<tamActor; i++)
         {
-            listaDeActores[i].codigo = 0;
+            listadoDeActores[i].codigo = 0;
             retorno = 0;
         }
     }
     return retorno;
+}
+void hardcodearActores(eActor listadoDeActores[], int tamActores)
+{
+    int i;
+    int codigo[]= {1,2,3,4,5,31,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
+    char nombre[][52]= {"Karlen","Pay","Morrie","Lorette","Andre","Daryn","Linnie","Jewis","Herman","Sibylle","Ado","Jessica","Sherline","Laura","Arel","Veronika","Orrin","Costa","Brinna","Mitchael","Glenda","Bernice","Louisette","Henka","Danella","Oliver","Roselin","Karly","Marcelle","Violeta"};
+    char apellido[][52]= {"Cotton","Hayward","Zarfai","Lowerson","Humes","Swains","Lomas","Patten","Guidelli","Lumbly","Deboy","Wraggs","Marley","Dunbain","Teal","Mikalski","Atwel","Gable","Applewhite","Conway","Chaster","Rosentholer","Coneron","Hacket","Ollarenshaw","Packman","Brinson","Massie","Edney","Barends"};
+    char sexo[]= {'f','f','m','m','f','f','f','m','f','m','f','m','f','m','f','m','f','m','f','m','m','m','m','m','f','m','f','f','f','f'};
+    for(i=0; i<tamActores; i++)
+    {
+        listadoDeActores[i].codigo = codigo[i];
+        strcpy(listadoDeActores[i].nombre, nombre[i]);
+        strcpy(listadoDeActores[i].apellido, apellido[i]);
+        listadoDeActores[i].sexo = sexo[i];
+        listadoDeActores[i].isEmpty = OCUPADO;
+    }
 }
 void mostrarUnActor(eActor unActor)
 {
@@ -129,19 +142,32 @@ void mostrarUnActor(eActor unActor)
     printf("%25s", unActor.apellido);
     printf("%13c\n", unActor.sexo);
 }
-void mostrarListaDeActores(eActor listaDeActores[], int tamActores)
+void mostrarListaDeActores(eActor listadoDeActores[], int tamActores)
 {
     int i;
     printf("ID:\t\t\tNombre:\t\t\tApellido:\tSexo:\t\n");
     for(i=0; i<tamActores; i++)
     {
-        if(listaDeActores[i].isEmpty==FALSE)
+        if(listadoDeActores[i].isEmpty==OCUPADO)
         {
-            mostrarUnActor(listaDeActores[i]);
+            mostrarUnActor(listadoDeActores[i]);
         }
     }
 }
-int cargarUnActor(eActor listaDeActores[], int tamActores)
+void mostrarActorPorId(eActor listadoDeActores[], int tamActores, int idActor)
+{
+    int i;
+    for(i=0; i<tamActores; i++)
+    {
+        if(idActor == listadoDeActores[i].codigo)
+        {
+            printf("%19s, %10s", listadoDeActores[i].apellido, listadoDeActores[i].nombre);
+            break;
+        }
+    }
+
+}
+int cargarUnActor(eActor listadoDeActores[], int tamActores)
 {
     int retorno = 1;
     char name[52];
@@ -154,17 +180,16 @@ int cargarUnActor(eActor listaDeActores[], int tamActores)
     {
         do
         {
-            getDataActor(name, lastName, &sexo);
+            obtenerDatosActor(name, lastName, &sexo);
             printf("\n");
             printf("Estos son los datos ingresados:\n");
-            showDataActor(name, lastName, sexo);
+            mostrarDatosActor(name, lastName, sexo);
             printf("\n");
             confirmacion = getConfirmacion("Desea cargar los datos? Ingrese s para SI o n para NO: \n");
             if(confirmacion == 's')
             {
-                codigo = getNewCodigo(listaDeActores, tamActores);
-                codigo++;
-                retorno = agregarActor(listaDeActores, tamActores, codigo, name, lastName, sexo);
+                codigo = obtenerNuevoCodigo(listadoDeActores, tamActores);
+                retorno = agregarActor(listadoDeActores, tamActores, codigo, name, lastName, sexo);
             }
             else if(confirmacion == 'n')
             {
@@ -178,36 +203,36 @@ int cargarUnActor(eActor listaDeActores[], int tamActores)
     }
     return retorno;
 }
-void getDataActor(char name[],char lastName[], char* sexo)
+void obtenerDatosActor(char name[],char lastName[], char* sexo)
 {
-    printf("Ingrese los datos del actor: \n");
-    pedirCadena("Nombre del actor:\n", name);
-    pedirCadena("Apellido del actor: ", lastName);
-    *sexo = getChar("\nSexo del actor: ");
+    printf("Ingrese los datos del actor: ");
+    pedirCadena("\nNombre del actor: ", name);
+    pedirCadena("\nApellido del actor: ", lastName);
+    *sexo = getSexo("\nSexo del actor (f/m): ");
 }
-void showDataActor(char name[],char lastName[], char sexo)
+void mostrarDatosActor(char name[],char lastName[], char sexo)
 {
     printf("\n");
     printf("Nombre: %s\n", name);
     printf("Apellido %s\n", lastName);
     printf("Sexo: %c\n", sexo);
 }
-int agregarActor(eActor listaDeActores[], int tamActores, int codigo, char name[],char lastName[], char sexo)
+int agregarActor(eActor listadoDeActores[], int tamActores, int codigo, char name[],char lastName[], char sexo)
 {
     int retorno = -1;
-    int lugar_Disponible = getIsEmptyActores(listaDeActores, tamActores);
+    int lugar_Disponible = obtenerLugarDisponibleActor(listadoDeActores, tamActores);
     if(lugar_Disponible!= -1)
     {
-        listaDeActores[lugar_Disponible].codigo = codigo;
-        strcpy(listaDeActores[lugar_Disponible].nombre, name);
-        strcpy(listaDeActores[lugar_Disponible].apellido, lastName);
-        listaDeActores[lugar_Disponible].sexo = sexo;
-        listaDeActores[lugar_Disponible].isEmpty = FALSE;
+        listadoDeActores[lugar_Disponible].codigo = codigo;
+        strcpy(listadoDeActores[lugar_Disponible].nombre, name);
+        strcpy(listadoDeActores[lugar_Disponible].apellido, lastName);
+        listadoDeActores[lugar_Disponible].sexo = sexo;
+        listadoDeActores[lugar_Disponible].isEmpty = OCUPADO;
         retorno = 0;
     }
     return retorno;
 }
-int getNewCodigo(eActor listaDeActores[], int tamActores)
+int obtenerNuevoCodigo(eActor listadoDeActores[], int tamActores)
 {
     int retorno = -1;
     int flag = 0;
@@ -217,17 +242,17 @@ int getNewCodigo(eActor listaDeActores[], int tamActores)
         int i;
         for(i=0; i<tamActores; i++)
         {
-            if(flag == 0 || listaDeActores[i].codigo>newId)
+            if(flag == 0 || listadoDeActores[i].codigo>newId)
             {
-                newId = listaDeActores[i].codigo;
+                newId = listadoDeActores[i].codigo;
                 flag = 1;
             }
         }
-        retorno = newId;
+        retorno = newId++;
     }
     return retorno;
 }
-int getIsEmptyActores(eActor listaDeActores[], int tamActores)
+int obtenerLugarDisponibleActor(eActor listadoDeActores[], int tamActores)
 {
     int i;
     int retorno = -1;
@@ -235,7 +260,7 @@ int getIsEmptyActores(eActor listaDeActores[], int tamActores)
     {
         for(i=0; i<tamActores; i++)
         {
-            if(listaDeActores[i].isEmpty == TRUE)
+            if(listadoDeActores[i].isEmpty == VACIO)
             {
                 retorno = i;
                 break;
@@ -325,7 +350,7 @@ int encontrarActorPorCodigo(eActor listadoDeActores[], int tamActores,int codigo
     {
         for(i=0; i<tamActores; i++)
         {
-            if(listadoDeActores[i].isEmpty == FALSE)
+            if(listadoDeActores[i].isEmpty == OCUPADO)
             {
                 if(listadoDeActores[i].codigo == codigo)
                 {
@@ -337,7 +362,7 @@ int encontrarActorPorCodigo(eActor listadoDeActores[], int tamActores,int codigo
     }
     return retorno;
 }
-int eliminarActor(eActor listaDeActores[], int tamActores, ePelicula listaDePeliculas[], int tamPeliculas)
+int eliminarActor(eActor listadoDeActores[], int tamActores, ePelicula listaDePeliculas[], int tamPeliculas)
 {
     int retorno = -1;
     int id = 0;
@@ -346,21 +371,21 @@ int eliminarActor(eActor listaDeActores[], int tamActores, ePelicula listaDePeli
     if(tamActores>0)
     {
         printf("Estos son los actores:\n");
-        mostrarListaDeActores(listaDeActores, tamActores);
+        mostrarListaDeActores(listadoDeActores, tamActores);
         id = getInt("\nIngrese el codigo del actor que desea dar de baja:");
         printf("\n");
-        index = encontrarActorPorCodigo(listaDeActores, tamActores, id);
+        index = encontrarActorPorCodigo(listadoDeActores, tamActores, id);
         if(index == -1)
         {
             retorno = 1;
         }
         else
         {
-            mostrarUnActor(listaDeActores[index]);
+            mostrarUnActor(listadoDeActores[index]);
             confirmacion = getChar("\nEsta seguro que quiere eliminar al actor? Ingrese s para SI o n para NO:");
             if(confirmacion == 's')
             {
-                retorno = removeActor(listaDeActores, tamActores, id);
+                retorno = darBajaActor(listadoDeActores, tamActores, id);
             }
             else if(confirmacion == 'n')
             {
@@ -370,7 +395,7 @@ int eliminarActor(eActor listaDeActores[], int tamActores, ePelicula listaDePeli
     }
     return retorno;
 }
-int removeActor(eActor listadoDeActores[], int tamActores, int id)
+int darBajaActor(eActor listadoDeActores[], int tamActores, int id)
 {
     int retorno = -1;
     int i;
@@ -378,11 +403,11 @@ int removeActor(eActor listadoDeActores[], int tamActores, int id)
     {
         for(i=0; i<tamActores; i++)
         {
-            if(listadoDeActores[i].isEmpty == FALSE)
+            if(listadoDeActores[i].isEmpty == OCUPADO)
             {
                 if(listadoDeActores[i].codigo == id)
                 {
-                    listadoDeActores[i].isEmpty = TRUE;
+                    listadoDeActores[i].isEmpty = VACIO;
                     retorno = 0;
                     break;
                 }
@@ -391,7 +416,7 @@ int removeActor(eActor listadoDeActores[], int tamActores, int id)
     }
     return retorno;
 }
-void sortActores(eActor listadoDeActores[], int tamActores)
+void ordenarActores(eActor listadoDeActores[], int tamActores)
 {
     eActor auxActor;
     int i;
@@ -421,22 +446,7 @@ void sortActores(eActor listadoDeActores[], int tamActores)
         }
     }
 }
-void hardcodearActores(eActor listadoDeActores[], int tamActores)
-{
-    int i;
-    int codigo[]= {1,2,3,4,5,31,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
-    char nombre[][52]= {"Karlen","Pay","Morrie","Lorette","Andre","Daryn","Linnie","Jewis","Herman","Sibylle","Ado","Jessica","Sherline","Laura","Arel","Veronika","Orrin","Costa","Brinna","Mitchael","Glenda","Bernice","Louisette","Henka","Danella","Oliver","Roselin","Karly","Marcelle","Violeta"};
-    char apellido[][52]= {"Cotton","Hayward","Zarfai","Lowerson","Humes","Swains","Lomas","Patten","Guidelli","Lumbly","Deboy","Wraggs","Marley","Dunbain","Teal","Mikalski","Atwel","Gable","Applewhite","Conway","Chaster","Rosentholer","Coneron","Hacket","Ollarenshaw","Packman","Brinson","Massie","Edney","Barends"};
-    char sexo[]= {'f','f','m','m','f','f','f','m','f','m','f','m','f','m','f','m','f','m','f','m','m','m','m','m','f','m','f','f','f','f'};
-    for(i=0; i<tamActores; i++)
-    {
-        listadoDeActores[i].codigo = codigo[i];
-        strcpy(listadoDeActores[i].nombre, nombre[i]);
-        strcpy(listadoDeActores[i].apellido, apellido[i]);
-        listadoDeActores[i].sexo = sexo[i];
-        listadoDeActores[i].isEmpty = FALSE;
-    }
-}
+
 int obtenerUnActor(eActor listadoDeActores[], int tamActores)
 {
     int idActor;
@@ -463,16 +473,4 @@ int validarIdActor(eActor listadoDeActores[], int tamActores, int idActor)
     }
     return retorno;
 }
-void mostrarActorPorId(eActor listadoDeActores[], int tamActores, int idActor)
-{
-    int i;
-    for(i=0; i<tamActores; i++)
-    {
-        if(idActor == listadoDeActores[i].codigo)
-        {
-            printf("%19s, %10s", listadoDeActores[i].apellido, listadoDeActores[i].nombre);
-            break;
-        }
-    }
 
-}

@@ -1,7 +1,7 @@
 #include "Inputs.h"
 #include "Actor.h"
-#define TRUE 0
-#define FALSE 1
+#define VACIO 0
+#define OCUPADO 1
 
 typedef struct
 {
@@ -89,8 +89,48 @@ int agregarUnElenco(eElenco listadoDeElencos[], int tamElencos, ePelicula listad
  *
  */
 eElenco agregarUnActorAElenco(eElenco listadoDeElencos[], int tamElencos, eActor listadoDeActores[], int tamActores, int idPelicula, int valorContrato);
+/** \brief Esta funcion muestra un elemento de tipo eElenco
+ *
+ * \param unElenco eElenco El elemento a mostrar
+ * \param listadoDePeliculas[] ePelicula La lista de estructuras ePelicula
+ * \param tamPeliculas int El tamaño de la lista de estructuras ePelicula
+ * \param listadoDeActores[] eActor La lista de estructuras eActor
+ * \param tamActores int El tamaño de la lista de estructuras eActor
+ * \return void
+ */
 void mostrarUnElenco(eElenco unElenco, ePelicula listadoDePeliculas[], int tamPelicula, eActor listadoDeActores[], int tamActores);
-
+/** \brief Esta funcion muestra una lista de elementos de tipo eElenco
+ *
+ * \param listadoDeElencos[] eElenco La lista de estructuras eElenco
+ * \param tamElencos int El tamaño de la lista de estructuras eElenco
+ * \param listadoDePeliculas[] ePelicula La lista de estructuras ePelicula
+ * \param tamPeliculas int El tamaño de la lista de estructuras ePelicula
+ * \param listadoDeGeneros[] eGenero La lista de estructuras eGenero
+ * \param tamGeneros int El tamaño de la lista de estructuras eGenero
+ * \param listadoDeActores[] eActor La lista de estructuras eActor
+ * \param tamActores int El tamaño de la lista de estructuras eActor
+ * \return void
+ *
+ */
 void mostrarListaElencos(eElenco listadoDeElencos[], int tamElencos, ePelicula listadoDePeliculas[], int tamPeliculas, eGenero listadoDeGeneros[], int tamGeneros, eActor listadoDeActores[], int tamActores);
+/** \brief Esta funcion valida si los datos ingresados ya existen dentro de la lista de elencos
+ *
+ * \param listadoDeElencos[] eElenco La lista de estructuras eElenco
+ * \param tamElencos int El tamaño de la lista de estructuras eElenco
+ * \param unElenco eElenco El elemento con los datos ingresados a validar
+ * \return int Devuelve -1 si los datos ingresados estan repetidos, caso contrario devuelve 0
+ *
+ */
 int validarSiExiste(eElenco listadoDeElencos[], int tamElencos, eElenco unElenco);
+/** \brief Esta funcion ordena los elencos por nombre de pelicula y por apellido de actor
+ *
+ * \param listadoDeElencos[] eElenco La lista de estructuras eElenco
+ * \param tamElencos int El tamaño de la lista de estructuras eElenco
+ * \param listadoDePeliculas[] ePelicula La lista de estructuras ePelicula
+ * \param tamPeliculas int El tamaño de la lista de estructuras ePelicula
+ * \param listadoDeActores[] eActor La lista de estructuras eActor
+ * \param tamActores int El tamaño de la lista de estructuras eActor
+ * \return int Devuelve -1 si no pudo acceder al ordenamiento, caso contrario devuelve 0
+ *
+ */
 int ordenarElencos(eElenco listadoDeElencos[], int tamElencos, ePelicula listadoDePeliculas[], int tamPeliculas, eActor listadoDeActores[], int tamActores);

@@ -47,6 +47,14 @@ void hardcodearPeliculas(ePelicula listadoDePeliculas[], int tamPeliculas);
  *
  */
 int mostrarPeliculaPorId(ePelicula listadoDePeliculas[], int tamPeliculas, int codigoPelicula);
+/** \brief Esta funcion muestra una pelicula sola
+ *
+ * \param unaPelicula ePelicula La pelicula a mostrar
+ * \param listadoDeGeneros[] eGenero El array de estructura eGenero
+ * \param tamGeneros int El tamaño del array de estructura eGenero
+ * \return void
+ *
+ */
 void mostrarPelicula(ePelicula unaPelicula, eGenero listadoDeGeneros[],int tamGeneros);
 /** \brief Esta funcion muestra las peliculas en un array de estructura ePelicula con los generos a los cuales pertenecen
  *
@@ -132,7 +140,6 @@ int cargarUnaPelicula(ePelicula listadoDePeliculas[],int tamPeliculas, ePelicula
  *
  */
 int getIsEmptyPeliculas(ePelicula listadoDePeliculas[], int tamPeliculas);
-
 /** \brief Esta funcion despliega un menu de modificaciones a elementos de un array de estructura ePelicula
  *
  * \param listadoDePeliculas[] ePelicula El array de estructura ePelicula
