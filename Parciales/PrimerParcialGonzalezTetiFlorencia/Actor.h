@@ -11,7 +11,7 @@ typedef struct{
 }eActor;
 
 void mostrarMenuActores(eActor listaDeActores[], int tamActores, ePelicula listaDePeliculas[], int tamPeliculas);
-
+void hardcodearActores(eActor listadoDeActores[], int tamActores);
 int initActor(eActor listaDeActores[], int tamActor);
 int initCodigoActor(eActor listaDeActores[], int tamActor);
 

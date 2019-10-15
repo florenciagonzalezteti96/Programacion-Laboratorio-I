@@ -48,7 +48,7 @@
 	<stdlib.h>
 	"Inputs.h"
 
-1571001202 source:e:\primerparcialgonzaleztetiflorencia\inputs.c
+1571093126 source:e:\primerparcialgonzaleztetiflorencia\inputs.c
 	"Inputs.h"
 
 1570537818 e:\primerparcialgonzaleztetiflorencia\inputs.h
@@ -57,31 +57,31 @@
 	"string.h"
 	"ctype.h"
 
-1571031464 source:e:\primerparcialgonzaleztetiflorencia\pelicula.c
+1571108586 source:e:\primerparcialgonzaleztetiflorencia\pelicula.c
 	"Pelicula.h"
 
-1571020454 e:\primerparcialgonzaleztetiflorencia\pelicula.h
+1571093458 e:\primerparcialgonzaleztetiflorencia\pelicula.h
 	<stdio.h>
 	<stdlib.h>
 	"Inputs.h"
 	"Genero.h"
 
-1571031830 source:e:\primerparcialgonzaleztetiflorencia\actor.c
+1571115476 source:e:\primerparcialgonzaleztetiflorencia\actor.c
 	"Actor.h"
 
-1571020488 e:\primerparcialgonzaleztetiflorencia\actor.h
+1571094964 e:\primerparcialgonzaleztetiflorencia\actor.h
 	"Inputs.h"
 	"Pelicula.h"
 
-1571031884 source:e:\primerparcialgonzaleztetiflorencia\main.c
+1571115516 source:e:\primerparcialgonzaleztetiflorencia\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Elenco.h"
 
-1571031662 source:e:\primerparcialgonzaleztetiflorencia\elenco.c
+1571115426 source:e:\primerparcialgonzaleztetiflorencia\elenco.c
 	"Elenco.h"
 
-1571032332 e:\primerparcialgonzaleztetiflorencia\elenco.h
+1571112160 e:\primerparcialgonzaleztetiflorencia\elenco.h
 	"Inputs.h"
 	"Actor.h"
 

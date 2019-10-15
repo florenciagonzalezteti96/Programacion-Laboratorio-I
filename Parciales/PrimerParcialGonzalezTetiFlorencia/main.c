@@ -9,20 +9,20 @@
 
 int main()
 {
-    eActor listaDeActores[TA];
+    eActor listadoDeActores[TA];
     ePelicula listadoDePeliculas[TP];
     eGenero listadoDeGeneros[TG];
-    //eElenco listadoDeElenco[TE];
-    //initElencos(listadoDeElenco,TE);
-    //initCodigoReparto(listadoDeElenco, TE);
-    initPeliculas(listadoDePeliculas, TP);
-    initActor(listaDeActores, TA);
+    eElenco listadoDeElenco[TE];
 
-    hardcodearPeliculas(listadoDePeliculas, 30);
-    hardcodearGeneros(listadoDeGeneros, TG);
-    hardCodearActores(listaDeActores, 30);
 
-    mostrarListaPeliculas(listadoDePeliculas, TP, listadoDeGeneros, TG);
+
+    ordenarElencos(listadoDeElenco, TE, listadoDePeliculas, TP, listadoDeActores, TA);
+
+
+    //mostrarListaDeActores(listadoDeActores, TA);
+    //mostrarListaPeliculas(listadoDePeliculas, TP, listadoDeGeneros, TG);
+    mostrarListaElencos(listadoDeElenco, TE, listadoDePeliculas, TP, listadoDeGeneros, TG, listadoDeActores, TA);
+    //showMenuElencos(listadoDeElenco, TE, listadoDePeliculas, TP, listadoDeGeneros, TG, listadoDeActores, TA);
 
     return 0;
 }
