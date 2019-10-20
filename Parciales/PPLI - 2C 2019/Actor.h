@@ -135,7 +135,7 @@ int obtenerLugarDisponibleActor(eActor listadoDeActores[], int tamActores);
  * \return void
  *
  */
-void ordenarActores(eActor listadoDeActores[], int tamActores);
+int ordenarActores(eActor listadoDeActores[], int tamActores);
 /** \brief Esta funcion permite realizar modificaciones a los elementos dentro de una lista de actores
  *
  * \param listadoDeActores[] eActor La lista de actores
@@ -181,7 +181,7 @@ int darBajaActor(eActor listadoDeActores[], int tamActores, int id);
  * \return int Devuelve el codigo del actor ingresado
  *
  */
-int obtenerUnActor(eActor listadoDeActores[], int tamActores);
+int obtenerIdActor(eActor listadoDeActores[], int tamActores);
 /** \brief Esta funcion valida que el id de actor ingresado exista en la lista de actores
  *
  * \param listadoDeActores[] eActor La lista de actores
@@ -191,4 +191,21 @@ int obtenerUnActor(eActor listadoDeActores[], int tamActores);
  *
  */
 int validarIdActor(eActor listadoDeActores[], int tamActores, int idActor);
-
+/** \brief Esta funcion retorna el actor al que corresponde el codigo ingresado
+ *
+ * \param listadoDeActores[] eActor La lista de actores
+ * \param tamActores int El tamaño de la lista de actores
+ * \param codigo int El codigo del actor que se pide
+ * \return eActor El elemento de tipo eActor que se pide
+ *
+ */
+eActor obtenerActor(eActor listadoDeActores[],int tamActor,int codigo);
+/** \brief Esta funcion valida que el actor que corresponde al codigo ingresado este dado de alta
+ *
+ * \param listadoDeActores[] eActor La lista de actores
+ * \param tamActores int El tamaño de la lista de actores
+ * \param codigoActor int El codigo del actor que se pide
+ * \return int Devuelve -1 si no esta dado de alta, caso contrario devuelve 0
+ *
+ */
+int validarSiExisteActor(eActor listadoDeActores[], int tamActores, int codigoActor);

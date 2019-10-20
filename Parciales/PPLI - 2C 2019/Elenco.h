@@ -122,7 +122,7 @@ void mostrarListaElencos(eElenco listadoDeElencos[], int tamElencos, ePelicula l
  *
  */
 int validarSiExiste(eElenco listadoDeElencos[], int tamElencos, eElenco unElenco);
-/** \brief Esta funcion ordena los elencos por nombre de pelicula y por apellido de actor
+/** \brief Esta funcion ordena los elencos por nombre de pelicula y, ante igualdad de criterio, por apellido de actor
  *
  * \param listadoDeElencos[] eElenco La lista de estructuras eElenco
  * \param tamElencos int El tamaño de la lista de estructuras eElenco

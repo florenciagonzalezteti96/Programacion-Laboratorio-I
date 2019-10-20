@@ -48,7 +48,7 @@ char getChar(char mensaje[])
     printf("%s", mensaje);
     fflush(stdin);
     scanf("%c", &letter);
-    tolower(letter);
+    letter = tolower(letter);
     return letter;
 }
 char getSexo(char mensaje[])
@@ -57,7 +57,7 @@ char getSexo(char mensaje[])
     printf("%s", mensaje);
     fflush(stdin);
     scanf("%c", &sexo);
-    tolower(sexo);
+    sexo = tolower(sexo);
     while(sexo!='f' && sexo!='m')
     {
         printf("Error. Ingrese f para sexo femenino o m para sexo masculino:\n");
@@ -83,7 +83,7 @@ char getConfirmacion(char mensaje[])
     printf("%s", mensaje);
     fflush(stdin);
     scanf("%c", &letter);
-    tolower(letter);
+    letter = tolower(letter);
     while(letter!='s' && letter!='n')
     {
         printf("Error. Ingrese s para SI o n para NO:\n");
