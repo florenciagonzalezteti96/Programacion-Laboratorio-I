@@ -175,3 +175,48 @@
 1571596438 source:e:\programacion-laboratorio-i\parciales\ppli - 2c 2019\pelicula.c
 	"Pelicula.h"
 
+1571628759 source:c:\users\gonzalez\desktop\programacion-laboratorio-i-master\parciales\ppli - 2c 2019\elenco.c
+	"Elenco.h"
+
+1571588000 c:\users\gonzalez\desktop\programacion-laboratorio-i-master\parciales\ppli - 2c 2019\elenco.h
+	"Inputs.h"
+	"Actor.h"
+
+1571588000 c:\users\gonzalez\desktop\programacion-laboratorio-i-master\parciales\ppli - 2c 2019\inputs.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"ctype.h"
+
+1571588000 c:\users\gonzalez\desktop\programacion-laboratorio-i-master\parciales\ppli - 2c 2019\actor.h
+	"Inputs.h"
+	"Pelicula.h"
+
+1571588000 c:\users\gonzalez\desktop\programacion-laboratorio-i-master\parciales\ppli - 2c 2019\pelicula.h
+	<stdio.h>
+	<stdlib.h>
+	"Inputs.h"
+	"Genero.h"
+
+1571588000 c:\users\gonzalez\desktop\programacion-laboratorio-i-master\parciales\ppli - 2c 2019\genero.h
+	<stdio.h>
+	<stdlib.h>
+	"Inputs.h"
+
+1571588000 source:c:\users\gonzalez\desktop\programacion-laboratorio-i-master\parciales\ppli - 2c 2019\genero.c
+	"Genero.h"
+
+1571588000 source:c:\users\gonzalez\desktop\programacion-laboratorio-i-master\parciales\ppli - 2c 2019\inputs.c
+	"Inputs.h"
+
+1571588000 source:c:\users\gonzalez\desktop\programacion-laboratorio-i-master\parciales\ppli - 2c 2019\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Elenco.h"
+
+1571588000 source:c:\users\gonzalez\desktop\programacion-laboratorio-i-master\parciales\ppli - 2c 2019\pelicula.c
+	"Pelicula.h"
+
+1571629166 source:c:\users\gonzalez\desktop\programacion-laboratorio-i-master\parciales\ppli - 2c 2019\actor.c
+	"Actor.h"
+

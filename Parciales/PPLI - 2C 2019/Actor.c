@@ -130,7 +130,7 @@ int inicializarCodigosActores(eActor listadoDeActores[], int tamActor)
 void hardcodearActores(eActor listadoDeActores[], int tamActores)
 {
     int i;
-    int codigo[]= {         1,        2,        3,        4,        5,       31,      6,      7,      8,        9,      10,      11,       12,      13,      14,      15,      16,     17,       18,        19,      20,         21,          22,       23,       24,         25,        26,       27,    28,      29,       30};
+    int codigo[]= {1,2,3,4,5,31,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
     char nombre[][52]= {"Karlen","Pay","Morrie","Lorette","Andre","Daryn","Linnie","Jewis","Herman","Sibylle","Ado","Jessica","Sherline","Laura","Arel","Veronika","Orrin","Costa","Brinna","Mitchael","Glenda","Bernice","Louisette","Henka","Danella","Oliver","Roselin","Karly","Marcelle","Violeta", "Camila"};
     char apellido[][52]= {"Cotton","Hayward","Zarfai","Lowerson","Humes","Swains","Lomas","Patten","Guidelli","Lumbly","Deboy","Wraggs","Marley","Dunbain","Teal","Mikalski","Atwel","Gable","Applewhite","Conway","Chaster","Rosentholer","Coneron","Hacket","Ollarenshaw","Packman","Brinson","Massie","Edney","Barends", "Gomez"};
     char sexo[]= {'f','f','m','m','f','f','f','m','f','m','f','m','f','m','f','m','f','m','f','m','m','m','m','m','f','m','f','f','f','f'};
@@ -175,7 +175,6 @@ void mostrarActorPorId(eActor listadoDeActores[], int tamActores, int idActor)
             break;
         }
     }
-
 }
 int cargarUnActor(eActor listadoDeActores[], int tamActores)
 {
@@ -259,7 +258,8 @@ int obtenerNuevoCodigo(eActor listadoDeActores[], int tamActores)
                 flag = 1;
             }
         }
-        retorno = newId++;
+        newId++;
+        retorno = newId;
     }
     return retorno;
 }
@@ -345,6 +345,7 @@ int modificarUnActor(eActor listadoDeActores[], int tamActores, ePelicula listad
         {
             printf("Este es el actor:\n");
             printf("\n");
+            printf("ID:\t\t\tNombre:\t\t\tApellido:\tSexo:\t\n");
             mostrarUnActor(aux);
             printf("\n");
             cargar = getConfirmacion("\nDesea guardar estos datos? Ingrese s para SI o n para NO:");
@@ -400,6 +401,7 @@ int eliminarActor(eActor listadoDeActores[], int tamActores, ePelicula listaDePe
         }
         else
         {
+            printf("ID:\t\t\tNombre:\t\t\tApellido:\tSexo:\t\n");
             mostrarUnActor(listadoDeActores[index]);
             confirmacion = getChar("\nEsta seguro que quiere eliminar al actor? Ingrese s para SI o n para NO:");
             if(confirmacion == 's')

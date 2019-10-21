@@ -5,8 +5,6 @@ void mostrarMenuElencos(eElenco listadoDeElencos[], int tamElencos, ePelicula li
     int option;
     int retorno;
     char option_continue = 'n';
-    inicializarElencos(listadoDeElencos, tamElencos);
-    hardcodearElencos(listadoDeElencos, 20);
     do
     {
         system("cls");
@@ -126,7 +124,7 @@ void hardcodearElencos(eElenco listadoDeElencos[], int tamElencos)
 {
     int i;
     int codigoPelicula[] = {101,101,101,111,107,101,113,122,113,122,109,122,109,110,113,109,117,122,113,117};
-    int codigoActor[] = {    1 ,2,  3,  4,  5,  6,  7,  8,  9,  10, 11, 12, 13 ,14, 15, 16, 17,  18,  19,  20};
+    int codigoActor[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
     int valorContrato[] = {10000,12000,16000,10000,15000,12400,16000,18000,19000,20000,21000,18500,12900,17500,14500,16500,13500,12500,15200,12500};
     for(i=0; i<tamElencos; i++)
     {
