@@ -15,11 +15,11 @@ int parser_LlamadasDesdeTexto(FILE* pFile, LinkedList* pListaLlamadas)
     int retorno = -1;
     eLlamada* unaLlamada = NULL;
 
-    char id_Llamada[5];
-    char fecha[12];
-    char numero_Cliente[5];
-    char id_Problema[2] = "3";
-    char solucionado[2] = "si";
+    char id_Llamada[20];
+    char fecha[20];
+    char numero_Cliente[20];
+    char id_Problema[21];
+    char solucionado[21];
 
     if(pListaLlamadas != NULL && pFile != NULL)
     {
@@ -27,21 +27,10 @@ int parser_LlamadasDesdeTexto(FILE* pFile, LinkedList* pListaLlamadas)
 
         while(!feof(pFile))
         {
-            //fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^\n]\n", id_Llamada, fecha, numero_Cliente, id_Problema, solucionado);
-            //unaLlamada = llamada_newParametros(id_Llamada, fecha, numero_Cliente, id_Problema, solucionado);
-
-            fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n", id_Llamada, fecha, numero_Cliente, id_Problema);
+            fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^\n]\n", id_Llamada, fecha, numero_Cliente, id_Problema, solucionado);
             unaLlamada = llamada_newParametros(id_Llamada, fecha, numero_Cliente, id_Problema, solucionado);
 
             ll_add(pListaLlamadas, unaLlamada);
-
-            //sacar, test
-            printf("%4d", unaLlamada->id_Llamada);
-            printf("%18s", unaLlamada->fecha);
-            printf("%20d", unaLlamada->numero_Cliente);
-            printf("%20d", unaLlamada->id_Problema);
-            printf("%25s\n", unaLlamada->solucionado);
-
         }
         retorno = 0;
 

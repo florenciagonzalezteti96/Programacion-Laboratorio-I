@@ -32,7 +32,7 @@ eLlamada* llamada_newParametros(char* id_Llamada, char* fecha, char* numero_Clie
             eLlamada_set_fecha(unaLlamada, fecha);
             eLlamada_set_numeroCliente(unaLlamada, atoi(numero_Cliente));
             eLlamada_set_idProblema(unaLlamada, atoi(id_Problema));
-            eLlamada_get_solucionado(unaLlamada, solucionado);
+            eLlamada_set_solucionado(unaLlamada, solucionado);
         }
     }
 

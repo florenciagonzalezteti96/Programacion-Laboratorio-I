@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "LinkedList.h"
+#include "eLlamada.h"
 
 /** \brief Esta funcion carga una lista dinamica con datos de un archivo ya existente, en modo texto
  *
@@ -131,4 +132,10 @@ void* getEmployeeBySalary(LinkedList* pArrayListEmployee, int salary);
  *
  */
 void* getEmployeeByNombre(LinkedList* pArrayListEmployee, char* name);
+
+int filtrarPorUno(void* unaLlamada);
+int filtrarPorDos(void* unaLlamada);
+int filtrarPorTres(void* unaLlamada);
+int filtrarPorCuatro(void* unaLlamada);
+int filtrarPorCinco(void* unaLlamada);
 

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Controller.h"
-#include "eLlamada.h"
 #include "parser.h"
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
@@ -125,10 +124,10 @@ int controller_saveAsText(char* path, LinkedList* pListaLlamadas)
     eLlamada* auxLlamada = NULL;
 
     int id_Llamada;
-    char fecha[12];
+    char fecha[21];
     int numero_Cliente;
     int id_Problema;
-    char solucionado[2];
+    char solucionado[21];
 
     if(pListaLlamadas != NULL && path != NULL)
     {
@@ -147,7 +146,7 @@ int controller_saveAsText(char* path, LinkedList* pListaLlamadas)
                 eLlamada_get_idProblema(auxLlamada, &id_Problema);
                 eLlamada_get_solucionado(auxLlamada, solucionado);
 
-                fprintf(pFile, "%d,%s,%d,%d,%s\n", id_Llamada, fecha, numero_Cliente, id_Problema, solucionado);
+                fprintf(pFile,"%d,%s,%d,%d,%s\n", id_Llamada, fecha, numero_Cliente, id_Problema, solucionado);
             }
         }
         fclose(pFile);
@@ -227,4 +226,106 @@ int dameProximoId(LinkedList* pListaLlamadas)
     return retorno;
 }
 
+int filtrarPorUno(void* pLlamada)
+{
+    int retorno = -1;
+    eLlamada* unaLlamada = pLlamada;
+
+    if(unaLlamada != NULL)
+    {
+        retorno = 1;
+
+        if(unaLlamada->id_Problema == 1)
+        {
+            retorno = 0;
+        }
+    }
+
+    return retorno;
+}
+int filtrarPorDos(void* pLlamada)
+{
+    int retorno = -1;
+    eLlamada* unaLlamada = pLlamada;
+
+    if(unaLlamada != NULL)
+    {
+        retorno = 1;
+
+        if(unaLlamada->id_Problema == 2)
+        {
+            retorno = 0;
+        }
+    }
+
+    return retorno;
+}
+int filtrarPorTres(void* pLlamada)
+{
+    int retorno = -1;
+    eLlamada* unaLlamada = pLlamada;
+
+    if(unaLlamada != NULL)
+    {
+        retorno = 1;
+
+        if(unaLlamada->id_Problema == 3)
+        {
+            retorno = 0;
+        }
+    }
+
+    return retorno;
+}
+int filtrarPorCuatro(void* pLlamada)
+{
+    int retorno = -1;
+    eLlamada* unaLlamada = pLlamada;
+
+    if(unaLlamada != NULL)
+    {
+        retorno = 1;
+
+        if(unaLlamada->id_Problema == 4)
+        {
+            retorno = 0;
+        }
+    }
+
+    return retorno;
+}
+int filtrarPorCinco(void* pLlamada)
+{
+    int retorno = -1;
+    eLlamada* unaLlamada = pLlamada;
+
+    if(unaLlamada != NULL)
+    {
+        retorno = 1;
+
+        if(unaLlamada->id_Problema == 5)
+        {
+            retorno = 0;
+        }
+    }
+
+    return retorno;
+}
+
+int dominio_setTipoSegun(eDominio* pDominio)
+{
+    int todoOk=0;
+    //eDominio* dom =pDominio;
+
+               if( isdigit(pDominio->dominio[0]) == 1 )
+                {
+                    pDominio->tipo= 'M';
+                    todoOk=1;
+                }else
+                {
+                    pDominio->tipo='A';
+                    todoOk=1;
+                }
+
+    return todoOk;
 

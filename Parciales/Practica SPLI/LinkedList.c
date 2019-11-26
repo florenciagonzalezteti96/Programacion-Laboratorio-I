@@ -671,3 +671,77 @@ int ll_sort(LinkedList* lista, int (*pFunc)(void*,void*), int order)
     return returnAux;
 }
 
+LinkedList* ll_filter (LinkedList* pListaLlamadas, int(*pFunc)(void*))
+{
+    void* pElement;
+    int retorno;
+    int i;//variable para recorrer la lista princpial
+
+    LinkedList* pReturnLista = NULL;//creo la variable que retorna la lista
+    LinkedList* pListaLlamadasFiltradas = NULL;//creo la variable para guardar la lista filtrada
+
+    if(pListaLlamadas != NULL && pFunc != NULL)//valido que ninguno sea nulo
+    {
+        pListaLlamadasFiltradas = ll_newLinkedList();//creo la lista de llamadas filtradas
+        pReturnLista = ll_newLinkedList();
+
+        if(pListaLlamadasFiltradas != NULL)//valido que no sea nula
+        {
+            for(i=0;i<ll_len(pListaLlamadas);i++)//comienzo a recorrer la lista que recibo
+            {
+                pElement = ll_get(pListaLlamadas, i);//voy recorriendo y obtengo elemento por elmento
+
+                if(pElement != NULL)//valido que el elemento no sea nulo y tambien que me devuelve la funccion
+                {
+                    retorno = pFunc(pElement);
+
+                    if(retorno == 0)
+                    {
+                        ll_add(pListaLlamadasFiltradas, pElement);//si coincide, agrego a la lista filtrada
+                    }
+                }
+            }
+            pReturnLista = pListaLlamadasFiltradas;
+        }
+    }
+
+    return pReturnLista;
+}
+
+int ll_map(LinkedList* this, int (*pFunc)(void*)) // for + get
+{
+    /*int returnAux = -1;
+    int i;
+    void* pElement;
+
+    if(this != NULL && pFunc != NULL)
+    {
+        returnAux = 0;
+
+        for(i=0;i<ll_len(this);i++)
+        {
+            pElement = ll_get(this, i);
+
+            if(pElement != NULL && pFunc(pElement) == 1) // busco que pFunc retorne error
+            {
+                returnAux = 1; // para retornar que estaba todo ok hasta (-1 * i) el ìndice que dio error
+
+            }
+        }
+    }*/
+    int retorno = -1;
+    void* pElement = NULL;
+    int i;
+    if(this != NULL && pFunc != NULL)
+    {
+        for(i=0; i<ll_len(this); i++)
+        {
+            pElement = ll_get(this, i);
+            pFunc(pElement);
+            retorno = 0;
+        }
+    }
+    return retorno;
+
+}
+

@@ -6,9 +6,12 @@
 int main()
 {
     LinkedList* listaDeLlamadas = ll_newLinkedList();
+    LinkedList* listaDeLlamadasFiltradas = ll_newLinkedList();
 
     int opcion;
     char opcion_continuar = 's';
+    char opcion_continuarFiltrado = 's';
+    int opcionFiltrar;
     int retorno;
 
     if(listaDeLlamadas != NULL)
@@ -21,7 +24,7 @@ int main()
             {
                 case 1:
                     retorno = controller_loadFromText("llamadas.txt", listaDeLlamadas);
-                    //retorno = controller_loadFromBinary("listaLlamadas.bin", listaDeLlamadas);
+                    retorno = controller_loadFromBinary("listaLlamadas.bin", listaDeLlamadas);
                     switch(retorno)
                     {
                     case -1:
@@ -46,7 +49,49 @@ int main()
                     system("pause");
                     break;
                 case 3:
-                    printf("todavia no!");
+                    do
+                    {printf("MENU DE FILTROS\n");
+                    printf("1.Llamadas del problema 1.\n");
+                    printf("2.Llamadas del problema 2.\n");
+                    printf("3.Llamadas del problema 3.\n");
+                    printf("4.Llamadas del problema 4.\n");
+                    printf("5.Llamadas del problema 5.\n");
+                    printf("6.Salir del submenu.\n");
+                    opcionFiltrar = getInt("Elija una opcion para crear una lista de llamadas filtradas: ");
+                    switch(opcionFiltrar)
+                    {
+                    case 1:
+                        ll_clear(listaDeLlamadasFiltradas);
+                        listaDeLlamadasFiltradas = ll_filter(listaDeLlamadas, filtrarPorUno);
+                        controller_saveAsText("llamadasFiltradasUno.txt", listaDeLlamadasFiltradas);
+                        break;
+                    case 2:
+                        ll_clear(listaDeLlamadasFiltradas);
+                        listaDeLlamadasFiltradas = ll_filter(listaDeLlamadas, filtrarPorDos);
+                        controller_ListarLlamadas(listaDeLlamadasFiltradas);
+                        system("pause");
+                        controller_saveAsText("llamadasFiltradasDos.txt", listaDeLlamadasFiltradas);
+                        break;
+                    case 3:
+                        ll_clear(listaDeLlamadasFiltradas);
+                        listaDeLlamadasFiltradas = ll_filter(listaDeLlamadas, filtrarPorTres);
+                        controller_saveAsText("llamadasFiltradasTres.txt", listaDeLlamadasFiltradas);
+                        break;
+                    case 4:
+                        ll_clear(listaDeLlamadasFiltradas);
+                        listaDeLlamadasFiltradas = ll_filter(listaDeLlamadas, filtrarPorCuatro);
+                        controller_saveAsText("llamadasFiltradasCuatro.txt", listaDeLlamadasFiltradas);
+                        break;
+                    case 5:
+                        ll_clear(listaDeLlamadasFiltradas);
+                        listaDeLlamadasFiltradas = ll_filter(listaDeLlamadas, filtrarPorCinco);
+                        controller_saveAsText("llamadasFiltradasCinco.txt", listaDeLlamadasFiltradas);
+                        break;
+                    case 6:
+                        opcion_continuarFiltrado = 'n';
+                        break;
+                    }
+                    }while(opcion_continuarFiltrado != 'n');
                     break;
                 case 4:
                     opcion_continuar = getConfirmacion("¿Desea salir del programa? Ingrese s para SI o n para NO: ");

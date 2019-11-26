@@ -1,0 +1,2 @@
+Id Llamada,Fecha,Numero Cliente,Id Problema,Solucionado
+3,4/8/03,215,0,si

@@ -1,4 +1,4 @@
-Id Llamada,Fecha,Numero Cliente,Id Problema,Solucionado
+id llamada,fecha,numero cliente,id problema,solucionado
 2,8/9/15,599,3,si
 6,9/5/78,655,5,no
 9,9/12/04,124,5,si
