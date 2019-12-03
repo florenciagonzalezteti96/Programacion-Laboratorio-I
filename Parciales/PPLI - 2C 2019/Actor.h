@@ -1,6 +1,6 @@
 #include "Inputs.h"
 #include "Pelicula.h"
-
+#include "Pais.h"
 #define VACIO 0
 #define OCUPADO 1
 
@@ -9,6 +9,7 @@ typedef struct
     int codigo;
     char nombre[52];
     char apellido[52];
+    int idNacionalidad;
     char sexo;
     int isEmpty;
 } eActor;
@@ -22,7 +23,7 @@ typedef struct
  * \return void
  *
  */
-void mostrarMenuActores(eActor listadoDeActores[], int tamActores, ePelicula listaDePeliculas[], int tamPeliculas);
+void mostrarMenuActores(eActor listadoDeActores[], int tamActores, ePelicula listaDePeliculas[], int tamPeliculas, ePais listadoDePaises[], int tamPaises);
 /** \brief Esta funcion inicializa todos los campos isEmpty de la lista de actores en VACIO ( 0 )
  *
  * \param listadoDeActores[] eActor La lista de actores
@@ -54,7 +55,7 @@ void hardcodearActores(eActor listadoDeActores[], int tamActores);
  * \return void
  *
  */
-void mostrarUnActor(eActor unActor);
+void mostrarUnActor(eActor unActor,ePais listadoDePaises[], int tamPaises);
 /** \brief Esta funcion muestra una lista de actores
  *
  * \param listadoDeActores[] eActor La lista de actores
@@ -62,7 +63,7 @@ void mostrarUnActor(eActor unActor);
  * \return void
  *
  */
-void mostrarListaDeActores(eActor listadoDeActores[], int tamActores);
+void mostrarListaDeActores(eActor listadoDeActores[], int tamActores,ePais listadoDePaises[], int tamPaises);
 /** \brief Esta funcion recibe el id de un actor y muestra a ese actor
  *
  * \param listadoDeActores[] eActor La lista de actores
@@ -145,7 +146,7 @@ int ordenarActores(eActor listadoDeActores[], int tamActores);
  * \return int Devuelve -1 si no logro encontrar al actor a modificar, 0 si el usuario cancelo la accion o 1 si se realizaron las modificaciones
  *
  */
-int modificarUnActor(eActor listadoDeActores[], int tamActores, ePelicula listadoDePeliculas[], int tamPeliculas);
+int modificarUnActor(eActor listadoDeActores[], int tamActores, ePelicula listadoDePeliculas[], int tamPeliculas, ePais listadoDePaises[], int tamPaises);
 /** \brief Esta funcion busca un actor de acuerdo a un codigo ingresado
  *
  * \param listadoDeActores[] eActor La lista de actores
@@ -164,7 +165,7 @@ int encontrarActorPorCodigo(eActor listadoDeActores[], int tamActores,int codigo
  * \return int Devuelve -1 si no pudo acceder a la eliminacion, 0 si se elimino al actor, 1 si no logro encontrar al actor o 2 si el usuario cancelo la accion
  *
  */
-int eliminarActor(eActor listadoDeActores[], int tamActores, ePelicula listaDePeliculas[], int tamPeliculas);
+int eliminarActor(eActor listadoDeActores[], int tamActores, ePelicula listaDePeliculas[], int tamPeliculas, ePais listadoDePaises[], int tamPaises);
 /** \brief Esta funcion da de baja a un actor de una lista de actores
  *
  * \param listadoDeActores[] eActor La lista de actores
@@ -181,7 +182,7 @@ int darBajaActor(eActor listadoDeActores[], int tamActores, int id);
  * \return int Devuelve el codigo del actor ingresado
  *
  */
-int obtenerIdActor(eActor listadoDeActores[], int tamActores);
+int obtenerIdActor(eActor listadoDeActores[], int tamActores,ePais listadoDePaises[], int tamPaises);
 /** \brief Esta funcion valida que el id de actor ingresado exista en la lista de actores
  *
  * \param listadoDeActores[] eActor La lista de actores

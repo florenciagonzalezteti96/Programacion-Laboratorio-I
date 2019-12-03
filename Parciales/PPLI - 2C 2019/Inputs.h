@@ -86,4 +86,10 @@ int getValidFloat(float* numero, char* mensaje);
  *
  */
 float getFloat(char mensaje[]);
+/** \brief Esta funcion me permite obtener un caracter para el campo "sexo" de una entidad
+ *
+ * \param mensaje[] char el mensaje de ingreso
+ * \return char el caracter ingresado
+ *
+ */
 char getSexo(char mensaje[]);

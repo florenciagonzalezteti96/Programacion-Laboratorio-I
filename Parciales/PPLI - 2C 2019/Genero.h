@@ -42,6 +42,15 @@ int buscarIndiceGenero(eGenero listadoDeGeneros[], int tamGeneros, int idGenero)
  *
  */
 int obtenerUnGenero(eGenero listadoDeGeneros[], int tamGeneros);
+/** \brief Esta funcion me permite obtener un elemento de tipo eGenero a traves de un id
+ *
+ * \param listadoDeGeneros[] eGenero El array de estructura eGenero
+ * \param tamGeneros int El tamaño del array de estructura eGenero
+ * \param idGenero int el id para realizar la busqueda
+ * \return eGenero el elemento de tipo eGenero
+ *
+ */
+eGenero obtenerUnGeneroPorId(eGenero listadoDeGeneros[], int tamGeneros, int idGenero);
 /** \brief Esta funcion recibe un codigo de genero y muestra el genero al que corresponde dicho codigo
  *
  * \param listadoDeGeneros[] eGenero El array de estructura eGenero

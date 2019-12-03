@@ -220,3 +220,65 @@
 1571629166 source:c:\users\gonzalez\desktop\programacion-laboratorio-i-master\parciales\ppli - 2c 2019\actor.c
 	"Actor.h"
 
+1575326212 source:c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\actor.c
+	"Actor.h"
+
+1575162988 c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\actor.h
+	"Inputs.h"
+	"Pelicula.h"
+	"Pais.h"
+
+1575338212 c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\inputs.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"ctype.h"
+
+1575337913 c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\pelicula.h
+	<stdio.h>
+	<stdlib.h>
+	"Inputs.h"
+	"Genero.h"
+	"Fecha.h"
+
+1575338247 c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\genero.h
+	<stdio.h>
+	<stdlib.h>
+	"Inputs.h"
+
+1575337547 source:c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\elenco.c
+	"Elenco.h"
+
+1575337788 c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\elenco.h
+	"Inputs.h"
+	"Actor.h"
+
+1575323940 source:c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\genero.c
+	"Genero.h"
+
+1575149761 source:c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\inputs.c
+	"Inputs.h"
+
+1575156182 source:c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\pelicula.c
+	"Pelicula.h"
+
+1575337825 source:c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Elenco.h"
+
+1575338843 c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\fecha.h
+	<stdio.h>
+	<stdlib.h>
+
+1575325654 source:c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\fecha.c
+	"Fecha.h"
+
+1575338172 c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\pais.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+
+1575338093 source:c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\pais.c
+	"Pais.h"
+

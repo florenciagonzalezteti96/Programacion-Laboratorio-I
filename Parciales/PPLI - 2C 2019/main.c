@@ -6,15 +6,19 @@
 #define TP 20//tamaño de la lista de peliculas
 #define TG 4//tamaño de la lista de generos
 #define TE 1000//tamaño de la lista de elencos
+#define TF 20//tamaño de la lista de fechas
+#define TPais 5
 
 int main()
 {
     eActor listadoDeActores[TA];
     ePelicula listadoDePeliculas[TP];
     eGenero listadoDeGeneros[TG];
-    eElenco listadoDeElenco[TE];
+    eElenco listadoDeElencos[TE];
+    eFecha listadoDeFechas[TF];
+    ePais listadoDePaises[TPais];
 
-    mostrarMenus(listadoDeElenco, TE, listadoDePeliculas, TP, listadoDeGeneros, TG, listadoDeActores, TA);
-//sipi
+    mostrarMenus(listadoDeElencos, TE, listadoDePeliculas, TP, listadoDeGeneros, TG, listadoDeActores, TA, listadoDeFechas, TF, listadoDePaises, TPais);
+
     return 0;
 }

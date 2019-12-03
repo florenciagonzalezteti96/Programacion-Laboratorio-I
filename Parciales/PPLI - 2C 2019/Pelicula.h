@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "Inputs.h"
 #include "Genero.h"
+#include "Fecha.h"
 
 #define TRUE 0
 #define FALSE 1
@@ -13,6 +14,22 @@ typedef struct{
     int idGenero;
 }ePelicula;
 
+/** \brief Esta funcion me permite obtener el indice de una pelicula mediante el codigo de la misma
+ *
+ * \param listadoDePeliculas[] ePelicula la lista de peliculas
+ * \param tamPeliculas int el tamaño de la lista de peliculas
+ * \param idPelicula int el codigo de la pelicula
+ * \return int Me devuelve el indice de la pelicula, caso contrario me devuelve -1 si no la encontro
+ *
+ */
+int obtenerIndicePelicula(ePelicula listadoDePeliculas[], int tamPeliculas, int idPelicula);
+/** \brief Esta funcion me permite hardcodear datos en una lista de elementos de tipo ePelicula
+ *
+ * \param listadoDePeliculas[] ePelicula la lista de peliculas
+ * \param tamPeliculas int el tamaño de la lista de peliculas
+ * \return void
+ *
+ */
 void hardcodearPeliculas(ePelicula listadoDePeliculas[], int tamPeliculas);
 
 /** \brief Esta funcion muestra una pelicula con el genero al cual pertenece
@@ -32,7 +49,7 @@ int mostrarPeliculaPorId(ePelicula listadoDePeliculas[], int tamPeliculas, int c
  * \return void
  *
  */
-void mostrarPelicula(ePelicula unaPelicula, eGenero listadoDeGeneros[],int tamGeneros);
+void mostrarPelicula(ePelicula listadoDePeliculas[], int tamPeliculas, ePelicula unaPelicula, eGenero listadoDeGeneros[],int tamGeneros, eFecha listadoDeFechas[], int tamFechas);
 /** \brief Esta funcion muestra las peliculas en un array de estructura ePelicula con los generos a los cuales pertenecen
  *
  * \param listadoDePeliculas[] ePelicula El array de estructura ePelicula
@@ -42,7 +59,7 @@ void mostrarPelicula(ePelicula unaPelicula, eGenero listadoDeGeneros[],int tamGe
  * \return void
  *
  */
-void mostrarListaPeliculas(ePelicula listadoDePeliculas[],int tamPeliculas,eGenero listadoDeGeneros[],int tamGeneros);
+void mostrarListaPeliculas(ePelicula listadoDePeliculas[],int tamPeliculas,eGenero listadoDeGeneros[],int tamGeneros, eFecha listadoDeFechas[], int tamFechas);
 /** \brief Esta funcion valida que el codigo de pelicula ingresado exista dentro de un array de estructura ePelicula
  *
  * \param listadoDePeliculas[] ePelicula El array de estructura ePelicula
@@ -61,7 +78,7 @@ int validarIdPelicula(ePelicula listadoDePeliculas[],int tamPeliculas,int idPeli
  * \return int El codigo ingresado
  *
  */
-int obtenerIdPelicula(ePelicula listadoDePeliculas[],int tamPeliculas, eGenero listadoDeGeneros[], int tamGeneros);
+int obtenerIdPelicula(ePelicula listadoDePeliculas[],int tamPeliculas, eGenero listadoDeGeneros[], int tamGeneros, eFecha listadoDeFechas[], int tamFechas);
 /** \brief Esta funcion busca el una pelicula dentro de un array de estructura ePelicula
  *
  * \param listadoDePeliculas[] ePelicula El array de estructura ePelicula

@@ -15,21 +15,36 @@ void hardcodearPeliculas(ePelicula listadoDePeliculas[], int tam)
         listadoDePeliculas[i].idGenero = idGenero[i];
     }
 }
-void mostrarPelicula(ePelicula unaPelicula, eGenero listadoDeGeneros[],int tamGeneros)
+int obtenerIndicePelicula(ePelicula listadoDePeliculas[], int tamPeliculas, int idPelicula)
 {
+    int i;
+    int retorno = -1;
+    for(i=0;i<tamPeliculas;i++){
+        if(idPelicula == listadoDePeliculas[i].codigo){
+            retorno = i;
+            break;
+        }
+    }
+    return retorno;
+
+}
+void mostrarPelicula(ePelicula listadoDePeliculas[], int tamPeliculas, ePelicula unaPelicula, eGenero listadoDeGeneros[],int tamGeneros, eFecha listadoDeFechas[], int tamFechas)
+{
+    int indicePelicula = obtenerIndicePelicula(listadoDePeliculas, tamPeliculas, unaPelicula.codigo);
     printf("%7d", unaPelicula.codigo);
     printf("%28s", unaPelicula.descripcion);
     printf("%24d", unaPelicula.duracion);
     mostrarGeneroPorId(listadoDeGeneros, tamGeneros, unaPelicula.idGenero);
+    mostrarUnaFecha(listadoDeFechas[indicePelicula]);
     printf("\n");
 }
-void mostrarListaPeliculas(ePelicula listadoDePeliculas[],int tamPeliculas,eGenero listadoDeGeneros[],int tamGeneros)
+void mostrarListaPeliculas(ePelicula listadoDePeliculas[],int tamPeliculas,eGenero listadoDeGeneros[],int tamGeneros, eFecha listadoDeFechas[], int tamFechas)
 {
-    printf("Codigo:\t\t\tDescripcion:\tDuracion (minutos) :\tGenero:\n");
+    printf("Codigo:\t\t\tDescripcion:\tDuracion (minutos) :\tGenero:\t Fecha de Estreno:\n");
     int i;
     for(i=0; i<tamPeliculas; i++)
     {
-        mostrarPelicula(listadoDePeliculas[i], listadoDeGeneros, tamGeneros);
+        mostrarPelicula(listadoDePeliculas, tamPeliculas, listadoDePeliculas[i], listadoDeGeneros, tamGeneros, listadoDeFechas, tamFechas);
     }
     printf("\n");
 }
@@ -47,10 +62,10 @@ int validarIdPelicula(ePelicula listadoDePeliculas[],int tamPeliculas,int idPeli
     }
     return retorno;
 }
-int obtenerIdPelicula(ePelicula listadoDePeliculas[],int tamPeliculas, eGenero listadoDeGeneros[], int tamGeneros)
+int obtenerIdPelicula(ePelicula listadoDePeliculas[],int tamPeliculas, eGenero listadoDeGeneros[], int tamGeneros, eFecha listadoDeFechas[], int tamFechas)
 {
     int idPelicula;
-    mostrarListaPeliculas(listadoDePeliculas,tamPeliculas,listadoDeGeneros, tamGeneros);
+    mostrarListaPeliculas(listadoDePeliculas,tamPeliculas,listadoDeGeneros, tamGeneros, listadoDeFechas, tamFechas);
     idPelicula = getInt("Ingrese el codigo de la pelicula: \n");
     while((validarIdPelicula(listadoDePeliculas, tamPeliculas, idPelicula)== -1))
     {

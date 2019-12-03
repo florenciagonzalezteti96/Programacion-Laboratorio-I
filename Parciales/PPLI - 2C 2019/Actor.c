@@ -1,6 +1,6 @@
 #include "Actor.h"
 
-void mostrarMenuActores(eActor listadoDeActores[], int tamActores, ePelicula listaDePeliculas[], int tamPeliculas)
+void mostrarMenuActores(eActor listadoDeActores[], int tamActores, ePelicula listaDePeliculas[], int tamPeliculas, ePais listadoDePaises[], int tamPaises)
 {
     int option;
     int retorno;
@@ -33,7 +33,7 @@ void mostrarMenuActores(eActor listadoDeActores[], int tamActores, ePelicula lis
             system("pause");
             break;
         case 2:
-            retorno = modificarUnActor(listadoDeActores, tamActores, listaDePeliculas, tamPeliculas);
+            retorno = modificarUnActor(listadoDeActores, tamActores, listaDePeliculas, tamPeliculas, listadoDePaises, tamPaises);
             switch(retorno)
             {
             case -1:
@@ -50,7 +50,7 @@ void mostrarMenuActores(eActor listadoDeActores[], int tamActores, ePelicula lis
             system("pause");
             break;
         case 3:
-            retorno = eliminarActor(listadoDeActores, tamActores, listaDePeliculas, tamPeliculas);
+            retorno = eliminarActor(listadoDeActores, tamActores, listaDePeliculas, tamPeliculas, listadoDePaises, tamPaises);
             switch(retorno)
             {
             case -1:
@@ -78,7 +78,7 @@ void mostrarMenuActores(eActor listadoDeActores[], int tamActores, ePelicula lis
                 break;
             case 0:
                 printf("Se han ordenado los actores.\n\n");
-                mostrarListaDeActores(listadoDeActores, tamActores);
+                mostrarListaDeActores(listadoDeActores, tamActores, listadoDePaises, tamPaises);
                 break;
             }
             printf("\n");
@@ -131,35 +131,42 @@ void hardcodearActores(eActor listadoDeActores[], int tamActores)
 {
     int i;
     int codigo[]= {1,2,3,4,5,31,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
+    int idNacionalidad[]={1,5,2,3,2,4,1,1,1,2,3,4,1,5,2,3,5,5,5,3,1,4,2,3,5,1,1,5,3,1};
     char nombre[][52]= {"Karlen","Pay","Morrie","Lorette","Andre","Daryn","Linnie","Jewis","Herman","Sibylle","Ado","Jessica","Sherline","Laura","Arel","Veronika","Orrin","Costa","Brinna","Mitchael","Glenda","Bernice","Louisette","Henka","Danella","Oliver","Roselin","Karly","Marcelle","Violeta", "Camila"};
     char apellido[][52]= {"Cotton","Hayward","Zarfai","Lowerson","Humes","Swains","Lomas","Patten","Guidelli","Lumbly","Deboy","Wraggs","Marley","Dunbain","Teal","Mikalski","Atwel","Gable","Applewhite","Conway","Chaster","Rosentholer","Coneron","Hacket","Ollarenshaw","Packman","Brinson","Massie","Edney","Barends", "Gomez"};
     char sexo[]= {'f','f','m','m','f','f','f','m','f','m','f','m','f','m','f','m','f','m','f','m','m','m','m','m','f','m','f','f','f','f'};
     for(i=0; i<tamActores; i++)
     {
         listadoDeActores[i].codigo = codigo[i];
+        listadoDeActores[i].idNacionalidad = idNacionalidad[i];
         strcpy(listadoDeActores[i].nombre, nombre[i]);
         strcpy(listadoDeActores[i].apellido, apellido[i]);
         listadoDeActores[i].sexo = sexo[i];
         listadoDeActores[i].isEmpty = OCUPADO;
     }
 }
-void mostrarUnActor(eActor unActor)
+void mostrarUnActor(eActor unActor, ePais listadoDePaises[], int tamPaises)
 {
+    ePais unPais;
+    unPais = obtenerUnPaisPorId(listadoDePaises, tamPaises, unActor.idNacionalidad);
     printf("%2d", unActor.codigo);
     printf("%29s", unActor.nombre);
     printf("%25s", unActor.apellido);
-    printf("%13c\n", unActor.sexo);
+    printf("%13c", unActor.sexo);
+    printf("%18s\n", unPais.descripcionPais);
+
 }
-void mostrarListaDeActores(eActor listadoDeActores[], int tamActores)
+void mostrarListaDeActores(eActor listadoDeActores[], int tamActores, ePais listadoDePaises[], int tamPaises)
 {
     int i;
-    printf("ID:\t\t\tNombre:\t\t\tApellido:\tSexo:\t\n");
-    if(tamActores >= 0){
+    printf("ID:\t\t\tNombre:\t\t\tApellido:\tSexo:\tPais de Origen:\n");
+    if(tamActores >= 0)
+    {
         for(i=0; i<tamActores; i++)
         {
             if(listadoDeActores[i].isEmpty==OCUPADO)
             {
-                mostrarUnActor(listadoDeActores[i]);
+                mostrarUnActor(listadoDeActores[i], listadoDePaises, tamPaises);
             }
         }
     }
@@ -190,6 +197,7 @@ int cargarUnActor(eActor listadoDeActores[], int tamActores)
     {
         do
         {
+            system("cls");
             obtenerDatosActor(name, lastName, &sexo);
             printf("\n");
             printf("Estos son los datos ingresados:\n");
@@ -208,6 +216,7 @@ int cargarUnActor(eActor listadoDeActores[], int tamActores)
             printf("\n");
             opcion_continuar = getConfirmacion("Desea ingresar otro actor? Ingrese s para SI o n para NO: ");
             printf("\n");
+            system("pause");
         }
         while(opcion_continuar == 's');
     }
@@ -215,7 +224,6 @@ int cargarUnActor(eActor listadoDeActores[], int tamActores)
 }
 void obtenerDatosActor(char name[],char lastName[], char* sexo)
 {
-    printf("Ingrese los datos del actor: ");
     pedirCadena("\nNombre del actor: ", name);
     pedirCadena("\nApellido del actor: ", lastName);
     *sexo = getSexo("\nSexo del actor (f/m): ");
@@ -281,7 +289,7 @@ int obtenerLugarDisponibleActor(eActor listadoDeActores[], int tamActores)
     }
     return retorno;
 }
-int modificarUnActor(eActor listadoDeActores[], int tamActores, ePelicula listadoDePeliculas[], int tamPeliculas)
+int modificarUnActor(eActor listadoDeActores[], int tamActores, ePelicula listadoDePeliculas[], int tamPeliculas, ePais listadoDePaises[], int tamPaises)
 {
     int retorno = -1;
     int flag = -1;
@@ -292,7 +300,7 @@ int modificarUnActor(eActor listadoDeActores[], int tamActores, ePelicula listad
     char cargar = 'n';
     eActor aux;
 
-    mostrarListaDeActores(listadoDeActores, tamActores);
+    mostrarListaDeActores(listadoDeActores, tamActores, listadoDePaises, tamPaises);
 
     codigo = getInt("\nIngrese el id del actor a modificar:");
     indice = encontrarActorPorCodigo(listadoDeActores, tamActores, codigo);
@@ -345,8 +353,8 @@ int modificarUnActor(eActor listadoDeActores[], int tamActores, ePelicula listad
         {
             printf("Este es el actor:\n");
             printf("\n");
-            printf("ID:\t\t\tNombre:\t\t\tApellido:\tSexo:\t\n");
-            mostrarUnActor(aux);
+            printf("ID:\t\t\tNombre:\t\t\tApellido:\tSexo:\tPais De Origen:\n");
+            mostrarUnActor(aux, listadoDePaises, tamPaises);
             printf("\n");
             cargar = getConfirmacion("\nDesea guardar estos datos? Ingrese s para SI o n para NO:");
             if(cargar == 's')
@@ -358,12 +366,15 @@ int modificarUnActor(eActor listadoDeActores[], int tamActores, ePelicula listad
             {
                 retorno = 0;
             }
-        }else{
+        }
+        else
+        {
             retorno = 0;
 
         }
 
-    }return retorno;
+    }
+    return retorno;
 }
 int encontrarActorPorCodigo(eActor listadoDeActores[], int tamActores,int codigo)
 {
@@ -382,7 +393,7 @@ int encontrarActorPorCodigo(eActor listadoDeActores[], int tamActores,int codigo
     }
     return retorno;
 }
-int eliminarActor(eActor listadoDeActores[], int tamActores, ePelicula listaDePeliculas[], int tamPeliculas)
+int eliminarActor(eActor listadoDeActores[], int tamActores, ePelicula listaDePeliculas[], int tamPeliculas, ePais listadoDePaises[], int tamPaises)
 {
     int retorno = -1;
     int id = 0;
@@ -391,7 +402,7 @@ int eliminarActor(eActor listadoDeActores[], int tamActores, ePelicula listaDePe
     if(tamActores>0)
     {
         printf("Estos son los actores:\n");
-        mostrarListaDeActores(listadoDeActores, tamActores);
+        mostrarListaDeActores(listadoDeActores, tamActores,listadoDePaises, tamPaises);
         id = getInt("\nIngrese el codigo del actor que desea dar de baja:");
         printf("\n");
         index = encontrarActorPorCodigo(listadoDeActores, tamActores, id);
@@ -401,8 +412,8 @@ int eliminarActor(eActor listadoDeActores[], int tamActores, ePelicula listaDePe
         }
         else
         {
-            printf("ID:\t\t\tNombre:\t\t\tApellido:\tSexo:\t\n");
-            mostrarUnActor(listadoDeActores[index]);
+            printf("ID:\t\t\tNombre:\t\t\tApellido:\tSexo:\tPais De Origen:\n");
+            mostrarUnActor(listadoDeActores[index],listadoDePaises, tamPaises);
             confirmacion = getChar("\nEsta seguro que quiere eliminar al actor? Ingrese s para SI o n para NO:");
             if(confirmacion == 's')
             {
@@ -471,10 +482,10 @@ int ordenarActores(eActor listadoDeActores[], int tamActores)
     }
     return retorno;
 }
-int obtenerIdActor(eActor listadoDeActores[], int tamActores)
+int obtenerIdActor(eActor listadoDeActores[], int tamActores, ePais listadoDePaises[], int tamPaises)
 {
     int idActor;
-    mostrarListaDeActores(listadoDeActores, tamActores);
+    mostrarListaDeActores(listadoDeActores, tamActores, listadoDePaises, tamPaises);
     idActor = getInt("Ingrese el codigo del actor: \n");
     while((validarIdActor(listadoDeActores, tamActores, idActor)== -1))
     {

@@ -133,6 +133,8 @@ void pedirCadena (char mensaje[], char cadena[])
     while(getStringLetras(cadena)== -1)
     {
         printf("Error. Ingrese solo letras!\n");
+        system("pause");
+        system("cls");
         printf("%s", mensaje);
         fflush(stdin);
         scanf("%[^\n]", cadena);
