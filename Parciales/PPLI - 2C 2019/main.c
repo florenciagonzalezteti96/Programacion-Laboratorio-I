@@ -7,7 +7,7 @@
 #define TG 4//tamaño de la lista de generos
 #define TE 1000//tamaño de la lista de elencos
 #define TF 20//tamaño de la lista de fechas
-#define TPais 5
+#define TPais 5//tamaño de la lista de paises
 
 int main()
 {
@@ -19,6 +19,7 @@ int main()
     ePais listadoDePaises[TPais];
 
     mostrarMenus(listadoDeElencos, TE, listadoDePeliculas, TP, listadoDeGeneros, TG, listadoDeActores, TA, listadoDeFechas, TF, listadoDePaises, TPais);
+
 
     return 0;
 }

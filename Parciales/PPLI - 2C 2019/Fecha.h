@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Inputs.h"
 typedef struct
 {
     int dia;
@@ -58,3 +59,4 @@ eFecha obtenerUnaFechaPorCodigo(eFecha listadoDeFechas[], int tamFechas, int cod
  *
  */
 eFecha obtenerFechaPorIndice(eFecha listaDeFechas[], int tamFechas, int indice);
+eFecha pedirFecha();

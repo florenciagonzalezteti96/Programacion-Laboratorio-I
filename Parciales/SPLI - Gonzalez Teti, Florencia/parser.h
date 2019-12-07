@@ -7,7 +7,7 @@
  * \return int Devuelve -1 si la lista o el puntero al archivo son nulos, devuelve 0 si pudo realizar la carga de datos
  *
  */
-int parser_LlamadasDesdeTexto(FILE* pFile, LinkedList* pListaLlamadas);
+int parser_VuelosDesdeTexto(FILE* pFile, LinkedList* pListaVuelos);
 /** \brief Esta funcion realiza la carga de datos desde un archivo a una lista dinamica, en modo binario
  *
  * \param pFile FILE* El puntero al archivo desde donde se realiza la carga
@@ -15,4 +15,4 @@ int parser_LlamadasDesdeTexto(FILE* pFile, LinkedList* pListaLlamadas);
  * \return int Devuelve -1 si la lista o el puntero al archivo son nulos, devuelve 0 si pudo realizar la carga de datos
  *
  */
-int parser_LlamadasDesdeBinario(FILE* pFile, LinkedList* pListaLlamadas);
+int parser_VuelosDesdeBinario(FILE* pFile, LinkedList* pListaVuelos);

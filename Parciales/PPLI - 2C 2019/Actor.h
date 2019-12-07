@@ -1,6 +1,7 @@
 #include "Inputs.h"
 #include "Pelicula.h"
 #include "Pais.h"
+#include "Direccion.h"
 #define VACIO 0
 #define OCUPADO 1
 
@@ -9,8 +10,11 @@ typedef struct
     int codigo;
     char nombre[52];
     char apellido[52];
-    int idNacionalidad;
     char sexo;
+    int idNacionalidad;
+    int cantidadPremios;
+    eDireccion unaDireccion;
+    eFecha fechaNacimiento;
     int isEmpty;
 } eActor;
 
@@ -81,7 +85,7 @@ void mostrarActorPorId(eActor listadoDeActores[], int tamActores, int idActor);
  * \return int Devuelve 1 si no pudo acceder al ingreso de datos, -1 si no pudo realizar la carga de datos, 0 si pudo cargar al actor o 2 si el usuario cancelo la carga
  *
  */
-int cargarUnActor(eActor listadoDeActores[], int tamActores);
+int cargarUnActor(eActor listadoDeActores[], int tamActores, ePais listaDePaises[], int tamPais);
 /** \brief Esta funcion pide el ingreso de datos para un elemento de tipo eActor
  *
  * \param name[] char El nombre del actor
@@ -90,7 +94,7 @@ int cargarUnActor(eActor listadoDeActores[], int tamActores);
  * \return void
  *
  */
-void obtenerDatosActor(char name[],char lastName[], char* sexo);
+void obtenerDatosActor(char name[],char lastName[], int* cantidadPremios, char* sexo, eDireccion* unaDireccion, eFecha* fechaDeNacimiento);
 /** \brief Esta funcion muestra datos ingresado para un elemento de tipo eActor
  *
  * \param name[] char El nombre del actor
@@ -99,7 +103,7 @@ void obtenerDatosActor(char name[],char lastName[], char* sexo);
  * \return void
  *
  */
-void mostrarDatosActor(char name[],char lastName[], char sexo);
+void mostrarDatosActor(char name[],char lastName[], char sexo, int cantidadDePremios, eDireccion unaDireccion, eFecha fechaDeNacimiento, ePais unPais);
 /** \brief Esta funcion agrega un actor a una lista de actores
  *
  * \param listadoDeActores[] eActor La lista de actores
@@ -111,7 +115,7 @@ void mostrarDatosActor(char name[],char lastName[], char sexo);
  * \return int Devuelve -1 si no pudo agregarlo a la lista, caso contrario devuelve 0
  *
  */
-int agregarActor(eActor listadoDeActores[], int tamActores, int codigo, char name[],char lastName[], char sexo);
+int agregarActor(eActor listadoDeActores[], int tamActores,int cantidadDePremios, int codigo, char name[],char lastName[], char sexo, eDireccion unaDireccion, eFecha fechaDeNacimiento, ePais unPais);
 /** \brief Esta funcion permite obtener un codigo nuevo para un actor
  *
  * \param listadoDeActores[] eActor La lista de actores

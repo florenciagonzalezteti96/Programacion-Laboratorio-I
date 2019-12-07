@@ -282,3 +282,76 @@
 1575338093 source:c:\users\flore\desktop\programacion-laboratorio-i\parciales\ppli - 2c 2019\pais.c
 	"Pais.h"
 
+1575382885 source:e:\ppli - 2c 2019\actor.c
+	"Actor.h"
+
+1575382689 e:\ppli - 2c 2019\actor.h
+	"Inputs.h"
+	"Pelicula.h"
+	"Pais.h"
+	"Direccion.h"
+
+1575338212 e:\ppli - 2c 2019\inputs.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"ctype.h"
+
+1575337913 e:\ppli - 2c 2019\pelicula.h
+	<stdio.h>
+	<stdlib.h>
+	"Inputs.h"
+	"Genero.h"
+	"Fecha.h"
+
+1575338247 e:\ppli - 2c 2019\genero.h
+	<stdio.h>
+	<stdlib.h>
+	"Inputs.h"
+
+1575376965 e:\ppli - 2c 2019\fecha.h
+	<stdio.h>
+	<stdlib.h>
+	"Inputs.h"
+
+1575338172 e:\ppli - 2c 2019\pais.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+
+1575382114 source:e:\ppli - 2c 2019\elenco.c
+	"Elenco.h"
+
+1575381998 e:\ppli - 2c 2019\elenco.h
+	"Inputs.h"
+	"Actor.h"
+
+1575376944 source:e:\ppli - 2c 2019\fecha.c
+	"Fecha.h"
+
+1575323940 source:e:\ppli - 2c 2019\genero.c
+	"Genero.h"
+
+1575149761 source:e:\ppli - 2c 2019\inputs.c
+	"Inputs.h"
+
+1575379425 source:e:\ppli - 2c 2019\pais.c
+	"Pais.h"
+
+1575156182 source:e:\ppli - 2c 2019\pelicula.c
+	"Pelicula.h"
+
+1575379977 source:e:\ppli - 2c 2019\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Elenco.h"
+
+1575376163 source:e:\ppli - 2c 2019\direccion.c
+	"Direccion.h"
+
+1575378600 e:\ppli - 2c 2019\direccion.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"Inputs.h"
+

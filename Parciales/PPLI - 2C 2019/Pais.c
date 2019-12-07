@@ -22,7 +22,7 @@ void mostrarListaPaises(ePais listaDePaises[], int tamPais)
 void mostrarUnPais(ePais unPais)
 {
     printf("%4d", unPais.id);
-    printf("%10s" , unPais.descripcionPais);
+    printf("%10s\n" , unPais.descripcionPais);
 }
 
 ePais obtenerUnPaisPorId(ePais listaDePaises[], int tamPaises, int idNacionalidad)

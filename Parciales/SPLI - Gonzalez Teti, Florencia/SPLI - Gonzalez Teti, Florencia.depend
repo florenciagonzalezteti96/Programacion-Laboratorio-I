@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1574778469 source:e:\spli - gonzalez teti, florencia\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"Controller.h"
+	"parser.h"
+
+1574777449 e:\spli - gonzalez teti, florencia\controller.h
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Vuelos.h"
+
+1574734491 e:\spli - gonzalez teti, florencia\linkedlist.h
+
+1574773598 e:\spli - gonzalez teti, florencia\vuelos.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+
+1574771258 e:\spli - gonzalez teti, florencia\parser.h
+	"LinkedList.h"
+
+1574702817 source:e:\spli - gonzalez teti, florencia\inputs.c
+	"inputs.h"
+
+1574702817 e:\spli - gonzalez teti, florencia\inputs.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"ctype.h"
+
+1574735903 source:e:\spli - gonzalez teti, florencia\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1574777918 source:e:\spli - gonzalez teti, florencia\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Controller.h"
+	"inputs.h"
+
+1574774417 source:e:\spli - gonzalez teti, florencia\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"parser.h"
+	"Vuelos.h"
+
+1574775037 source:e:\spli - gonzalez teti, florencia\vuelos.c
+	"Vuelos.h"
+

@@ -120,7 +120,7 @@ void mostrarMenuInformes(eElenco listadoDeElencos[], int tamElencos, ePelicula l
     {
         system("cls");
         printf("\t\t\t******* MENU DE INFORMES *******\n");
-        option = getInt("Opciones:\n1. Mostrar peliculas de terror estrenadas despues del 2002.\n2. Mostrar peliculas donde haya participado un actor argentino.\n3. Mostrar peliculas donde participo un actor seleccionado.\n4. Seleccionar un actor y determinar cuando recaudo en todas las peliculas romanticas en las que participo.\n5. Listar actores que no participaron en ninguna pelicula.\n6. Salir del menu de informes.\n");
+        option = getInt("Opciones:\n1. Mostrar peliculas de terror estrenadas despues del 2002.\n2. Mostrar peliculas donde haya participado un actor argentino.\n3. Mostrar peliculas donde participo un actor seleccionado.\n4. Seleccionar un actor y determinar cuando recaudo en todas las peliculas romanticas en las que participo.\n5. Listar actores que no participaron en ninguna pelicula.\n6. Peliculas en las que participa un actor de avellaneda.\n7. Actores mayores a 30 y con al menos un premio.\n8. Seleccionar un elenco y mostrar total de premios entre todos sus actores.\n9. Listar actores y mostrar la edad de cada uno.\n10. Salir del menu de informes.\n");
         switch(option)
         {
         case 1:
@@ -192,7 +192,27 @@ void mostrarMenuInformes(eElenco listadoDeElencos[], int tamElencos, ePelicula l
             printf("\n");
             system("pause");
             break;
-        case 6:
+            case 6:
+                mostrarPeliculasConActoresDeAvellaneda(listadoDeElencos, tamElencos, listadoDePeliculas, tamPeliculas, listadoDeActores, tamActores);
+                printf("\n");
+                system("pause");
+                break;
+            case 7:
+                mostrarActoresMayoresA30YConAlMenosUnPremio(listadoDeActores, tamActores);
+                printf("\n");
+                system("pause");
+                break;
+            case 8:
+                mostrarCantidadDePremiosEnUnElenco(listadoDeGeneros, tamGeneros, listadoDeFechas, tamFechas, listadoDeElencos, tamElencos,listadoDeActores, tamActores, listadoDePeliculas, tamPeliculas);
+                printf("\n");
+                system("pause");
+                break;
+            case 9:
+                mostrarEdadDeCadaActor(listadoDeActores, tamActores);
+                printf("\n");
+                system("pause");
+                break;
+        case 10:
             option_continue = getConfirmacion("Esta seguro que desea salir? Ingrese s para SI o n para NO: ");
             printf("\n");
             //system("pause");
@@ -207,6 +227,107 @@ void mostrarMenuInformes(eElenco listadoDeElencos[], int tamElencos, ePelicula l
     while(option_continue=='n');
     printf("\n");
 }
+/**Sexto filtro*/
+void mostrarPeliculasConActoresDeAvellaneda(eElenco listaDeElencos[], int tamElencos, ePelicula listaDePeliculas[], int tamPeliculas, eActor listaDeActores[], int tamActores)
+{
+    eActor unActor;
+    ePelicula unaPelicula;
+    int i;
+
+    for(i=0; i<tamElencos; i++)
+    {
+        if(listaDeElencos[i].isEmpty == OCUPADO)
+        {
+            //obtengo todo los datos que necesito
+            unaPelicula = obtenerPelicula(listaDePeliculas, tamPeliculas, listaDeElencos[i].codigoPelicula);//guardo la pelicula de ese elenco
+            unActor = obtenerActor(listaDeActores, tamActores, listaDeElencos[i].codigoActor);//obtengo el actor de ese elenco
+
+            if(stricmp(unActor.unaDireccion.localidad,"Avellaneda")== 0)
+            {
+                printf("%s:\n", unaPelicula.descripcion);
+                printf("%10s %10s\n", "Nombre del actor: ", "Apellido del actor: ");
+                printf("%17s %19s\n", unActor.nombre, unActor.apellido);
+                printf("\n");
+            }
+        }
+    }
+    //return isEmpty;
+}
+/**7 filtro*/
+void mostrarActoresMayoresA30YConAlMenosUnPremio(eActor listadoDeActores[], int tamActores)
+{
+    int i;
+    int edadTotal;
+    int anio;
+
+    anio = getInt("Ingrese el anio actual:");
+    printf("Actores con edad mayor a 30 y con mas de un premio: \n");
+    for(i=0;i<tamActores;i++)
+    {
+        if(listadoDeActores[i].isEmpty == OCUPADO)
+        {
+
+            edadTotal = anio - listadoDeActores[i].fechaNacimiento.anio;
+
+            if(edadTotal>30 && listadoDeActores[i].cantidadPremios>=1)
+            {
+                printf("%10s %10s %18s %25s\n", "Nombre del actor: ", "Apellido del actor: ", "Edad: ", "Cantidad De Premios: ");
+                printf("%17s %19s %20d %20d\n", listadoDeActores[i].nombre, listadoDeActores[i].apellido, edadTotal, listadoDeActores[i].cantidadPremios);
+                printf("\n\n");
+            }
+        }
+    }
+}
+/**octavo*/
+void mostrarCantidadDePremiosEnUnElenco(eGenero listaDeGeneros[], int tamGeneros, eFecha listaDeFechas[], int tamFechas, eElenco listadoDeElencos[], int tamElencos, eActor listadoDeActores[], int tamActores, ePelicula listadoDePeliculas[], int tamPeliculas)
+{
+    int i;
+    int j;
+    int idPelicula;
+    int totalPremios = 0;
+    ePelicula unaPelicula;
+
+    mostrarListaPeliculas(listadoDePeliculas, tamPeliculas, listaDeGeneros, tamGeneros, listaDeFechas, tamFechas);
+    idPelicula = obtenerIdPelicula(listadoDePeliculas, tamPeliculas, listaDeGeneros, tamGeneros, listaDeFechas, tamFechas);
+
+    unaPelicula = obtenerPelicula(listadoDePeliculas, tamPeliculas, idPelicula);//ya tengo la pelicula para calcular el elenco
+
+    for(i=0;i<tamElencos;i++)
+    {
+        if(listadoDeElencos[i].codigoPelicula == unaPelicula.codigo && listadoDeElencos[i].isEmpty == OCUPADO)//ya tengo el elenco
+        {
+            for(j=0;j<tamActores;j++)
+            {
+                if((listadoDeElencos[i].codigoActor == listadoDeActores[j].codigo) && (listadoDeActores[j].isEmpty == OCUPADO))
+                {
+                    totalPremios = totalPremios + listadoDeActores[j].cantidadPremios;
+                }
+            }
+        }
+    }
+    printf("El total de premios del elenco de la pelicula %s es: %d", unaPelicula.descripcion, totalPremios);
+}
+/**noveno*/
+void mostrarEdadDeCadaActor(eActor listadoDeActores[], int tamActores)
+{
+    int i;
+    int edadTotal;
+    int anio;
+
+    anio = getInt("Ingrese el anio actual:");
+    printf("Los actores y sus edades son: \n\n\n");
+    for(i=0;i<tamActores;i++)
+    {
+        if(listadoDeActores[i].isEmpty == OCUPADO)
+        {
+            edadTotal = anio - listadoDeActores[i].fechaNacimiento.anio;
+            printf("%10s %10s %18s\n", "Nombre del actor: ", "Apellido del actor: ", "Edad: ");
+            printf("%17s %19s %20d\n", listadoDeActores[i].nombre, listadoDeActores[i].apellido, edadTotal);
+            printf("\n\n");
+        }
+    }
+}
+
 /**PRIMER FILTRO*/
 int listarPeliculasDeTerrorEstrenadasPos2002(eFecha listaDeFechas[], int tamFechas, eGenero listaDeGeneros[], int tamGeneros, ePelicula listaDePeliculas[], int tamPeliculas)
 {
@@ -398,7 +519,8 @@ int mostrarSiNoActua(eActor listaDeActores[], int tamActores, eElenco listaDeEle
     int retorno = -1;
 
     printf("Listado de actores que no trabajan en ninguna pelicula: \n");
-    printf("ID:\t\t\tNombre:\t\t\tApellido:\tSexo:\tPais De Origen:\n");
+    printf("Nombre:\t\t\tApellido:\t\n");
+    printf("\n\n");
 
     for(i=0; i<tamActores; i++) //comienzo con el array de actores
     {
@@ -408,7 +530,8 @@ int mostrarSiNoActua(eActor listaDeActores[], int tamActores, eElenco listaDeEle
             if(noActua != -1)
             {
                 retorno = 0;
-                mostrarUnActor(listaDeActores[i], listaDePaises, tamPaises);// si no actua lo muestro
+                printf("%17s", listaDeActores[i].nombre);// si no actua lo muestro
+                printf("%25s\n", listaDeActores[i].apellido);
             }
         }
     }

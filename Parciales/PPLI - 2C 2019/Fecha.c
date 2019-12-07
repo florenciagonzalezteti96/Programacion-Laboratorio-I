@@ -21,6 +21,16 @@ void mostrarUnaFecha(eFecha unaFecha)
     printf("%d\n" , unaFecha.anio);
 }
 
+eFecha pedirFecha()
+{
+    eFecha unaFecha;
+
+    unaFecha.anio = getInt("Ingrese el anio del nacimiento: ");
+    unaFecha.dia = getInt("Ingrese el dia del nacimiento: ");
+    unaFecha.mes = getInt("Ingrese el mes del nacimiento: ");
+
+    return unaFecha;
+}
 eFecha obtenerFechaPorIndice(eFecha listaDeFechas[], int tamFechas, int indice)
 {
     int i;

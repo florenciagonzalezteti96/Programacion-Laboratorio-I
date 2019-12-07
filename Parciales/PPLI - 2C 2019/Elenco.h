@@ -285,3 +285,9 @@ int buscarSiActua(eActor unActor, eElenco listaDeElencos[], int tamElencos);
  *
  */
 eElenco obtenerElencoPorIndice(eElenco listaDeElencos[], int tamElencos, int indice);
+void mostrarPeliculasConActoresDeAvellaneda(eElenco listaDeElencos[], int tamElencos, ePelicula listaDePeliculas[], int tamPeliculas, eActor listaDeActores[], int tamActores);
+void mostrarActoresMayoresA30YConAlMenosUnPremio(eActor listadoDeActores[], int tamActores);
+void mostrarEdadDeCadaActor(eActor listadoDeActores[], int tamActores);
+void mostrarCantidadDePremiosEnUnElenco(eGenero listaDeGeneros[], int tamGeneros, eFecha listaDeFechas[], int tamFechas, eElenco listadoDeElencos[], int tamElencos, eActor listadoDeActores[], int tamActores, ePelicula listadoDePeliculas[], int tamPeliculas);
+
+

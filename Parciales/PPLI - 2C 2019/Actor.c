@@ -13,7 +13,7 @@ void mostrarMenuActores(eActor listadoDeActores[], int tamActores, ePelicula lis
         switch(option)
         {
         case 1:
-            retorno = cargarUnActor(listadoDeActores, tamActores);
+            retorno = cargarUnActor(listadoDeActores, tamActores, listadoDePaises, tamPaises);
             switch(retorno)
             {
             case -1:
@@ -135,6 +135,10 @@ void hardcodearActores(eActor listadoDeActores[], int tamActores)
     char nombre[][52]= {"Karlen","Pay","Morrie","Lorette","Andre","Daryn","Linnie","Jewis","Herman","Sibylle","Ado","Jessica","Sherline","Laura","Arel","Veronika","Orrin","Costa","Brinna","Mitchael","Glenda","Bernice","Louisette","Henka","Danella","Oliver","Roselin","Karly","Marcelle","Violeta", "Camila"};
     char apellido[][52]= {"Cotton","Hayward","Zarfai","Lowerson","Humes","Swains","Lomas","Patten","Guidelli","Lumbly","Deboy","Wraggs","Marley","Dunbain","Teal","Mikalski","Atwel","Gable","Applewhite","Conway","Chaster","Rosentholer","Coneron","Hacket","Ollarenshaw","Packman","Brinson","Massie","Edney","Barends", "Gomez"};
     char sexo[]= {'f','f','m','m','f','f','f','m','f','m','f','m','f','m','f','m','f','m','f','m','m','m','m','m','f','m','f','f','f','f'};
+    int cantidadPremios[]={1,5,2,3,2,4,1,1,1,2,3,4,1,5,2,3,5,5,5,3,1,4,2,3,5,1,1,5,3,1};
+    eDireccion unaDireccion[30]={{"Mario Bravo",123,"Avellaneda"},{"Av. Cordoba",154,"Wilde"},{"Av. Belgrano",123,"Wilde"},{"Olavarria",485,"Caballito"},{"Av. Las heras",985,"Caballito"},{"Juan Garay",756,"Caballito"},{"Mario Bravo",123,"Avellaneda"},{"Av. Cordoba",154,"Wilde"},{"Av. Belgrano",1235,"Wilde"},{"Olavarria",485,"Caballito"},{"Av. Las heras",985,"Caballito"},{"Juan Garay",756,"Caballito"},{"Mario Bravo",123,"Avellaneda"},{"Av. Cordoba",154,"Wilde"},{"Av. Belgrano",1235,"Wilde"},{"Olavarria",485,"Caballito"},{"Av. Las heras",985,"Caballito"},/**18*/{"Juan Garay",756,"Caballito"},{"Mario Bravo",123,"Avellaneda"},{"Av. Cordoba",154,"Wilde"},{"Mario Bravo",123,"Avellaneda"},{"Av. Cordoba",154,"Wilde"},{"Av. Belgrano",1235,"Wilde"},{"Olavarria",485,"Caballito"},{"Av. Cordoba",154,"Wilde"},{"Av. Belgrano",1235,"Wilde"},{"Olavarria",485,"Caballito"},{"Av. Cordoba",154,"Wilde"},{"Av. Belgrano",1235,"Wilde"},{"Av. Belgrano",1235,"Wilde"}};
+    eFecha unaFecha[30]={{1,12,2000},{5,12,1999},{4,3,1966},{7,5,2016},{18,2,1995},{9,7,1978}/**6*/,{1,12,2000},{5,12,1999},{4,3,1966},{2,1,1996}/**10*/,{3,4,2012},{3,4,1955},{2,3,2000},{1,12,2000},{5,12,1999},/*15*/{4,3,1966},{1,12,2000},{5,12,1999},{4,3,1966},/**20*/{1,12,2000},{5,12,1999},{4,3,1966},{7,5,2016},{18,2,1995},{1,12,2000},{5,12,1999},{4,3,1966},{7,5,2016},{18,2,1995},{1,12,2000}};
+
     for(i=0; i<tamActores; i++)
     {
         listadoDeActores[i].codigo = codigo[i];
@@ -142,7 +146,15 @@ void hardcodearActores(eActor listadoDeActores[], int tamActores)
         strcpy(listadoDeActores[i].nombre, nombre[i]);
         strcpy(listadoDeActores[i].apellido, apellido[i]);
         listadoDeActores[i].sexo = sexo[i];
+        listadoDeActores[i].cantidadPremios = cantidadPremios[i];
         listadoDeActores[i].isEmpty = OCUPADO;
+        listadoDeActores[i].cantidadPremios = cantidadPremios[i];
+        listadoDeActores[i].unaDireccion.altura = unaDireccion[i].altura;
+        strcpy(listadoDeActores[i].unaDireccion.calle,unaDireccion[i].calle);
+        strcpy(listadoDeActores[i].unaDireccion.localidad, unaDireccion[i].localidad);
+        listadoDeActores[i].fechaNacimiento.dia = unaFecha[i].dia;
+        listadoDeActores[i].fechaNacimiento.mes = unaFecha[i].mes;
+        listadoDeActores[i].fechaNacimiento.anio = unaFecha[i].anio;
     }
 }
 void mostrarUnActor(eActor unActor, ePais listadoDePaises[], int tamPaises)
@@ -153,13 +165,14 @@ void mostrarUnActor(eActor unActor, ePais listadoDePaises[], int tamPaises)
     printf("%29s", unActor.nombre);
     printf("%25s", unActor.apellido);
     printf("%13c", unActor.sexo);
-    printf("%18s\n", unPais.descripcionPais);
-
+    printf("%18s", unPais.descripcionPais);
+    printf("%20d", unActor.fechaNacimiento.anio);
+    printf("%28s\n", unActor.unaDireccion.localidad);
 }
 void mostrarListaDeActores(eActor listadoDeActores[], int tamActores, ePais listadoDePaises[], int tamPaises)
 {
     int i;
-    printf("ID:\t\t\tNombre:\t\t\tApellido:\tSexo:\tPais de Origen:\n");
+    printf("ID:\t\t\tNombre:\t\t\tApellido:\tSexo:\tPais de Origen:\t\tAnio de nacimiento:\t\tLocalidad\n");
     if(tamActores >= 0)
     {
         for(i=0; i<tamActores; i++)
@@ -183,12 +196,14 @@ void mostrarActorPorId(eActor listadoDeActores[], int tamActores, int idActor)
         }
     }
 }
-int cargarUnActor(eActor listadoDeActores[], int tamActores)
+int cargarUnActor(eActor listadoDeActores[], int tamActores, ePais listaDePaises[], int tamPais)
 {
     int retorno = 1;
-    char name[52];
-    char lastName[52];
     char sexo;
+    int cantidadPremios;
+    eActor auxActor;
+    ePais unPais;
+    int idPais;
     int codigo;
     char confirmacion;
     char opcion_continuar;
@@ -198,16 +213,23 @@ int cargarUnActor(eActor listadoDeActores[], int tamActores)
         do
         {
             system("cls");
-            obtenerDatosActor(name, lastName, &sexo);
+            obtenerDatosActor(auxActor.nombre, auxActor.apellido, &cantidadPremios, &sexo , &auxActor.unaDireccion, &auxActor.fechaNacimiento);
+            printf("%d", cantidadPremios);
+            system("pause");
+            mostrarListaPaises(listaDePaises, tamPais);
+            idPais = getInt("Ingrese el id del pais del actor:");
+            unPais = obtenerUnPaisPorId(listaDePaises, tamPais, idPais);
             printf("\n");
             printf("Estos son los datos ingresados:\n");
-            mostrarDatosActor(name, lastName, sexo);
+
+            mostrarDatosActor(auxActor.nombre, auxActor.apellido, sexo, cantidadPremios, auxActor.unaDireccion, auxActor.fechaNacimiento, unPais);
+            system("pause");
             printf("\n");
             confirmacion = getConfirmacion("Desea cargar los datos? Ingrese s para SI o n para NO: \n");
             if(confirmacion == 's')
             {
                 codigo = obtenerNuevoCodigo(listadoDeActores, tamActores);
-                retorno = agregarActor(listadoDeActores, tamActores, codigo, name, lastName, sexo);
+                retorno = agregarActor(listadoDeActores, tamActores, cantidadPremios, codigo, auxActor.nombre, auxActor.apellido, sexo, auxActor.unaDireccion, auxActor.fechaNacimiento, unPais);
             }
             else if(confirmacion == 'n')
             {
@@ -222,20 +244,27 @@ int cargarUnActor(eActor listadoDeActores[], int tamActores)
     }
     return retorno;
 }
-void obtenerDatosActor(char name[],char lastName[], char* sexo)
+void obtenerDatosActor(char name[],char lastName[], int* cantidadPremios, char* sexo, eDireccion* unaDireccion, eFecha* fechaDeNacimiento)
 {
     pedirCadena("\nNombre del actor: ", name);
     pedirCadena("\nApellido del actor: ", lastName);
+    *cantidadPremios = getInt("\nIngrese la cantidad de premios: ");
     *sexo = getSexo("\nSexo del actor (f/m): ");
+    *unaDireccion = pedirDireccion();
+    *fechaDeNacimiento = pedirFecha();
 }
-void mostrarDatosActor(char name[],char lastName[], char sexo)
+void mostrarDatosActor(char name[],char lastName[], char sexo, int cantidadDePremios, eDireccion unaDireccion, eFecha fechaDeNacimiento, ePais unPais)
 {
     printf("\n");
     printf("Nombre: %s\n", name);
     printf("Apellido %s\n", lastName);
     printf("Sexo: %c\n", sexo);
+    printf("Cantidad de premios: %d\n", cantidadDePremios);
+    printf("Localidad: %s\n", unaDireccion.localidad);
+    printf("Pais de origen: %s: \n", unPais.descripcionPais);
+    printf("Anio de nacimiento: %d\n", fechaDeNacimiento.anio);
 }
-int agregarActor(eActor listadoDeActores[], int tamActores, int codigo, char name[],char lastName[], char sexo)
+int agregarActor(eActor listadoDeActores[], int tamActores,int cantidadDePremios, int codigo, char name[],char lastName[], char sexo, eDireccion unaDireccion, eFecha fechaDeNacimiento, ePais unPais)
 {
     int retorno = -1;
     int lugar_Disponible = obtenerLugarDisponibleActor(listadoDeActores, tamActores);
@@ -246,6 +275,10 @@ int agregarActor(eActor listadoDeActores[], int tamActores, int codigo, char nam
         strcpy(listadoDeActores[lugar_Disponible].apellido, lastName);
         listadoDeActores[lugar_Disponible].sexo = sexo;
         listadoDeActores[lugar_Disponible].isEmpty = OCUPADO;
+        listadoDeActores[lugar_Disponible].cantidadPremios = cantidadDePremios;
+        listadoDeActores[lugar_Disponible].unaDireccion = unaDireccion;
+        listadoDeActores[lugar_Disponible].fechaNacimiento = fechaDeNacimiento;
+        listadoDeActores[lugar_Disponible].idNacionalidad = unPais.id;
         retorno = 0;
     }
     return retorno;

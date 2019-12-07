@@ -1,5 +1,0 @@
-id llamada,fecha,numero cliente,id problema,solucionado
-2,8/9/15,599,9
-6,9/5/78,655,9
-9,9/12/04,124,9
-3,4/8/03,215,9

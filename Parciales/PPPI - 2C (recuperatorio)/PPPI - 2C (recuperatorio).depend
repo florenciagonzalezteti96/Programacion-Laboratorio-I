@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1575291312 source:e:\pppi - 2c (recuperatorio)\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Producto.h"
+
+1575291254 e:\pppi - 2c (recuperatorio)\producto.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+
+1575290863 source:e:\pppi - 2c (recuperatorio)\producto.c
+	"Producto.h"
+
